@@ -1,224 +1,480 @@
-<!-- FULL PAGE CHINESE DRAGON -->
-<svg class="dragon-frame" viewBox="0 0 1200 900" preserveAspectRatio="none" aria-hidden="true">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <defs>
-    <filter id="dragon3D">
-      <feDropShadow
-        dx="7"
-        dy="10"
-        stdDeviation="5"
-        flood-color="#000"
-        flood-opacity=".35"/>
-    </filter>
+<title>Amir Borani | Creative Studio</title>
 
-    <linearGradient id="dragonBlack" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#050505"/>
-      <stop offset="45%" stop-color="#222"/>
-      <stop offset="70%" stop-color="#050505"/>
-      <stop offset="100%" stop-color="#000"/>
-    </linearGradient>
-  </defs>
+<meta name="description"
+content="Amir Borani — Video Editor, Content Creator, Web Designer, Programmer, AI Enthusiast and Streamer">
 
-  <g
-    fill="none"
-    stroke="url(#dragonBlack)"
-    stroke-width="10"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    filter="url(#dragon3D)"
-  >
+<style>
 
-    <!-- MAIN DRAGON BODY AROUND THE PAGE -->
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
 
-    <path d="
-      M90 170
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-      C170 70 300 45 410 95
-      C520 145 580 230 690 205
-      C800 180 865 75 985 90
+html{
+    scroll-behavior:smooth;
+}
 
-      C1100 105 1150 185 1090 255
+body{
 
-      C1040 315 935 285 945 220
-      C955 165 1030 165 1050 215
+    font-family:'Inter',sans-serif;
 
-      C1080 290 1010 355 925 365
+    background:
+        radial-gradient(circle at 20% 10%,rgba(157,123,32,.08),transparent 25%),
+        radial-gradient(circle at 80% 90%,rgba(0,0,0,.05),transparent 30%),
+        #f6f3ec;
 
-      C820 380 760 315 675 345
+    color:#111;
 
-      C580 380 570 500 650 555
+    overflow-x:hidden;
+}
 
-      C730 610 825 575 820 490
 
-      C815 425 735 410 705 465
+/* =====================================
+   GOLD PARTICLES
+===================================== */
 
-      C670 530 735 615 820 640
+.particles{
 
-      C920 670 1035 625 1090 700
+    position:fixed;
 
-      C1135 760 1080 830 990 825
+    inset:0;
 
-      C890 820 860 745 920 710
+    pointer-events:none;
 
-      C970 680 1025 715 1010 765
-    "/>
+    z-index:-5;
 
+    overflow:hidden;
+}
 
-    <!-- LEFT SIDE BODY -->
+.particles span{
 
-    <path d="
-      M90 170
+    position:absolute;
 
-      C45 240 60 330 135 350
+    width:4px;
+    height:4px;
 
-      C210 370 265 315 230 260
+    background:#9d7b20;
 
-      C195 205 115 225 120 285
+    border-radius:50%;
 
-      C125 360 230 400 300 365
-    "/>
+    opacity:.35;
 
+    animation:floatParticle 8s linear infinite;
+}
 
-    <!-- LOWER BODY -->
+.particles span:nth-child(1){
+    left:10%;
+    top:80%;
+    animation-delay:0s;
+}
 
-    <path d="
-      M300 365
+.particles span:nth-child(2){
+    left:20%;
+    top:40%;
+    animation-delay:2s;
+}
 
-      C360 335 420 365 425 430
+.particles span:nth-child(3){
+    left:35%;
+    top:70%;
+    animation-delay:4s;
+}
 
-      C430 500 360 535 300 505
+.particles span:nth-child(4){
+    left:50%;
+    top:30%;
+    animation-delay:1s;
+}
 
-      C235 475 245 395 300 365
-    "/>
+.particles span:nth-child(5){
+    left:65%;
+    top:75%;
+    animation-delay:3s;
+}
 
+.particles span:nth-child(6){
+    left:80%;
+    top:45%;
+    animation-delay:5s;
+}
 
-    <!-- HEAD -->
+.particles span:nth-child(7){
+    left:90%;
+    top:20%;
+    animation-delay:2s;
+}
 
-    <path d="
-      M90 170
+@keyframes floatParticle{
 
-      C45 125 55 70 110 45
+    0%{
+        transform:translateY(0) scale(1);
+        opacity:.1;
+    }
 
-      C165 20 225 55 220 110
+    50%{
+        opacity:.5;
+    }
 
-      C218 160 160 190 90 170
-    "/>
+    100%{
+        transform:translateY(-120px) scale(1.5);
+        opacity:0;
+    }
+}
 
 
-    <!-- HORNS -->
+/* =====================================
+   NAVIGATION
+===================================== */
 
-    <path d="M85 75 C35 35 30 0 60 -35"/>
-    <path d="M145 55 C150 5 180 -20 220 -35"/>
+nav{
 
+    position:fixed;
 
-    <!-- WHISKERS -->
+    top:18px;
 
-    <path d="M70 115 C25 100 -5 70 -35 40"/>
-    <path d="M70 135 C25 150 -10 180 -35 220"/>
+    left:50%;
 
+    transform:translateX(-50%);
 
-    <!-- DRAGON MANE -->
+    width:min(1150px,92%);
 
-    <path d="
-      M170 65
-      C250 25 290 45 315 90
+    padding:15px 25px;
 
-      M180 80
-      C270 60 320 90 340 135
+    display:flex;
 
-      M190 105
-      C285 105 330 145 350 180
-    "/>
+    justify-content:space-between;
 
+    align-items:center;
 
-    <!-- EYE -->
+    background:rgba(255,255,255,.78);
 
-    <circle
-      cx="125"
-      cy="105"
-      r="9"
-      fill="#000"
-    />
+    backdrop-filter:blur(20px);
 
+    border:1px solid rgba(0,0,0,.12);
 
-    <!-- MOUTH -->
+    border-radius:20px;
 
-    <path d="
-      M80 140
-      C115 160 155 155 180 130
-    "/>
+    box-shadow:
+        0 20px 50px rgba(0,0,0,.12),
+        inset 0 1px #fff;
 
+    z-index:1000;
+}
 
-    <!-- TEETH -->
+.logo{
 
-    <path d="M100 150 L110 170"/>
-    <path d="M125 155 L132 175"/>
-    <path d="M150 150 L155 168"/>
+    font-family:'Cinzel',serif;
 
+    font-size:21px;
 
-    <!-- BODY SPIKES -->
+    font-weight:800;
 
-    <path d="M260 120 L235 80 L285 105"/>
-    <path d="M360 130 L345 85 L395 115"/>
-    <path d="M480 170 L465 125 L515 160"/>
-    <path d="M610 205 L600 155 L645 195"/>
-    <path d="M760 180 L755 130 L800 175"/>
-    <path d="M890 125 L900 80 L930 120"/>
+    color:#111;
 
+    text-decoration:none;
+}
 
-    <!-- LEGS -->
+.logo span{
+    color:#a38327;
+}
 
-    <path d="
-      M300 365
-      L260 420
-      L210 415
-    "/>
+nav ul{
 
-    <path d="
-      M425 430
-      L470 480
-      L520 470
-    "/>
+    list-style:none;
 
-    <path d="
-      M675 345
-      L720 390
-      L765 375
-    "/>
+    display:flex;
 
-    <path d="
-      M820 640
-      L770 690
-      L720 680
-    "/>
+    gap:26px;
+}
 
+nav a{
 
-    <!-- CLAWS -->
+    color:#333;
 
-    <path d="M210 415 L195 440"/>
-    <path d="M210 415 L220 445"/>
-    <path d="M520 470 L535 495"/>
-    <path d="M520 470 L550 480"/>
+    text-decoration:none;
 
-    <path d="M765 375 L785 400"/>
-    <path d="M765 375 L800 380"/>
+    font-size:12px;
 
-    <path d="M720 680 L700 705"/>
-    <path d="M720 680 L735 710"/>
+    font-weight:700;
 
+    transition:.3s;
+}
 
-    <!-- SCALE DETAILS -->
+nav a:hover{
+    color:#a38327;
+}
 
-    <path d="M350 250 C365 235 380 235 395 250"/>
-    <path d="M390 270 C405 255 420 255 435 270"/>
-    <path d="M430 290 C445 275 460 275 475 290"/>
 
-    <path d="M520 315 C535 300 550 300 565 315"/>
-    <path d="M560 330 C575 315 590 315 605 330"/>
+/* =====================================
+   MAIN FRAME
+===================================== */
 
-    <path d="M850 350 C865 335 880 335 895 350"/>
-    <path d="M875 380 C890 365 905 365 920 380"/>
+.page{
 
-  </g>
+    position:relative;
 
-</svg>
+    width:min(1180px,93%);
+
+    margin:120px auto 60px;
+
+    background:rgba(255,254,249,.95);
+
+    border:3px solid #111;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    box-shadow:
+
+        14px 14px 0 #111,
+
+        25px 35px 70px rgba(0,0,0,.18),
+
+        inset 0 0 80px rgba(157,123,32,.035);
+}
+
+
+/* Inner luxury frame */
+
+.page::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:13px;
+
+    border:1px solid rgba(157,123,32,.4);
+
+    border-radius:21px;
+
+    pointer-events:none;
+
+    z-index:10;
+}
+
+
+/* =====================================
+   DRAGON FRAME
+===================================== */
+
+.dragon-frame{
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    padding:20px;
+
+    pointer-events:none;
+
+    z-index:1;
+
+    opacity:.12;
+
+    overflow:visible;
+
+    filter:
+        drop-shadow(8px 12px 6px rgba(0,0,0,.25));
+
+    animation:dragonMove 8s ease-in-out infinite;
+}
+
+@keyframes dragonMove{
+
+    0%,100%{
+        transform:scale(1);
+        opacity:.10;
+    }
+
+    50%{
+        transform:scale(1.008);
+        opacity:.15;
+    }
+}
+
+
+/* =====================================
+   CHINESE CORNERS
+===================================== */
+
+.corner{
+
+    position:absolute;
+
+    font-family:Georgia,serif;
+
+    font-size:90px;
+
+    color:#111;
+
+    opacity:.15;
+
+    z-index:4;
+
+    pointer-events:none;
+}
+
+.corner.tl{
+    top:5px;
+    left:15px;
+}
+
+.corner.tr{
+    top:5px;
+    right:15px;
+    transform:scaleX(-1);
+}
+
+.corner.bl{
+    bottom:5px;
+    left:15px;
+    transform:scaleY(-1);
+}
+
+.corner.br{
+    bottom:5px;
+    right:15px;
+    transform:scale(-1);
+}
+
+
+/* =====================================
+   HERO
+===================================== */
+
+.hero{
+
+    min-height:720px;
+
+    padding:120px 30px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    position:relative;
+
+    z-index:5;
+}
+
+.hero-content{
+
+    max-width:900px;
+
+    animation:heroEnter 1.2s ease;
+}
+
+@keyframes heroEnter{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(40px)
+            scale(.97);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.crest{
+
+    font-size:30px;
+
+    color:#a38327;
+
+    letter-spacing:12px;
+
+    margin-bottom:25px;
+}
+
+.hero h1{
+
+    font-family:'Cinzel',serif;
+
+    font-size:clamp(55px,9vw,110px);
+
+    line-height:.9;
+
+    letter-spacing:4px;
+
+    margin-bottom:30px;
+
+    color:#111;
+
+    text-shadow:
+
+        2px 2px 0 #d4cfc4,
+
+        5px 7px 0 rgba(0,0,0,.08);
+}
+
+.hero h1 span{
+    color:#a38327;
+}
+
+.hero h2{
+
+    font-family:'Cinzel',serif;
+
+    font-size:clamp(16px,3vw,27px);
+
+    color:#333;
+
+    margin-bottom:25px;
+}
+
+.hero p{
+
+    max-width:720px;
+
+    margin:auto;
+
+    color:#747474;
+
+    line-height:1.9;
+
+    font-size:15px;
+}
+
+
+/* =====================================
+   BUTTONS
+===================================== */
+
+.buttons{
+    margin-top:38px;
+}
+
+.btn{
+
+    display:inline-block;
+
+   
