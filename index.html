@@ -6,7 +6,8 @@
 
 <title>Amir Borani | Creative Portfolio</title>
 
-<meta name="description" content="Amir Borani — Video Editor, Content Creator, Web Designer, AI Enthusiast, Streamer and Programmer.">
+<meta name="description"
+content="Amir Borani — Video Editor, Content Creator, Web Designer, AI Enthusiast, Streamer and Programmer.">
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
@@ -23,59 +24,80 @@ html {
 
 body {
     font-family: 'Inter', sans-serif;
-    background: #f5f1e8;
-    color: #18243a;
+    background:
+        radial-gradient(circle at 10% 10%, rgba(0,0,0,.035), transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(0,0,0,.04), transparent 25%),
+        #f5f3ee;
+    color: #171717;
     overflow-x: hidden;
 }
 
-/* ===== Decorative background ===== */
+/* =========================
+   CHINESE DRAGON BACKGROUND
+========================= */
 
-body::before {
-    content: "";
+.dragon {
+    position: fixed;
+    pointer-events: none;
+    z-index: -2;
+    color: #050505;
+    opacity: .055;
+    font-family: Georgia, serif;
+    user-select: none;
+}
+
+.dragon.one {
+    right: -70px;
+    top: 120px;
+    font-size: 420px;
+    transform: rotate(-12deg);
+}
+
+.dragon.two {
+    left: -120px;
+    bottom: 80px;
+    font-size: 350px;
+    transform: rotate(15deg);
+    opacity: .035;
+}
+
+/* Chinese-inspired pattern */
+
+.pattern {
     position: fixed;
     inset: 0;
     pointer-events: none;
-    opacity: .16;
+    z-index: -3;
+    opacity: .08;
 
     background-image:
-        radial-gradient(circle at 15% 20%, #c9a227 0 2px, transparent 3px),
-        radial-gradient(circle at 80% 75%, #244a86 0 2px, transparent 3px);
-
-    background-size: 90px 90px;
-    z-index: -3;
+        radial-gradient(circle, #111 1px, transparent 1.5px);
+    background-size: 45px 45px;
 }
 
-body::after {
-    content: "☁";
-    position: fixed;
-    font-size: 240px;
-    color: #c9a227;
-    opacity: .035;
-    right: -40px;
-    bottom: -40px;
-    transform: rotate(-10deg);
-    pointer-events: none;
-}
-
-/* ===== Navigation ===== */
+/* =========================
+   NAVIGATION
+========================= */
 
 nav {
     position: fixed;
-    top: 15px;
+    top: 18px;
     left: 50%;
     transform: translateX(-50%);
+
     width: min(1100px, 92%);
+
     padding: 15px 25px;
 
-    background: rgba(255,255,255,.78);
-    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,.82);
+    backdrop-filter: blur(18px);
 
-    border: 1px solid rgba(36,74,134,.18);
+    border: 1px solid rgba(0,0,0,.12);
     border-radius: 18px;
 
     box-shadow:
-        0 15px 35px rgba(24,36,58,.12),
-        inset 0 1px 0 white;
+        0 15px 40px rgba(0,0,0,.12),
+        inset 0 1px 0 #fff;
 
     display: flex;
     justify-content: space-between;
@@ -88,11 +110,12 @@ nav {
     font-family: 'Cinzel', serif;
     font-size: 20px;
     font-weight: 800;
-    color: #244a86;
+    color: #111;
+    text-decoration: none;
 }
 
 .logo span {
-    color: #c9a227;
+    color: #9d7b20;
 }
 
 nav ul {
@@ -102,135 +125,176 @@ nav ul {
 }
 
 nav a {
-    color: #30405a;
     text-decoration: none;
+    color: #333;
     font-size: 13px;
     font-weight: 600;
     transition: .3s;
 }
 
 nav a:hover {
-    color: #c08e00;
+    color: #9d7b20;
 }
 
-/* ===== Main 3D Frame ===== */
+/* =========================
+   MAIN 3D FRAME
+========================= */
 
 .page {
     width: min(1150px, 92%);
+
     margin: 120px auto 60px;
 
     position: relative;
 
-    background: #fffdf8;
+    background: rgba(255,254,250,.94);
 
-    border: 3px solid #c9a227;
-    border-radius: 30px;
+    border: 3px solid #111;
+
+    border-radius: 28px;
 
     box-shadow:
-        0 35px 80px rgba(24,36,58,.20),
-        12px 12px 0 #244a86,
-        18px 18px 35px rgba(24,36,58,.14);
+        0 30px 70px rgba(0,0,0,.18),
+        12px 12px 0 #111,
+        18px 20px 35px rgba(0,0,0,.12);
 
     overflow: hidden;
 }
 
-/* Chinese inspired corner decorations */
+/* 3D inner frame */
+
+.page::before {
+    content: "";
+
+    position: absolute;
+    inset: 12px;
+
+    border: 1px solid rgba(0,0,0,.18);
+
+    border-radius: 20px;
+
+    pointer-events: none;
+}
+
+/* Decorative corners */
 
 .corner {
     position: absolute;
-    font-size: 70px;
-    color: #c9a227;
-    opacity: .35;
-    font-family: serif;
+
+    color: #111;
+
+    font-family: Georgia, serif;
+
+    font-size: 75px;
+
+    opacity: .17;
+
     pointer-events: none;
 }
 
 .corner.one {
-    top: 15px;
+    top: 12px;
     left: 20px;
 }
 
 .corner.two {
-    top: 15px;
+    top: 12px;
     right: 20px;
     transform: scaleX(-1);
 }
 
 .corner.three {
-    bottom: 15px;
+    bottom: 12px;
     left: 20px;
     transform: scaleY(-1);
 }
 
 .corner.four {
-    bottom: 15px;
+    bottom: 12px;
     right: 20px;
     transform: scale(-1);
 }
 
-/* ===== Hero ===== */
+/* =========================
+   HERO
+========================= */
 
 .hero {
-    min-height: 650px;
+    min-height: 670px;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     text-align: center;
 
-    padding: 90px 30px;
+    padding: 100px 30px;
 
     position: relative;
 }
 
 .hero-content {
     max-width: 850px;
+
     animation: fadeUp 1s ease;
 }
 
 .symbol {
-    color: #c9a227;
-    font-size: 28px;
-    margin-bottom: 15px;
+    font-size: 30px;
+
+    color: #111;
+
+    margin-bottom: 18px;
+
+    letter-spacing: 10px;
 }
 
 .hero h1 {
     font-family: 'Cinzel', serif;
 
-    font-size: clamp(48px, 8vw, 90px);
+    font-size: clamp(50px, 9vw, 100px);
 
-    line-height: 1;
+    line-height: .95;
 
-    color: #244a86;
+    color: #111;
 
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+
+    text-shadow:
+        2px 2px 0 #d5d0c5;
 }
 
 .hero h1 span {
-    color: #c9a227;
+    color: #9d7b20;
 }
 
 .hero h2 {
     font-family: 'Cinzel', serif;
 
-    font-size: clamp(18px, 3vw, 28px);
+    font-size: clamp(17px, 3vw, 26px);
 
-    color: #334b70;
+    color: #333;
 
     margin-bottom: 20px;
 }
 
 .hero p {
-    max-width: 700px;
+    max-width: 720px;
+
     margin: auto;
 
-    color: #667085;
+    color: #707070;
 
     line-height: 1.8;
+
+    font-size: 15px;
 }
+
+/* =========================
+   BUTTONS
+========================= */
 
 .buttons {
     margin-top: 35px;
@@ -239,13 +303,14 @@ nav a:hover {
 .btn {
     display: inline-block;
 
-    padding: 14px 25px;
+    padding: 14px 27px;
 
     margin: 6px;
 
     border-radius: 50px;
 
     font-size: 13px;
+
     font-weight: 700;
 
     text-decoration: none;
@@ -254,201 +319,252 @@ nav a:hover {
 }
 
 .primary {
-    background: #244a86;
+    background: #111;
+
     color: white;
 
     box-shadow:
-        0 8px 20px rgba(36,74,134,.25);
+        0 8px 0 #777,
+        0 15px 25px rgba(0,0,0,.15);
 }
 
 .primary:hover {
     transform: translateY(-5px);
-    background: #1c3b6e;
+
+    box-shadow:
+        0 12px 0 #777,
+        0 20px 30px rgba(0,0,0,.18);
 }
 
 .gold {
-    border: 1px solid #c9a227;
-    color: #8c6c00;
-    background: #fffaf0;
+    background: #fff;
+
+    border: 1px solid #9d7b20;
+
+    color: #806416;
 }
 
 .gold:hover {
-    transform: translateY(-5px);
-    background: #c9a227;
+    background: #9d7b20;
+
     color: white;
+
+    transform: translateY(-5px);
 }
 
-/* ===== Sections ===== */
+/* =========================
+   SECTIONS
+========================= */
 
 section {
-    padding: 85px 7%;
+    padding: 90px 7%;
 }
 
 .section-title {
     text-align: center;
-    margin-bottom: 45px;
+
+    margin-bottom: 50px;
 }
 
 .section-title small {
-    color: #c08e00;
+    color: #9d7b20;
+
     text-transform: uppercase;
-    letter-spacing: 4px;
-    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    font-size: 10px;
+
     font-weight: 700;
 }
 
 .section-title h2 {
     font-family: 'Cinzel', serif;
 
-    color: #244a86;
+    color: #111;
 
-    font-size: clamp(30px, 5vw, 48px);
+    font-size: clamp(32px, 5vw, 50px);
 
     margin-top: 10px;
 }
 
 .section-title h2 span {
-    color: #c9a227;
+    color: #9d7b20;
 }
 
-/* ===== About ===== */
+/* =========================
+   ABOUT
+========================= */
 
 .about {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 25px;
 }
 
 .card {
-    background: #ffffff;
+    background: rgba(255,255,255,.8);
 
-    border: 1px solid rgba(36,74,134,.12);
+    border: 1px solid rgba(0,0,0,.12);
 
     border-radius: 20px;
 
-    padding: 30px;
+    padding: 32px;
 
     box-shadow:
-        0 15px 30px rgba(24,36,58,.08),
-        inset 0 1px 0 white;
+        8px 8px 0 rgba(0,0,0,.06),
+        0 15px 30px rgba(0,0,0,.06);
 
     transition: .35s;
 }
 
 .card:hover {
-    transform: translateY(-7px);
+    transform: translateY(-8px);
 
     box-shadow:
-        0 25px 40px rgba(24,36,58,.13);
+        12px 14px 0 rgba(0,0,0,.08),
+        0 20px 40px rgba(0,0,0,.09);
 }
 
 .card h3 {
     font-family: 'Cinzel', serif;
 
-    color: #244a86;
+    color: #111;
 
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 }
 
 .card p {
-    color: #68758a;
+    color: #6c6c6c;
+
     line-height: 1.8;
 }
 
-/* ===== Skills ===== */
+/* =========================
+   SKILLS
+========================= */
 
 .skills {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 18px;
 }
 
 .skill {
-    background: linear-gradient(145deg, #ffffff, #f1eee7);
+    background: linear-gradient(
+        145deg,
+        #fff,
+        #eeece6
+    );
 
-    border: 1px solid rgba(36,74,134,.12);
+    border: 1px solid rgba(0,0,0,.1);
 
     border-radius: 18px;
 
-    padding: 25px;
+    padding: 28px;
 
     text-align: center;
 
     box-shadow:
-        7px 7px 0 rgba(36,74,134,.08);
+        7px 7px 0 rgba(0,0,0,.07);
 
     transition: .3s;
 }
 
 .skill:hover {
-    transform: translateY(-7px);
+    transform: translateY(-8px);
+
     box-shadow:
-        10px 12px 0 rgba(201,162,39,.16);
+        10px 12px 0 rgba(157,123,32,.16);
 }
 
 .skill-icon {
-    font-size: 32px;
-    margin-bottom: 10px;
+    font-size: 34px;
+
+    margin-bottom: 12px;
 }
 
 .skill h3 {
     font-family: 'Cinzel', serif;
-    color: #244a86;
+
+    color: #111;
+
     font-size: 17px;
 }
 
 .skill p {
-    color: #7a8494;
+    color: #777;
+
     font-size: 12px;
-    margin-top: 7px;
+
+    margin-top: 8px;
+
+    line-height: 1.6;
 }
 
-/* ===== Projects ===== */
+/* =========================
+   PROJECTS
+========================= */
 
 .projects {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 22px;
 }
 
 .project {
-    background: #ffffff;
+    background: #fff;
 
     border-radius: 22px;
 
     padding: 30px;
 
-    border: 1px solid rgba(36,74,134,.12);
+    border: 1px solid rgba(0,0,0,.1);
 
     box-shadow:
-        0 15px 35px rgba(24,36,58,.09);
+        0 15px 35px rgba(0,0,0,.08);
 
     transition: .35s;
 }
 
 .project:hover {
-    transform: translateY(-10px) rotateX(2deg);
+    transform:
+        translateY(-10px)
+        rotateX(2deg);
+
+    box-shadow:
+        0 25px 45px rgba(0,0,0,.13);
 }
 
 .project-number {
-    color: #c08e00;
+    color: #9d7b20;
 
-    font-size: 11px;
+    font-size: 10px;
 
-    letter-spacing: 3px;
+    letter-spacing: 4px;
+
+    font-weight: 700;
 }
 
 .project h3 {
     font-family: 'Cinzel', serif;
 
-    color: #244a86;
+    color: #111;
 
-    margin: 15px 0 10px;
+    margin: 15px 0 12px;
 }
 
 .project p {
-    color: #707b8d;
+    color: #707070;
+
     font-size: 13px;
+
     line-height: 1.7;
 }
 
@@ -457,14 +573,22 @@ section {
 
     margin-top: 18px;
 
-    color: #a77d00;
+    color: #806416;
 
     font-size: 13px;
 
     font-weight: 700;
+
+    text-decoration: none;
 }
 
-/* ===== Social ===== */
+.project a:hover {
+    color: #111;
+}
+
+/* =========================
+   SOCIAL
+========================= */
 
 .social {
     display: grid;
@@ -483,34 +607,38 @@ section {
 
     text-align: center;
 
-    border: 1px solid rgba(36,74,134,.12);
+    border: 1px solid rgba(0,0,0,.1);
 
-    color: #244a86;
+    color: #111;
 
     font-weight: 700;
+
+    text-decoration: none;
 
     transition: .3s;
 }
 
 .social a:hover {
-    transform: translateY(-5px);
+    transform: translateY(-6px);
 
-    border-color: #c9a227;
+    border-color: #9d7b20;
 
-    color: #a77d00;
+    color: #9d7b20;
 }
 
 .social span {
     display: block;
 
-    margin-top: 5px;
+    margin-top: 6px;
 
-    color: #8791a0;
+    color: #888;
 
     font-size: 10px;
 }
 
-/* ===== Contact ===== */
+/* =========================
+   CONTACT
+========================= */
 
 .contact {
     text-align: center;
@@ -518,65 +646,77 @@ section {
     background:
         linear-gradient(
             135deg,
-            rgba(36,74,134,.08),
-            rgba(201,162,39,.08)
+            rgba(0,0,0,.04),
+            rgba(157,123,32,.06)
         );
 }
 
 .contact h2 {
     font-family: 'Cinzel', serif;
 
-    color: #244a86;
+    color: #111;
 
-    font-size: 35px;
+    font-size: 38px;
 
     margin-bottom: 15px;
 }
 
 .contact p {
-    color: #6d7788;
+    color: #707070;
 
     max-width: 600px;
 
     margin: auto;
+
+    line-height: 1.7;
 }
 
 .contact-buttons {
-    margin-top: 25px;
+    margin-top: 28px;
 }
 
-/* ===== Footer ===== */
+/* =========================
+   FOOTER
+========================= */
 
 footer {
     text-align: center;
 
-    padding: 35px;
+    padding: 38px;
 
-    color: #8992a0;
+    color: #888;
 
     font-size: 12px;
 }
 
 footer strong {
-    color: #244a86;
+    color: #111;
 }
 
-/* ===== Animation ===== */
+/* =========================
+   ANIMATION
+========================= */
 
 @keyframes fadeUp {
 
     from {
         opacity: 0;
-        transform: translateY(30px);
+
+        transform:
+            translateY(35px);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
 
-/* ===== Mobile ===== */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width: 850px) {
 
@@ -586,11 +726,12 @@ footer strong {
 
     .page {
         width: 94%;
+
         margin-top: 95px;
 
         box-shadow:
-            0 25px 50px rgba(24,36,58,.18),
-            7px 7px 0 #244a86;
+            0 25px 50px rgba(0,0,0,.18),
+            7px 7px 0 #111;
     }
 
     .about,
@@ -604,6 +745,10 @@ footer strong {
 
     .social {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .dragon.one {
+        font-size: 280px;
     }
 }
 
@@ -621,11 +766,25 @@ footer strong {
     section {
         padding: 65px 6%;
     }
+
+    .dragon.one {
+        font-size: 200px;
+    }
 }
 </style>
 </head>
 
 <body>
+
+<!-- Decorative Chinese-style background -->
+<div class="pattern"></div>
+
+<!-- Dragon silhouettes -->
+<div class="dragon one">龍</div>
+<div class="dragon two">龍</div>
+
+
+<!-- NAVIGATION -->
 
 <nav>
 
@@ -644,14 +803,14 @@ footer strong {
 </nav>
 
 
+<!-- MAIN 3D FRAME -->
+
 <div class="page">
 
-    <!-- Decorative corners -->
-
-    <div class="corner one">☁</div>
-    <div class="corner two">☁</div>
-    <div class="corner three">☁</div>
-    <div class="corner four">☁</div>
+    <div class="corner one">☯</div>
+    <div class="corner two">☯</div>
+    <div class="corner three">☯</div>
+    <div class="corner four">☯</div>
 
 
     <!-- HERO -->
@@ -661,7 +820,7 @@ footer strong {
         <div class="hero-content">
 
             <div class="symbol">
-                ✦  ◇  ✦
+                ✦ ◇ ✦
             </div>
 
             <h1>
@@ -674,18 +833,24 @@ footer strong {
 
             <p>
                 AI Enthusiast • Streamer • Programmer
-                <br>
-                Creating digital experiences, engaging content
-                and creative projects.
+                <br><br>
+                I create digital experiences, visual content,
+                websites and creative projects.
             </p>
 
             <div class="buttons">
 
-                <a href="#projects" class="btn primary">
+                <a
+                    href="#projects"
+                    class="btn primary"
+                >
                     Explore My Work
                 </a>
 
-                <a href="#contact" class="btn gold">
+                <a
+                    href="#contact"
+                    class="btn gold"
+                >
                     Contact Me
                 </a>
 
@@ -729,12 +894,12 @@ footer strong {
 
             <div class="card">
 
-                <h3>What I Create</h3>
+                <h3>My Vision</h3>
 
                 <p>
-                    I create short-form videos, digital designs,
-                    websites and creative content while continuously
-                    learning new technologies and AI tools.
+                    My goal is to combine creativity and technology
+                    to build modern digital experiences and
+                    continuously improve my skills.
                 </p>
 
             </div>
@@ -764,37 +929,60 @@ footer strong {
             <div class="skill">
                 <div class="skill-icon">🎬</div>
                 <h3>Video Editing</h3>
-                <p>CapCut, short-form videos, captions and effects.</p>
+                <p>
+                    Short-form videos, captions,
+                    transitions and effects.
+                </p>
             </div>
+
 
             <div class="skill">
                 <div class="skill-icon">🎨</div>
                 <h3>Graphic Design</h3>
-                <p>Photoshop, thumbnails and digital visuals.</p>
+                <p>
+                    Photoshop, thumbnails
+                    and digital visuals.
+                </p>
             </div>
+
 
             <div class="skill">
                 <div class="skill-icon">🌐</div>
                 <h3>Web Design</h3>
-                <p>HTML, CSS and responsive websites.</p>
+                <p>
+                    HTML, CSS and
+                    responsive websites.
+                </p>
             </div>
+
 
             <div class="skill">
                 <div class="skill-icon">💻</div>
                 <h3>Programming</h3>
-                <p>Learning programming and modern web development.</p>
+                <p>
+                    Learning programming
+                    and web development.
+                </p>
             </div>
+
 
             <div class="skill">
                 <div class="skill-icon">🤖</div>
                 <h3>AI</h3>
-                <p>AI tools and creative digital workflows.</p>
+                <p>
+                    AI tools and
+                    creative workflows.
+                </p>
             </div>
+
 
             <div class="skill">
                 <div class="skill-icon">🎮</div>
                 <h3>Streaming</h3>
-                <p>Gaming content and live streaming.</p>
+                <p>
+                    Gaming content
+                    and live streaming.
+                </p>
             </div>
 
         </div>
@@ -819,6 +1007,7 @@ footer strong {
 
         <div class="projects">
 
+
             <div class="project">
 
                 <div class="project-number">
@@ -830,8 +1019,8 @@ footer strong {
                 </h3>
 
                 <p>
-                    Short-form video content created for
-                    TikTok and social media platforms.
+                    Short-form content created
+                    for TikTok and social media.
                 </p>
 
                 <a
@@ -855,8 +1044,8 @@ footer strong {
                 </h3>
 
                 <p>
-                    GTA V gaming and live streaming content
-                    created for Kick.
+                    GTA V gaming and live streaming
+                    content for Kick.
                 </p>
 
                 <a
@@ -880,8 +1069,8 @@ footer strong {
                 </h3>
 
                 <p>
-                    Modern responsive portfolio website built
-                    with HTML and CSS.
+                    Modern responsive portfolio website
+                    built with HTML and CSS.
                 </p>
 
                 <a
@@ -901,12 +1090,12 @@ footer strong {
                 </div>
 
                 <h3>
-                    AI Content Creation
+                    AI Content
                 </h3>
 
                 <p>
-                    Exploring AI tools for video, image and
-                    digital content creation.
+                    Exploring AI tools for video,
+                    image and digital content creation.
                 </p>
 
                 <a href="#contact">
@@ -923,12 +1112,12 @@ footer strong {
                 </div>
 
                 <h3>
-                    YouTube Content
+                    YouTube
                 </h3>
 
                 <p>
-                    Video content and creative projects published
-                    on YouTube.
+                    Creative video content and
+                    digital projects on YouTube.
                 </p>
 
                 <a
@@ -948,12 +1137,12 @@ footer strong {
                 </div>
 
                 <h3>
-                    Creative Projects
+                    Creative Development
                 </h3>
 
                 <p>
-                    Digital experiments combining design,
-                    technology, AI and creativity.
+                    Combining design, technology,
+                    AI and programming.
                 </p>
 
                 <a href="#contact">
@@ -962,18 +1151,19 @@ footer strong {
 
             </div>
 
+
         </div>
 
     </section>
 
 
-    <!-- SOCIAL -->
+    <!-- SOCIAL MEDIA -->
 
     <section id="social">
 
         <div class="section-title">
 
-            <small>Connect With Me</small>
+            <small>Find Me Online</small>
 
             <h2>
                 Social <span>Media</span>
