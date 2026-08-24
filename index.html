@@ -1,715 +1,1091 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Amir Borani — Video Editor, Content Creator, Web Designer and AI Enthusiast.">
-  <title>Amir Borani | Creative Portfolio</title>
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --bg: #070707;
-      --card: #111111;
-      --gold: #d4af37;
-      --gold-light: #f1d675;
-      --text: #ffffff;
-      --muted: #a7a7a7;
-      --border: rgba(255,255,255,0.08);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* Background glow */
-
-    body::before {
-      content: "";
-      position: fixed;
-      width: 500px;
-      height: 500px;
-      background: rgba(212,175,55,0.08);
-      filter: blur(120px);
-      border-radius: 50%;
-      top: -200px;
-      right: -150px;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    /* Navigation */
-
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 18px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(7,7,7,0.78);
-      backdrop-filter: blur(15px);
-      border-bottom: 1px solid var(--border);
-      z-index: 1000;
-    }
-
-    .logo {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-
-    .logo span {
-      color: var(--gold);
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 28px;
-    }
-
-    nav ul a {
-      color: #cccccc;
-      font-size: 14px;
-      transition: 0.3s;
-    }
-
-    nav ul a:hover {
-      color: var(--gold);
-    }
-
-    /* Hero */
-
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 130px 7% 80px;
-      position: relative;
-    }
-
-    .hero-content {
-      max-width: 950px;
-      animation: fadeUp 1s ease;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 8px 16px;
-      border: 1px solid rgba(212,175,55,0.4);
-      border-radius: 50px;
-      color: var(--gold-light);
-      background: rgba(212,175,55,0.06);
-      font-size: 13px;
-      margin-bottom: 22px;
-    }
-
-    .hero h1 {
-      font-size: clamp(48px, 9vw, 100px);
-      line-height: 1;
-      letter-spacing: -4px;
-      margin-bottom: 25px;
-    }
-
-    .hero h1 span {
-      color: var(--gold);
-    }
-
-    .hero p {
-      max-width: 700px;
-      margin: auto;
-      color: var(--muted);
-      font-size: 19px;
-    }
-
-    .buttons {
-      margin-top: 35px;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 14px 25px;
-      margin: 6px;
-      border-radius: 50px;
-      font-weight: bold;
-      font-size: 14px;
-      transition: 0.3s;
-    }
-
-    .btn-primary {
-      background: var(--gold);
-      color: #000;
-    }
-
-    .btn-primary:hover {
-      background: var(--gold-light);
-      transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(212,175,55,0.2);
-    }
-
-    .btn-outline {
-      border: 1px solid #333;
-      color: white;
-    }
-
-    .btn-outline:hover {
-      border-color: var(--gold);
-      color: var(--gold);
-      transform: translateY(-4px);
-    }
-
-    /* Sections */
-
-    section {
-      padding: 110px 7%;
-    }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 55px;
-    }
-
-    .section-heading small {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 12px;
-    }
-
-    .section-heading h2 {
-      font-size: clamp(34px, 5vw, 52px);
-      margin-top: 10px;
-    }
-
-    .section-heading h2 span {
-      color: var(--gold);
-    }
-
-    /* About */
-
-    .about-grid {
-      max-width: 1000px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 25px;
-    }
-
-    .about-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 35px;
-    }
-
-    .about-card h3 {
-      color: var(--gold);
-      margin-bottom: 15px;
-      font-size: 22px;
-    }
-
-    .about-card p {
-      color: var(--muted);
-    }
-
-    /* Skills */
-
-    .skills-grid {
-      max-width: 1100px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .skill {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 30px 20px;
-      text-align: center;
-      transition: 0.35s;
-    }
-
-    .skill:hover {
-      transform: translateY(-8px);
-      border-color: rgba(212,175,55,0.5);
-    }
-
-    .skill-icon {
-      font-size: 35px;
-      margin-bottom: 12px;
-    }
-
-    .skill h3 {
-      font-size: 17px;
-      margin-bottom: 7px;
-    }
-
-    .skill p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    /* Projects */
-
-    .projects-grid {
-      max-width: 1100px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .project {
-      background: linear-gradient(145deg, #151515, #0c0c0c);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 30px;
-      transition: 0.35s;
-    }
-
-    .project:hover {
-      transform: translateY(-8px);
-      border-color: rgba(212,175,55,0.5);
-    }
-
-    .project-number {
-      color: var(--gold);
-      font-size: 13px;
-      letter-spacing: 2px;
-    }
-
-    .project h3 {
-      font-size: 22px;
-      margin: 15px 0 10px;
-    }
-
-    .project p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .project-link {
-      display: inline-block;
-      margin-top: 20px;
-      color: var(--gold-light);
-      font-size: 14px;
-    }
-
-    /* Social */
-
-    .social-grid {
-      max-width: 850px;
-      margin: auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-    }
-
-    .social-card {
-      padding: 20px;
-      text-align: center;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      transition: 0.3s;
-    }
-
-    .social-card:hover {
-      color: var(--gold);
-      border-color: var(--gold);
-      transform: translateY(-5px);
-    }
-
-    .social-card strong {
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .social-card span {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    /* Contact */
-
-    .contact-box {
-      max-width: 850px;
-      margin: auto;
-      padding: 60px 30px;
-      text-align: center;
-      background: linear-gradient(145deg, #151515, #0c0c0c);
-      border: 1px solid var(--border);
-      border-radius: 25px;
-    }
-
-    .contact-box h2 {
-      font-size: 38px;
-      margin-bottom: 15px;
-    }
-
-    .contact-box p {
-      color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto 25px;
-    }
-
-    /* Footer */
-
-    footer {
-      padding: 35px 7%;
-      text-align: center;
-      border-top: 1px solid var(--border);
-      color: #777;
-      font-size: 13px;
-    }
-
-    footer span {
-      color: var(--gold);
-    }
-
-    /* Animation */
-
-    @keyframes fadeUp {
-      from {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Amir Borani | Creative Portfolio</title>
+
+<meta name="description" content="Amir Borani — Video Editor, Content Creator, Web Designer, AI Enthusiast, Streamer and Programmer.">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f5f1e8;
+    color: #18243a;
+    overflow-x: hidden;
+}
+
+/* ===== Decorative background ===== */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .16;
+
+    background-image:
+        radial-gradient(circle at 15% 20%, #c9a227 0 2px, transparent 3px),
+        radial-gradient(circle at 80% 75%, #244a86 0 2px, transparent 3px);
+
+    background-size: 90px 90px;
+    z-index: -3;
+}
+
+body::after {
+    content: "☁";
+    position: fixed;
+    font-size: 240px;
+    color: #c9a227;
+    opacity: .035;
+    right: -40px;
+    bottom: -40px;
+    transform: rotate(-10deg);
+    pointer-events: none;
+}
+
+/* ===== Navigation ===== */
+
+nav {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(1100px, 92%);
+    padding: 15px 25px;
+
+    background: rgba(255,255,255,.78);
+    backdrop-filter: blur(15px);
+
+    border: 1px solid rgba(36,74,134,.18);
+    border-radius: 18px;
+
+    box-shadow:
+        0 15px 35px rgba(24,36,58,.12),
+        inset 0 1px 0 white;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+.logo {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: #244a86;
+}
+
+.logo span {
+    color: #c9a227;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: #30405a;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #c08e00;
+}
+
+/* ===== Main 3D Frame ===== */
+
+.page {
+    width: min(1150px, 92%);
+    margin: 120px auto 60px;
+
+    position: relative;
+
+    background: #fffdf8;
+
+    border: 3px solid #c9a227;
+    border-radius: 30px;
+
+    box-shadow:
+        0 35px 80px rgba(24,36,58,.20),
+        12px 12px 0 #244a86,
+        18px 18px 35px rgba(24,36,58,.14);
+
+    overflow: hidden;
+}
+
+/* Chinese inspired corner decorations */
+
+.corner {
+    position: absolute;
+    font-size: 70px;
+    color: #c9a227;
+    opacity: .35;
+    font-family: serif;
+    pointer-events: none;
+}
+
+.corner.one {
+    top: 15px;
+    left: 20px;
+}
+
+.corner.two {
+    top: 15px;
+    right: 20px;
+    transform: scaleX(-1);
+}
+
+.corner.three {
+    bottom: 15px;
+    left: 20px;
+    transform: scaleY(-1);
+}
+
+.corner.four {
+    bottom: 15px;
+    right: 20px;
+    transform: scale(-1);
+}
+
+/* ===== Hero ===== */
+
+.hero {
+    min-height: 650px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 90px 30px;
+
+    position: relative;
+}
+
+.hero-content {
+    max-width: 850px;
+    animation: fadeUp 1s ease;
+}
+
+.symbol {
+    color: #c9a227;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-family: 'Cinzel', serif;
+
+    font-size: clamp(48px, 8vw, 90px);
+
+    line-height: 1;
+
+    color: #244a86;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #c9a227;
+}
+
+.hero h2 {
+    font-family: 'Cinzel', serif;
+
+    font-size: clamp(18px, 3vw, 28px);
+
+    color: #334b70;
+
+    margin-bottom: 20px;
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+
+    color: #667085;
+
+    line-height: 1.8;
+}
+
+.buttons {
+    margin-top: 35px;
+}
+
+.btn {
+    display: inline-block;
+
+    padding: 14px 25px;
+
+    margin: 6px;
+
+    border-radius: 50px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition: .3s;
+}
+
+.primary {
+    background: #244a86;
+    color: white;
+
+    box-shadow:
+        0 8px 20px rgba(36,74,134,.25);
+}
+
+.primary:hover {
+    transform: translateY(-5px);
+    background: #1c3b6e;
+}
+
+.gold {
+    border: 1px solid #c9a227;
+    color: #8c6c00;
+    background: #fffaf0;
+}
+
+.gold:hover {
+    transform: translateY(-5px);
+    background: #c9a227;
+    color: white;
+}
+
+/* ===== Sections ===== */
+
+section {
+    padding: 85px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title small {
+    color: #c08e00;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.section-title h2 {
+    font-family: 'Cinzel', serif;
+
+    color: #244a86;
+
+    font-size: clamp(30px, 5vw, 48px);
+
+    margin-top: 10px;
+}
+
+.section-title h2 span {
+    color: #c9a227;
+}
+
+/* ===== About ===== */
+
+.about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.card {
+    background: #ffffff;
+
+    border: 1px solid rgba(36,74,134,.12);
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 15px 30px rgba(24,36,58,.08),
+        inset 0 1px 0 white;
+
+    transition: .35s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 25px 40px rgba(24,36,58,.13);
+}
+
+.card h3 {
+    font-family: 'Cinzel', serif;
+
+    color: #244a86;
+
+    margin-bottom: 12px;
+}
+
+.card p {
+    color: #68758a;
+    line-height: 1.8;
+}
+
+/* ===== Skills ===== */
+
+.skills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.skill {
+    background: linear-gradient(145deg, #ffffff, #f1eee7);
+
+    border: 1px solid rgba(36,74,134,.12);
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    box-shadow:
+        7px 7px 0 rgba(36,74,134,.08);
+
+    transition: .3s;
+}
+
+.skill:hover {
+    transform: translateY(-7px);
+    box-shadow:
+        10px 12px 0 rgba(201,162,39,.16);
+}
+
+.skill-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.skill h3 {
+    font-family: 'Cinzel', serif;
+    color: #244a86;
+    font-size: 17px;
+}
+
+.skill p {
+    color: #7a8494;
+    font-size: 12px;
+    margin-top: 7px;
+}
+
+/* ===== Projects ===== */
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.project {
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    border: 1px solid rgba(36,74,134,.12);
+
+    box-shadow:
+        0 15px 35px rgba(24,36,58,.09);
+
+    transition: .35s;
+}
+
+.project:hover {
+    transform: translateY(-10px) rotateX(2deg);
+}
+
+.project-number {
+    color: #c08e00;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+}
+
+.project h3 {
+    font-family: 'Cinzel', serif;
+
+    color: #244a86;
+
+    margin: 15px 0 10px;
+}
+
+.project p {
+    color: #707b8d;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.project a {
+    display: inline-block;
+
+    margin-top: 18px;
+
+    color: #a77d00;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+/* ===== Social ===== */
+
+.social {
+    display: grid;
+
+    grid-template-columns: repeat(5, 1fr);
+
+    gap: 12px;
+}
+
+.social a {
+    background: #fff;
+
+    padding: 20px 10px;
+
+    border-radius: 16px;
+
+    text-align: center;
+
+    border: 1px solid rgba(36,74,134,.12);
+
+    color: #244a86;
+
+    font-weight: 700;
+
+    transition: .3s;
+}
+
+.social a:hover {
+    transform: translateY(-5px);
+
+    border-color: #c9a227;
+
+    color: #a77d00;
+}
+
+.social span {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #8791a0;
+
+    font-size: 10px;
+}
+
+/* ===== Contact ===== */
+
+.contact {
+    text-align: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(36,74,134,.08),
+            rgba(201,162,39,.08)
+        );
+}
+
+.contact h2 {
+    font-family: 'Cinzel', serif;
+
+    color: #244a86;
+
+    font-size: 35px;
+
+    margin-bottom: 15px;
+}
+
+.contact p {
+    color: #6d7788;
+
+    max-width: 600px;
+
+    margin: auto;
+}
+
+.contact-buttons {
+    margin-top: 25px;
+}
+
+/* ===== Footer ===== */
+
+footer {
+    text-align: center;
+
+    padding: 35px;
+
+    color: #8992a0;
+
+    font-size: 12px;
+}
+
+footer strong {
+    color: #244a86;
+}
+
+/* ===== Animation ===== */
+
+@keyframes fadeUp {
+
+    from {
         opacity: 0;
-        transform: translateY(25px);
-      }
+        transform: translateY(30px);
+    }
 
-      to {
+    to {
         opacity: 1;
         transform: translateY(0);
-      }
+    }
+}
+
+/* ===== Mobile ===== */
+
+@media(max-width: 850px) {
+
+    nav ul {
+        display: none;
     }
 
-    /* Responsive */
+    .page {
+        width: 94%;
+        margin-top: 95px;
 
-    @media (max-width: 900px) {
-      .skills-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .projects-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .social-grid {
-        grid-template-columns: 1fr 1fr;
-      }
+        box-shadow:
+            0 25px 50px rgba(24,36,58,.18),
+            7px 7px 0 #244a86;
     }
 
-    @media (max-width: 650px) {
-      nav {
-        padding: 15px 5%;
-      }
-
-      nav ul {
-        gap: 10px;
-      }
-
-      nav ul a {
-        font-size: 11px;
-      }
-
-      .hero h1 {
-        letter-spacing: -2px;
-      }
-
-      .about-grid,
-      .projects-grid {
+    .about,
+    .projects {
         grid-template-columns: 1fr;
-      }
-
-      .skills-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .social-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      section {
-        padding: 80px 5%;
-      }
     }
-  </style>
+
+    .skills {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .social {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media(max-width: 500px) {
+
+    .skills,
+    .social {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: 580px;
+    }
+
+    section {
+        padding: 65px 6%;
+    }
+}
+</style>
 </head>
 
 <body>
 
-  <nav>
-    <a href="#" class="logo">AMIR<span>.</span></a>
+<nav>
+
+    <a class="logo" href="#">
+        AMIR<span>.</span>
+    </a>
 
     <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#social">Social</a></li>
+        <li><a href="#contact">Contact</a></li>
     </ul>
-  </nav>
 
-  <section class="hero">
-    <div class="hero-content">
+</nav>
 
-      <div class="badge">
-        Available for creative projects
-      </div>
 
-      <h1>
-        I'm <span>Amir Borani</span>
-      </h1>
+<div class="page">
 
-      <p>
-        Video Editor, Web Designer, Content Creator and AI Enthusiast.
-        I turn ideas into modern digital experiences and engaging content.
-      </p>
+    <!-- Decorative corners -->
 
-      <div class="buttons">
-        <a href="#projects" class="btn btn-primary">
-          View My Work
-        </a>
+    <div class="corner one">☁</div>
+    <div class="corner two">☁</div>
+    <div class="corner three">☁</div>
+    <div class="corner four">☁</div>
 
-        <a href="#contact" class="btn btn-outline">
-          Let's Talk
-        </a>
-      </div>
 
-    </div>
-  </section>
+    <!-- HERO -->
 
-  <section id="about">
+    <section class="hero">
 
-    <div class="section-heading">
-      <small>Get to know me</small>
-      <h2>About <span>Me</span></h2>
-    </div>
+        <div class="hero-content">
 
-    <div class="about-grid">
+            <div class="symbol">
+                ✦  ◇  ✦
+            </div>
 
-      <div class="about-card">
-        <h3>Who I Am</h3>
+            <h1>
+                AMIR <span>BORANI</span>
+            </h1>
+
+            <h2>
+                Video Editor • Content Creator • Web Designer
+            </h2>
+
+            <p>
+                AI Enthusiast • Streamer • Programmer
+                <br>
+                Creating digital experiences, engaging content
+                and creative projects.
+            </p>
+
+            <div class="buttons">
+
+                <a href="#projects" class="btn primary">
+                    Explore My Work
+                </a>
+
+                <a href="#contact" class="btn gold">
+                    Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="section-title">
+
+            <small>My Story</small>
+
+            <h2>
+                About <span>Me</span>
+            </h2>
+
+        </div>
+
+
+        <div class="about">
+
+            <div class="card">
+
+                <h3>Who I Am</h3>
+
+                <p>
+                    I'm Amir Borani, a creative digital creator
+                    passionate about video editing, web design,
+                    content creation, artificial intelligence,
+                    streaming and programming.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>What I Create</h3>
+
+                <p>
+                    I create short-form videos, digital designs,
+                    websites and creative content while continuously
+                    learning new technologies and AI tools.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section id="skills">
+
+        <div class="section-title">
+
+            <small>What I Do</small>
+
+            <h2>
+                My <span>Skills</span>
+            </h2>
+
+        </div>
+
+
+        <div class="skills">
+
+            <div class="skill">
+                <div class="skill-icon">🎬</div>
+                <h3>Video Editing</h3>
+                <p>CapCut, short-form videos, captions and effects.</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-icon">🎨</div>
+                <h3>Graphic Design</h3>
+                <p>Photoshop, thumbnails and digital visuals.</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-icon">🌐</div>
+                <h3>Web Design</h3>
+                <p>HTML, CSS and responsive websites.</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-icon">💻</div>
+                <h3>Programming</h3>
+                <p>Learning programming and modern web development.</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-icon">🤖</div>
+                <h3>AI</h3>
+                <p>AI tools and creative digital workflows.</p>
+            </div>
+
+            <div class="skill">
+                <div class="skill-icon">🎮</div>
+                <h3>Streaming</h3>
+                <p>Gaming content and live streaming.</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+
+        <div class="section-title">
+
+            <small>Selected Work</small>
+
+            <h2>
+                My <span>Projects</span>
+            </h2>
+
+        </div>
+
+
+        <div class="projects">
+
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT 01
+                </div>
+
+                <h3>
+                    Video Editing
+                </h3>
+
+                <p>
+                    Short-form video content created for
+                    TikTok and social media platforms.
+                </p>
+
+                <a
+                    href="https://www.tiktok.com/@amirsoltan086"
+                    target="_blank"
+                >
+                    View TikTok →
+                </a>
+
+            </div>
+
+
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT 02
+                </div>
+
+                <h3>
+                    Gaming & Streaming
+                </h3>
+
+                <p>
+                    GTA V gaming and live streaming content
+                    created for Kick.
+                </p>
+
+                <a
+                    href="https://kick.com/amirgtalive"
+                    target="_blank"
+                >
+                    Watch Kick →
+                </a>
+
+            </div>
+
+
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT 03
+                </div>
+
+                <h3>
+                    Web Design
+                </h3>
+
+                <p>
+                    Modern responsive portfolio website built
+                    with HTML and CSS.
+                </p>
+
+                <a
+                    href="https://github.com/amirborani/portfolio-website"
+                    target="_blank"
+                >
+                    View GitHub →
+                </a>
+
+            </div>
+
+
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT 04
+                </div>
+
+                <h3>
+                    AI Content Creation
+                </h3>
+
+                <p>
+                    Exploring AI tools for video, image and
+                    digital content creation.
+                </p>
+
+                <a href="#contact">
+                    Collaborate →
+                </a>
+
+            </div>
+
+
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT 05
+                </div>
+
+                <h3>
+                    YouTube Content
+                </h3>
+
+                <p>
+                    Video content and creative projects published
+                    on YouTube.
+                </p>
+
+                <a
+                    href="https://www.youtube.com/@ayoubrider8433"
+                    target="_blank"
+                >
+                    View YouTube →
+                </a>
+
+            </div>
+
+
+            <div class="project">
+
+                <div class="project-number">
+                    PROJECT 06
+                </div>
+
+                <h3>
+                    Creative Projects
+                </h3>
+
+                <p>
+                    Digital experiments combining design,
+                    technology, AI and creativity.
+                </p>
+
+                <a href="#contact">
+                    Contact Me →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SOCIAL -->
+
+    <section id="social">
+
+        <div class="section-title">
+
+            <small>Connect With Me</small>
+
+            <h2>
+                Social <span>Media</span>
+            </h2>
+
+        </div>
+
+
+        <div class="social">
+
+            <a
+                href="https://www.tiktok.com/@amirsoltan086"
+                target="_blank"
+            >
+                TikTok
+                <span>@amirsoltan086</span>
+            </a>
+
+
+            <a
+                href="https://www.youtube.com/@ayoubrider8433"
+                target="_blank"
+            >
+                YouTube
+                <span>@ayoubrider8433</span>
+            </a>
+
+
+            <a
+                href="https://www.instagram.com/soltanamir007/"
+                target="_blank"
+            >
+                Instagram
+                <span>@soltanamir007</span>
+            </a>
+
+
+            <a
+                href="https://www.facebook.com/profile.php?id=61585599247149"
+                target="_blank"
+            >
+                Facebook
+                <span>Amir Borani</span>
+            </a>
+
+
+            <a
+                href="https://kick.com/amirgtalive"
+                target="_blank"
+            >
+                Kick
+                <span>@AmirGTALive</span>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="contact">
+
+        <div class="section-title">
+
+            <small>Let's Work Together</small>
+
+            <h2>
+                Create Something <span>Great</span>
+            </h2>
+
+        </div>
+
 
         <p>
-          I'm a creative digital creator focused on video editing,
-          web design, social media content and AI-powered creativity.
-          I enjoy learning, experimenting and turning ideas into
-          professional digital projects.
-        </p>
-      </div>
-
-      <div class="about-card">
-        <h3>My Goal</h3>
-
-        <p>
-          My goal is to build meaningful digital experiences,
-          create engaging content and continuously improve my
-          creative and technical skills.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <section id="skills">
-
-    <div class="section-heading">
-      <small>What I do</small>
-      <h2>My <span>Skills</span></h2>
-    </div>
-
-    <div class="skills-grid">
-
-      <div class="skill">
-        <div class="skill-icon">🎬</div>
-        <h3>Video Editing</h3>
-        <p>Short-form videos, transitions, captions and effects.</p>
-      </div>
-
-      <div class="skill">
-        <div class="skill-icon">🎨</div>
-        <h3>Photoshop</h3>
-        <p>Creative graphics, thumbnails and visual design.</p>
-      </div>
-
-      <div class="skill">
-        <div class="skill-icon">🌐</div>
-        <h3>Web Design</h3>
-        <p>Modern responsive websites with HTML and CSS.</p>
-      </div>
-
-      <div class="skill">
-        <div class="skill-icon">🤖</div>
-        <h3>AI Tools</h3>
-        <p>AI-assisted content creation and creative workflows.</p>
-      </div>
-
-    </div>
-
-  </section>
-
-  <section id="projects">
-
-    <div class="section-heading">
-      <small>Selected work</small>
-      <h2>My <span>Projects</span></h2>
-    </div>
-
-    <div class="projects-grid">
-
-      <div class="project">
-        <div class="project-number">01 / WEB</div>
-
-        <h3>Personal Portfolio</h3>
-
-        <p>
-          A modern responsive portfolio website designed to showcase
-          my creative and technical skills.
+            Have a project, collaboration or creative idea?
+            Let's connect.
         </p>
 
-        <a class="project-link" href="#">
-          View Project →
-        </a>
-      </div>
 
-      <div class="project">
-        <div class="project-number">02 / VIDEO</div>
+        <div class="contact-buttons">
 
-        <h3>Social Media Content</h3>
+            <a
+                class="btn primary"
+                href="https://wa.me/660820196851"
+                target="_blank"
+            >
+                💬 WhatsApp
+            </a>
 
-        <p>
-          Short-form content created for TikTok, Instagram Reels
-          and YouTube Shorts.
-        </p>
 
-        <a
-          class="project-link"
-          href="https://www.tiktok.com/@amirsoltan086"
-          target="_blank"
-        >
-          View TikTok →
-        </a>
-      </div>
+            <a
+                class="btn gold"
+                href="mailto:anouarayoub66@gmail.com"
+            >
+                ✉ Email Me
+            </a>
 
-      <div class="project">
-        <div class="project-number">03 / CREATIVE</div>
+        </div>
 
-        <h3>AI Content Creation</h3>
+    </section>
 
-        <p>
-          Exploring AI-powered tools to create, improve and
-          accelerate digital content production.
-        </p>
 
-        <a class="project-link" href="#contact">
-          Work With Me →
-        </a>
-      </div>
+    <footer>
 
-    </div>
+        © 2026
+        <strong>Amir Borani</strong>
+        — Creative Portfolio
 
-  </section>
+    </footer>
 
-  <section>
-
-    <div class="section-heading">
-      <small>Find me online</small>
-      <h2>Social <span>Media</span></h2>
-    </div>
-
-    <div class="social-grid">
-
-      <a
-        class="social-card"
-        href="https://www.tiktok.com/@amirsoltan086"
-        target="_blank"
-      >
-        <strong>TikTok</strong>
-        <span>@amirsoltan086</span>
-      </a>
-
-      <a
-        class="social-card"
-        href="https://www.instagram.com/soltanamir007/"
-        target="_blank"
-      >
-        <strong>Instagram</strong>
-        <span>@soltanamir007</span>
-      </a>
-
-      <a
-        class="social-card"
-        href="https://www.youtube.com/@ayoubrider8433"
-        target="_blank"
-      >
-        <strong>YouTube</strong>
-        <span>@ayoubrider8433</span>
-      </a>
-
-      <a
-        class="social-card"
-        href="https://www.facebook.com/profile.php?id=61585599247149"
-        target="_blank"
-      >
-        <strong>Facebook</strong>
-        <span>Amir Borani</span>
-      </a>
-
-    </div>
-
-  </section>
-
-  <section id="contact">
-
-    <div class="contact-box">
-
-      <h2>Let's create something <span>great.</span></h2>
-
-      <p>
-        Have a project, collaboration or creative idea?
-        I'd love to hear about it.
-      </p>
-
-      <a
-        class="btn btn-primary"
-        href="mailto:anouarayoub66@gmail.com"
-      >
-        Contact Me
-      </a>
-
-    </div>
-
-  </section>
-
-  <footer>
-    © 2026 <span>Amir Borani</span>. Built with HTML & CSS.
-  </footer>
+</div>
 
 </body>
 </html>
-```
