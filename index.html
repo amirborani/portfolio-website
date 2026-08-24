@@ -477,4 +477,1413 @@ nav a:hover{
 
     display:inline-block;
 
-   
+    padding:15px 30px;
+
+    margin:6px;
+
+    border-radius:50px;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    text-decoration:none;
+
+    transition:.35s;
+}
+
+.primary{
+
+    color:white;
+
+    background:#111;
+
+    box-shadow:
+
+        0 7px 0 #777,
+
+        0 15px 30px rgba(0,0,0,.16);
+}
+
+.primary:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+
+        0 12px 0 #777,
+
+        0 22px 35px rgba(0,0,0,.2);
+}
+
+.gold{
+
+    color:#866a1d;
+
+    background:white;
+
+    border:1px solid #a38327;
+
+}
+
+.gold:hover{
+
+    background:#a38327;
+
+    color:white;
+
+    transform:translateY(-6px);
+}
+
+
+/* =====================================
+   SECTIONS
+===================================== */
+
+section{
+
+    padding:100px 7%;
+
+    position:relative;
+
+    z-index:5;
+}
+
+.section-title{
+
+    text-align:center;
+
+    margin-bottom:55px;
+}
+
+.section-title small{
+
+    color:#a38327;
+
+    text-transform:uppercase;
+
+    letter-spacing:6px;
+
+    font-size:10px;
+
+    font-weight:800;
+}
+
+.section-title h2{
+
+    font-family:'Cinzel',serif;
+
+    font-size:clamp(34px,5vw,52px);
+
+    margin-top:10px;
+}
+
+.section-title h2 span{
+    color:#a38327;
+}
+
+
+/* =====================================
+   ABOUT
+===================================== */
+
+.about{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:25px;
+}
+
+.card{
+
+    padding:35px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.95),
+            rgba(242,239,232,.9)
+        );
+
+    border:1px solid rgba(0,0,0,.12);
+
+    border-radius:22px;
+
+    box-shadow:
+
+        8px 9px 0 rgba(0,0,0,.06),
+
+        0 20px 35px rgba(0,0,0,.06);
+
+    transition:.4s;
+}
+
+.card:hover{
+
+    transform:
+        translateY(-9px)
+        rotateX(2deg);
+
+    box-shadow:
+
+        12px 15px 0 rgba(157,123,32,.12),
+
+        0 25px 45px rgba(0,0,0,.1);
+}
+
+.card h3{
+
+    font-family:'Cinzel',serif;
+
+    margin-bottom:15px;
+}
+
+.card p{
+
+    color:#707070;
+
+    line-height:1.8;
+
+    font-size:14px;
+}
+
+
+/* =====================================
+   SKILLS
+===================================== */
+
+.skills{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:20px;
+}
+
+.skill{
+
+    text-align:center;
+
+    padding:32px 20px;
+
+    background:white;
+
+    border:1px solid rgba(0,0,0,.1);
+
+    border-radius:20px;
+
+    box-shadow:
+
+        7px 8px 0 rgba(0,0,0,.055);
+
+    transition:.35s;
+}
+
+.skill:hover{
+
+    transform:
+        translateY(-10px);
+
+    border-color:#a38327;
+
+    box-shadow:
+
+        10px 13px 0 rgba(163,131,39,.14);
+}
+
+.skill-icon{
+
+    font-size:35px;
+
+    margin-bottom:15px;
+}
+
+.skill h3{
+
+    font-family:'Cinzel',serif;
+
+    font-size:17px;
+}
+
+.skill p{
+
+    margin-top:9px;
+
+    color:#777;
+
+    font-size:12px;
+
+    line-height:1.6;
+}
+
+
+/* =====================================
+   PROJECTS
+===================================== */
+
+.projects{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:22px;
+}
+
+.project{
+
+    padding:32px;
+
+    background:white;
+
+    border-radius:22px;
+
+    border:1px solid rgba(0,0,0,.1);
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.07);
+
+    transition:.4s;
+
+    transform-style:preserve-3d;
+}
+
+.project:hover{
+
+    transform:
+        translateY(-12px)
+        rotateX(3deg)
+        rotateY(-2deg);
+
+    box-shadow:
+        0 30px 50px rgba(0,0,0,.13);
+}
+
+.project-number{
+
+    color:#a38327;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    font-weight:800;
+}
+
+.project h3{
+
+    font-family:'Cinzel',serif;
+
+    margin:15px 0;
+}
+
+.project p{
+
+    color:#707070;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+.project a{
+
+    display:inline-block;
+
+    margin-top:20px;
+
+    color:#866a1d;
+
+    text-decoration:none;
+
+    font-size:12px;
+
+    font-weight:800;
+}
+
+
+/* =====================================
+   SOCIAL
+===================================== */
+
+.social{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap:14px;
+}
+
+.social a{
+
+    padding:22px 10px;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    color:#111;
+
+    background:white;
+
+    border:1px solid rgba(0,0,0,.1);
+
+    border-radius:18px;
+
+    font-weight:800;
+
+    transition:.35s;
+}
+
+.social a:hover{
+
+    transform:translateY(-8px);
+
+    color:#a38327;
+
+    border-color:#a38327;
+}
+
+.social span{
+
+    display:block;
+
+    color:#888;
+
+    font-size:9px;
+
+    margin-top:7px;
+}
+
+
+/* =====================================
+   CONTACT
+===================================== */
+
+.contact{
+
+    text-align:center;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(0,0,0,.035),
+            rgba(163,131,39,.08)
+        );
+}
+
+.contact h2{
+
+    font-family:'Cinzel',serif;
+
+    font-size:40px;
+
+    margin-bottom:15px;
+}
+
+.contact p{
+
+    color:#707070;
+
+    max-width:600px;
+
+    margin:auto;
+
+    line-height:1.8;
+}
+
+.contact-buttons{
+    margin-top:30px;
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer{
+
+    position:relative;
+
+    z-index:5;
+
+    text-align:center;
+
+    padding:40px;
+
+    color:#888;
+
+    font-size:11px;
+}
+
+footer strong{
+    color:#111;
+}
+
+
+/* =====================================
+   MOUSE GLOW
+===================================== */
+
+.mouse-glow{
+
+    position:fixed;
+
+    width:250px;
+    height:250px;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    z-index:-1;
+
+    background:
+
+        radial-gradient(
+            circle,
+            rgba(163,131,39,.09),
+            transparent 70%
+        );
+
+    transform:
+        translate(-50%,-50%);
+}
+
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:850px){
+
+    nav ul{
+        display:none;
+    }
+
+    .page{
+
+        width:94%;
+
+        margin-top:100px;
+
+        box-shadow:
+
+            8px 9px 0 #111,
+
+            20px 25px 45px rgba(0,0,0,.16);
+    }
+
+    .about,
+    .projects{
+
+        grid-template-columns:1fr;
+    }
+
+    .skills{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .social{
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .dragon-frame{
+
+        opacity:.07;
+
+        padding:5px;
+    }
+}
+
+@media(max-width:500px){
+
+    .skills,
+    .social{
+
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+
+        min-height:600px;
+
+        padding:
+            100px 20px;
+    }
+
+    .hero h1{
+
+        font-size:55px;
+    }
+
+    section{
+
+        padding:
+            70px 6%;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- GOLD PARTICLES -->
+
+<div class="particles">
+
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
+</div>
+
+
+<!-- MOUSE LIGHT -->
+
+<div class="mouse-glow" id="mouseGlow"></div>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<a href="#" class="logo">
+AMIR<span>.</span>
+</a>
+
+<ul>
+
+<li><a href="#about">About</a></li>
+<li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#social">Social</a></li>
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+
+<!-- MAIN -->
+
+<div class="page">
+
+
+<!-- CHINESE CORNERS -->
+
+<div class="corner tl">☯</div>
+<div class="corner tr">☯</div>
+<div class="corner bl">☯</div>
+<div class="corner br">☯</div>
+
+
+<!-- =====================================
+     DRAGON
+===================================== -->
+
+<svg
+class="dragon-frame"
+viewBox="0 0 1200 900"
+preserveAspectRatio="none"
+aria-hidden="true">
+
+<defs>
+
+<filter id="dragon3D">
+
+<feDropShadow
+dx="7"
+dy="10"
+stdDeviation="5"
+flood-color="#000"
+flood-opacity=".35"/>
+
+</filter>
+
+<linearGradient
+id="dragonBlack"
+x1="0%"
+y1="0%"
+x2="100%"
+y2="100%">
+
+<stop offset="0%" stop-color="#050505"/>
+<stop offset="45%" stop-color="#222"/>
+<stop offset="70%" stop-color="#050505"/>
+<stop offset="100%" stop-color="#000"/>
+
+</linearGradient>
+
+</defs>
+
+
+<g
+fill="none"
+stroke="url(#dragonBlack)"
+stroke-width="10"
+stroke-linecap="round"
+stroke-linejoin="round"
+filter="url(#dragon3D)">
+
+
+<!-- BODY -->
+
+<path d="
+M90 170
+C170 70 300 45 410 95
+C520 145 580 230 690 205
+C800 180 865 75 985 90
+C1100 105 1150 185 1090 255
+C1040 315 935 285 945 220
+C955 165 1030 165 1050 215
+C1080 290 1010 355 925 365
+C820 380 760 315 675 345
+C580 380 570 500 650 555
+C730 610 825 575 820 490
+C815 425 735 410 705 465
+C670 530 735 615 820 640
+C920 670 1035 625 1090 700
+C1135 760 1080 830 990 825
+C890 820 860 745 920 710
+C970 680 1025 715 1010 765
+"/>
+
+
+<!-- LEFT BODY -->
+
+<path d="
+M90 170
+C45 240 60 330 135 350
+C210 370 265 315 230 260
+C195 205 115 225 120 285
+C125 360 230 400 300 365
+"/>
+
+
+<!-- HEAD -->
+
+<path d="
+M90 170
+C45 125 55 70 110 45
+C165 20 225 55 220 110
+C218 160 160 190 90 170
+"/>
+
+
+<!-- HORNS -->
+
+<path d="M85 75 C35 35 30 0 60 -35"/>
+<path d="M145 55 C150 5 180 -20 220 -35"/>
+
+
+<!-- WHISKERS -->
+
+<path d="M70 115 C25 100 -5 70 -35 40"/>
+<path d="M70 135 C25 150 -10 180 -35 220"/>
+
+
+<!-- MANE -->
+
+<path d="M170 65 C250 25 290 45 315 90"/>
+<path d="M180 80 C270 60 320 90 340 135"/>
+<path d="M190 105 C285 105 330 145 350 180"/>
+
+
+<!-- EYE -->
+
+<circle
+cx="125"
+cy="105"
+r="9"
+fill="#000"/>
+
+
+<!-- MOUTH -->
+
+<path d="
+M80 140
+C115 160 155 155 180 130
+"/>
+
+
+<!-- SPIKES -->
+
+<path d="M260 120 L235 80 L285 105"/>
+<path d="M360 130 L345 85 L395 115"/>
+<path d="M480 170 L465 125 L515 160"/>
+<path d="M610 205 L600 155 L645 195"/>
+<path d="M760 180 L755 130 L800 175"/>
+<path d="M890 125 L900 80 L930 120"/>
+
+
+<!-- LEGS -->
+
+<path d="M300 365 L260 420 L210 415"/>
+<path d="M425 430 L470 480 L520 470"/>
+<path d="M675 345 L720 390 L765 375"/>
+<path d="M820 640 L770 690 L720 680"/>
+
+
+<!-- CLAWS -->
+
+<path d="M210 415 L195 440"/>
+<path d="M210 415 L220 445"/>
+
+<path d="M520 470 L535 495"/>
+<path d="M520 470 L550 480"/>
+
+<path d="M765 375 L785 400"/>
+<path d="M765 375 L800 380"/>
+
+
+<!-- SCALES -->
+
+<path d="M350 250 C365 235 380 235 395 250"/>
+<path d="M390 270 C405 255 420 255 435 270"/>
+<path d="M430 290 C445 275 460 275 475 290"/>
+
+<path d="M520 315 C535 300 550 300 565 315"/>
+<path d="M560 330 C575 315 590 315 605 330"/>
+
+<path d="M850 350 C865 335 880 335 895 350"/>
+<path d="M875 380 C890 365 905 365 920 380"/>
+
+</g>
+
+</svg>
+
+
+<!-- =====================================
+     HERO
+===================================== -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="crest">
+✦ ◇ ✦
+</div>
+
+<h1>
+AMIR <span>BORANI</span>
+</h1>
+
+<h2>
+Creative Digital Artist
+</h2>
+
+<p>
+Video Editor • Content Creator • Web Designer
+<br>
+AI Enthusiast • Programmer • Streamer
+</p>
+
+<div class="buttons">
+
+<a
+href="#projects"
+class="btn primary">
+Explore My Work
+</a>
+
+<a
+href="#contact"
+class="btn gold">
+Let's Work Together
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     ABOUT
+===================================== -->
+
+<section id="about">
+
+<div class="section-title">
+
+<small>My Story</small>
+
+<h2>
+About <span>Me</span>
+</h2>
+
+</div>
+
+
+<div class="about">
+
+<div class="card">
+
+<h3>
+Who I Am
+</h3>
+
+<p>
+
+I'm Amir Borani, a creative digital creator
+interested in video editing, web design,
+AI, programming, streaming and digital content.
+
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>
+My Vision
+</h3>
+
+<p>
+
+I combine creativity and technology to build
+modern visual experiences, digital projects
+and content that stands out.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     SKILLS
+===================================== -->
+
+<section id="skills">
+
+<div class="section-title">
+
+<small>Expertise</small>
+
+<h2>
+My <span>Skills</span>
+</h2>
+
+</div>
+
+
+<div class="skills">
+
+
+<div class="skill">
+
+<div class="skill-icon">
+🎬
+</div>
+
+<h3>
+Video Editing
+</h3>
+
+<p>
+CapCut • Premiere Pro • Short-form Content
+</p>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-icon">
+🎨
+</div>
+
+<h3>
+Graphic Design
+</h3>
+
+<p>
+Photoshop • Thumbnails • Visual Design
+</p>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-icon">
+🌐
+</div>
+
+<h3>
+Web Design
+</h3>
+
+<p>
+HTML • CSS • Responsive Websites
+</p>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-icon">
+💻
+</div>
+
+<h3>
+Programming
+</h3>
+
+<p>
+Web Development • Coding • Learning
+</p>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-icon">
+🤖
+</div>
+
+<h3>
+Artificial Intelligence
+</h3>
+
+<p>
+AI Tools • Creative Workflows • Automation
+</p>
+
+</div>
+
+
+<div class="skill">
+
+<div class="skill-icon">
+🎮
+</div>
+
+<h3>
+Streaming
+</h3>
+
+<p>
+Gaming • GTA V • Live Content
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     PROJECTS
+===================================== -->
+
+<section id="projects">
+
+<div class="section-title">
+
+<small>Selected Work</small>
+
+<h2>
+My <span>Projects</span>
+</h2>
+
+</div>
+
+
+<div class="projects">
+
+
+<div class="project">
+
+<div class="project-number">
+01 — VIDEO
+</div>
+
+<h3>
+TikTok Content
+</h3>
+
+<p>
+Short-form videos and creative
+content for social media.
+</p>
+
+<a
+href="https://www.tiktok.com/@amirsoltan086"
+target="_blank">
+
+View TikTok →
+
+</a>
+
+</div>
+
+
+<div class="project">
+
+<div class="project-number">
+02 — STREAMING
+</div>
+
+<h3>
+GTA V Streaming
+</h3>
+
+<p>
+Gaming content and live streaming
+on Kick.
+</p>
+
+<a
+href="https://kick.com/amirgtalive"
+target="_blank">
+
+Watch Kick →
+
+</a>
+
+</div>
+
+
+<div class="project">
+
+<div class="project-number">
+03 — WEB
+</div>
+
+<h3>
+Portfolio Website
+</h3>
+
+<p>
+A modern personal portfolio
+built with HTML and CSS.
+</p>
+
+<a
+href="https://github.com/amirborani/portfolio-website"
+target="_blank">
+
+View GitHub →
+
+</a>
+
+</div>
+
+
+<div class="project">
+
+<div class="project-number">
+04 — AI
+</div>
+
+<h3>
+AI Creative Projects
+</h3>
+
+<p>
+Exploring artificial intelligence
+for digital content creation.
+</p>
+
+<a href="#contact">
+Collaborate →
+</a>
+
+</div>
+
+
+<div class="project">
+
+<div class="project-number">
+05 — YOUTUBE
+</div>
+
+<h3>
+YouTube Content
+</h3>
+
+<p>
+Creative videos and digital
+content projects.
+</p>
+
+<a
+href="https://www.youtube.com/@ayoubrider8433"
+target="_blank">
+
+View YouTube →
+
+</a>
+
+</div>
+
+
+<div class="project">
+
+<div class="project-number">
+06 — DEVELOPMENT
+</div>
+
+<h3>
+Programming
+</h3>
+
+<p>
+Learning and building websites,
+tools and creative digital projects.
+</p>
+
+<a
+href="https://github.com/amirborani"
+target="_blank">
+
+View GitHub →
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     SOCIAL
+===================================== -->
+
+<section id="social">
+
+<div class="section-title">
+
+<small>Connect</small>
+
+<h2>
+Social <span>Media</span>
+</h2>
+
+</div>
+
+
+<div class="social">
+
+
+<a
+href="https://www.tiktok.com/@amirsoltan086"
+target="_blank">
+
+TikTok
+
+<span>
+@amirsoltan086
+</span>
+
+</a>
+
+
+<a
+href="https://www.youtube.com/@ayoubrider8433"
+target="_blank">
+
+YouTube
+
+<span>
+@ayoubrider8433
+</span>
+
+</a>
+
+
+<a
+href="https://www.instagram.com/soltanamir007/"
+target="_blank">
+
+Instagram
+
+<span>
+@soltanamir007
+</span>
+
+</a>
+
+
+<a
+href="https://www.facebook.com/profile.php?id=61585599247149"
+target="_blank">
+
+Facebook
+
+<span>
+Amir Borani
+</span>
+
+</a>
+
+
+<a
+href="https://kick.com/amirgtalive"
+target="_blank">
+
+Kick
+
+<span>
+@AmirGTALive
+</span>
+
+</a>
+
+</div>
+
+</section>
+
+
+<!-- =====================================
+     CONTACT
+===================================== -->
+
+<section id="contact" class="contact">
+
+<div class="section-title">
+
+<small>Let's Connect</small>
+
+<h2>
+Create Something <span>Great</span>
+</h2>
+
+</div>
+
+
+<p>
+
+Have a project, collaboration or creative idea?
+Let's build something unique.
+
+</p>
+
+
+<div class="contact-buttons">
+
+<a
+class="btn primary"
+href="https://wa.me/660820196851"
+target="_blank">
+
+💬 WhatsApp
+
+</a>
+
+
+<a
+class="btn gold"
+href="mailto:anouarayoub66@gmail.com">
+
+✉ Email Me
+
+</a>
+
+</div>
+
+</section>
+
+
+<footer>
+
+© 2026
+<strong>Amir Borani</strong>
+— Creative Digital Portfolio
+
+</footer>
+
+
+</div>
+
+
+<script>
+
+/* =====================================
+   MOUSE GOLD LIGHT
+===================================== */
+
+const glow =
+document.getElementById("mouseGlow");
+
+document.addEventListener("mousemove",(e)=>{
+
+    glow.style.left =
+        e.clientX + "px";
+
+    glow.style.top =
+        e.clientY + "px";
+
+});
+
+
+/* =====================================
+   SUBTLE 3D PAGE MOVEMENT
+===================================== */
+
+const page =
+document.querySelector(".page");
+
+document.addEventListener("mousemove",(e)=>{
+
+    if(window.innerWidth < 900) return;
+
+    const x =
+        (window.innerWidth / 2 - e.clientX)
+        / 180;
+
+    const y =
+        (window.innerHeight / 2 - e.clientY)
+        / 220;
+
+    page.style.transform =
+        `perspective(1400px)
+         rotateY(${x}deg)
+         rotateX(${y}deg)`;
+
+});
+
+document.addEventListener("mouseleave",()=>{
+
+    page.style.transform =
+        "perspective(1400px) rotateY(0deg) rotateX(0deg)";
+
+});
+
+</script>
+
+</body>
+</html>
