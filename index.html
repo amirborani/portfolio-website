@@ -1,48 +1,56 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Amir Borani | Creative Developer & Digital Artist</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color"
+          content="#050505">
 
     <meta name="description"
-        content="Amir Borani — Creative Developer, Video Editor, Designer, Photographer, AI Creator and Streamer.">
+          content="Amir Borani — Programmer, Streamer, Video Editor, Web Designer, Graphic Designer, Photographer and AI Creator.">
 
-    <meta name="author" content="Amir Borani">
+    <meta name="author"
+          content="Amir Borani">
 
-    <!-- =========================
-         FONTS
-    ========================== -->
+    <title>Amir Borani | Digital Creator</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- =========================================
+         GOOGLE FONTS
+    ========================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <!-- =========================
+
+    <!-- =========================================
          FONT AWESOME
-    ========================== -->
+    ========================================== -->
 
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- =========================
-         THREE.JS
-    ========================== -->
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
+    <!-- =========================================
+         CSS
+    ========================================== -->
 
     <style>
 
-        /* =========================================================
+        /* =====================================================
            RESET
-        ========================================================= */
+        ===================================================== */
 
         * {
             margin: 0;
@@ -56,150 +64,166 @@
 
         body {
             font-family: "Inter", sans-serif;
-            background: #050505;
-            color: #f4f1e8;
+
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(212, 175, 55, 0.13),
+                    transparent 30%
+                ),
+                #030303;
+
+            color: #ffffff;
+
             overflow-x: hidden;
         }
 
         body::selection {
-            background: #c8a94b;
-            color: #050505;
+            background: #d4af37;
+            color: #000;
         }
 
         a {
             color: inherit;
-            text-decoration: none;
         }
 
 
-        /* =========================================================
-           GLOBAL BACKGROUND
-        ========================================================= */
+        /* =====================================================
+           BACKGROUND
+        ===================================================== */
 
         .background {
             position: fixed;
+
             inset: 0;
-            z-index: -10;
+
+            overflow: hidden;
+
+            pointer-events: none;
+
+            z-index: -20;
+
             background:
                 radial-gradient(
-                    circle at 50% 30%,
-                    rgba(170, 135, 45, 0.13),
-                    transparent 30%
-                ),
-                radial-gradient(
-                    circle at 10% 90%,
-                    rgba(130, 90, 20, 0.08),
-                    transparent 30%
-                ),
-                #050505;
-        }
-
-        .grid {
-            position: fixed;
-            inset: 0;
-            z-index: -8;
-            pointer-events: none;
-
-            background-image:
-                linear-gradient(
-                    rgba(200,169,75,0.035) 1px,
-                    transparent 1px
-                ),
-                linear-gradient(
-                    90deg,
-                    rgba(200,169,75,0.035) 1px,
-                    transparent 1px
-                );
-
-            background-size: 70px 70px;
-
-            mask-image:
-                radial-gradient(
-                    ellipse at center,
-                    black 15%,
-                    transparent 75%
+                    circle at 50% 50%,
+                    rgba(212,175,55,0.035),
+                    transparent 50%
                 );
         }
 
 
-        /* =========================================================
-           3D CANVAS
-        ========================================================= */
+        /* GRID */
 
-        #scene {
-            position: fixed;
-            inset: 0;
-            z-index: -7;
-            pointer-events: none;
-        }
+        .background::before {
 
-
-        /* =========================================================
-           TRIBAL ORNAMENT
-        ========================================================= */
-
-        .tribal {
-            position: absolute;
-            width: 420px;
-            height: 420px;
-
-            border: 1px solid rgba(200,169,75,0.15);
-            border-radius: 50%;
-
-            opacity: 0.45;
-
-            pointer-events: none;
-        }
-
-        .tribal::before,
-        .tribal::after {
             content: "";
 
             position: absolute;
-            inset: 35px;
 
-            border: 1px solid rgba(200,169,75,0.12);
-            border-radius: 50%;
+            inset: -50%;
+
+            background-image:
+
+                linear-gradient(
+                    45deg,
+                    transparent 47%,
+                    rgba(212,175,55,.045) 48%,
+                    rgba(212,175,55,.045) 49%,
+                    transparent 50%
+                ),
+
+                linear-gradient(
+                    -45deg,
+                    transparent 47%,
+                    rgba(212,175,55,.025) 48%,
+                    rgba(212,175,55,.025) 49%,
+                    transparent 50%
+                );
+
+            background-size:
+                90px 90px;
+
+            transform:
+                perspective(800px)
+                rotateX(60deg)
+                scale(1.5);
+
+            opacity: .55;
         }
 
-        .tribal::after {
-            inset: 80px;
 
-            border-style: dashed;
-            animation: spin 40s linear infinite;
+        /* BIG ORNAMENT */
+
+        .dragon-symbol {
+
+            position: absolute;
+
+            left: 50%;
+            top: 45%;
+
+            transform:
+                translate(-50%, -50%)
+                rotate(-8deg);
+
+            font-family: serif;
+
+            font-size:
+                min(70vw, 850px);
+
+            color: transparent;
+
+            -webkit-text-stroke:
+                1px rgba(212,175,55,.055);
+
+            opacity: .9;
         }
 
-        .tribal.left {
-            left: -230px;
-            top: 30%;
-        }
 
-        .tribal.right {
-            right: -230px;
+        /* GOLD LIGHT */
+
+        .ambient-light {
+
+            position: absolute;
+
+            width: 700px;
+            height: 700px;
+
+            left: 50%;
             top: 20%;
+
+            transform:
+                translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(212,175,55,.09),
+                    transparent 68%
+                );
+
+            filter:
+                blur(20px);
         }
 
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
 
+        /* =====================================================
+           PARTICLES
+        ===================================================== */
 
-        /* =========================================================
-           GOLD DUST
-        ========================================================= */
-
-        .dust {
+        .particles {
             position: fixed;
+
             inset: 0;
 
-            pointer-events: none;
+            z-index: -5;
 
-            z-index: -4;
+            pointer-events: none;
         }
 
-        .dust span {
+        .particle {
+
             position: absolute;
 
             width: 3px;
@@ -207,124 +231,224 @@
 
             border-radius: 50%;
 
-            background: #c8a94b;
+            background:
+                #d4af37;
 
-            opacity: 0.45;
+            box-shadow:
+                0 0 12px #d4af37;
+
+            opacity: .5;
 
             animation:
-                dustFloat 12s infinite ease-in-out;
+                floatParticle
+                10s
+                infinite
+                ease-in-out;
         }
 
-        .dust span:nth-child(1) {
-            left: 10%;
-            top: 25%;
+        .particle:nth-child(1) {
+            left: 8%;
+            top: 20%;
         }
 
-        .dust span:nth-child(2) {
-            left: 22%;
+        .particle:nth-child(2) {
+            left: 18%;
             top: 70%;
             animation-delay: 2s;
         }
 
-        .dust span:nth-child(3) {
-            left: 40%;
-            top: 15%;
+        .particle:nth-child(3) {
+            left: 32%;
+            top: 35%;
             animation-delay: 4s;
         }
 
-        .dust span:nth-child(4) {
-            left: 60%;
-            top: 75%;
+        .particle:nth-child(4) {
+            left: 50%;
+            top: 15%;
             animation-delay: 1s;
         }
 
-        .dust span:nth-child(5) {
-            left: 80%;
-            top: 30%;
-            animation-delay: 5s;
-        }
-
-        .dust span:nth-child(6) {
-            left: 90%;
+        .particle:nth-child(5) {
+            left: 65%;
             top: 70%;
             animation-delay: 3s;
         }
 
-        @keyframes dustFloat {
+        .particle:nth-child(6) {
+            left: 78%;
+            top: 25%;
+            animation-delay: 5s;
+        }
 
-            0%,
-            100% {
+        .particle:nth-child(7) {
+            left: 90%;
+            top: 60%;
+            animation-delay: 6s;
+        }
+
+        .particle:nth-child(8) {
+            left: 45%;
+            top: 90%;
+            animation-delay: 2s;
+        }
+
+        .particle:nth-child(9) {
+            left: 12%;
+            top: 90%;
+            animation-delay: 4s;
+        }
+
+        .particle:nth-child(10) {
+            left: 85%;
+            top: 85%;
+            animation-delay: 7s;
+        }
+
+        @keyframes floatParticle {
+
+            0% {
                 transform:
-                    translate3d(0,0,0)
+                    translateY(0)
                     scale(1);
+
+                opacity: .25;
             }
 
             50% {
                 transform:
-                    translate3d(20px,-70px,0)
+                    translateY(-80px)
                     scale(1.8);
+
+                opacity: .8;
+            }
+
+            100% {
+                transform:
+                    translateY(0)
+                    scale(1);
+
+                opacity: .25;
             }
         }
 
 
-        /* =========================================================
-           NAVIGATION
-        ========================================================= */
+        /* =====================================================
+           MOUSE GLOW
+        ===================================================== */
 
-        nav {
+        #mouseGlow {
+
             position: fixed;
 
-            top: 22px;
-            left: 50%;
+            width: 320px;
+            height: 320px;
 
-            transform: translateX(-50%);
+            border-radius: 50%;
 
-            width: min(94%, 1250px);
-
-            padding: 16px 24px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            border:
-                1px solid rgba(200,169,75,0.18);
+            pointer-events: none;
 
             background:
-                rgba(8,8,8,0.72);
+                radial-gradient(
+                    circle,
+                    rgba(212,175,55,.11),
+                    transparent 70%
+                );
 
-            backdrop-filter: blur(22px);
+            transform:
+                translate(-50%, -50%);
 
-            border-radius: 18px;
+            z-index: -1;
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        nav {
+
+            position: fixed;
+
+            top: 18px;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            width: 92%;
+
+            max-width: 1250px;
+
+            padding:
+                15px 22px;
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            background:
+                rgba(5,5,5,.72);
+
+            border:
+                1px solid rgba(212,175,55,.18);
+
+            backdrop-filter:
+                blur(20px);
+
+            border-radius:
+                16px;
 
             box-shadow:
-                0 20px 70px rgba(0,0,0,0.35);
+                0 20px 60px rgba(0,0,0,.5);
 
             z-index: 1000;
         }
 
+
         .logo {
-            font-family: "Cinzel", serif;
 
-            font-size: 21px;
+            font-family:
+                "Cinzel",
+                serif;
 
-            font-weight: 900;
+            font-size:
+                21px;
 
-            letter-spacing: 3px;
+            font-weight:
+                900;
+
+            letter-spacing:
+                3px;
+
+            text-decoration:
+                none;
         }
 
         .logo span {
-            color: #c8a94b;
+            color:
+                #d4af37;
         }
 
+
         nav ul {
+
             display: flex;
-            gap: 30px;
 
             list-style: none;
+
+            gap: 25px;
         }
 
         nav ul a {
+
+            text-decoration: none;
+
             color: #aaa;
 
             font-size: 11px;
@@ -333,963 +457,1394 @@
 
             letter-spacing: 1px;
 
-            transition: 0.3s;
+            transition: .3s;
         }
 
         nav ul a:hover {
-            color: #c8a94b;
+            color:
+                #d4af37;
         }
 
 
-        /* =========================================================
-           MAIN
-        ========================================================= */
+        /* =====================================================
+           PAGE
+        ===================================================== */
 
-        main {
-            width: min(94%, 1250px);
+        .page {
 
-            margin: 110px auto 40px;
+            width: 92%;
+
+            max-width: 1250px;
+
+            margin:
+                105px auto 40px;
 
             border:
-                1px solid rgba(200,169,75,0.13);
+                1px solid rgba(212,175,55,.15);
+
+            border-radius:
+                28px;
+
+            overflow:
+                hidden;
 
             background:
                 linear-gradient(
                     145deg,
-                    rgba(15,15,15,0.82),
-                    rgba(7,7,7,0.92)
+                    rgba(14,14,14,.97),
+                    rgba(4,4,4,.98)
                 );
 
-            border-radius: 32px;
-
-            overflow: hidden;
-
             box-shadow:
-                0 40px 120px rgba(0,0,0,0.65);
+                0 40px 100px rgba(0,0,0,.75);
+
+            transform-style:
+                preserve-3d;
         }
 
 
-        /* =========================================================
+        /* =====================================================
            HERO
-        ========================================================= */
+        ===================================================== */
 
         .hero {
-            min-height: 760px;
 
-            position: relative;
+            min-height:
+                800px;
 
-            display: flex;
+            display:
+                flex;
 
-            align-items: center;
+            justify-content:
+                center;
 
-            justify-content: center;
+            align-items:
+                center;
 
-            text-align: center;
+            text-align:
+                center;
 
-            padding: 120px 30px;
-        }
+            padding:
+                100px 30px;
 
-        .hero-content {
-            max-width: 900px;
+            position:
+                relative;
 
-            position: relative;
-
-            z-index: 5;
-        }
-
-        .eyebrow {
-            color: #c8a94b;
-
-            font-size: 10px;
-
-            font-weight: 800;
-
-            letter-spacing: 7px;
-
-            text-transform: uppercase;
-
-            margin-bottom: 28px;
-        }
-
-        .hero h1 {
-            font-family: "Cinzel", serif;
-
-            font-size:
-                clamp(55px, 10vw, 115px);
-
-            line-height: 0.9;
-
-            letter-spacing: 5px;
-
-            font-weight: 900;
-
-            background:
-                linear-gradient(
-                    120deg,
-                    #f6f0dc,
-                    #c8a94b,
-                    #fff3b0,
-                    #9c792b
-                );
-
-            -webkit-background-clip: text;
-            background-clip: text;
-
-            color: transparent;
-
-            background-size: 250% auto;
-
-            animation:
-                goldShine 7s linear infinite;
-        }
-
-        @keyframes goldShine {
-
-            0% {
-                background-position: 0% center;
-            }
-
-            100% {
-                background-position: 250% center;
-            }
-        }
-
-        .hero h2 {
-            margin-top: 30px;
-
-            font-size:
-                clamp(16px, 2.5vw, 24px);
-
-            letter-spacing: 4px;
-
-            color: #eee;
-
-            font-weight: 500;
-        }
-
-        .hero h2 span {
-            color: #c8a94b;
-        }
-
-        .hero p {
-            max-width: 700px;
-
-            margin: 25px auto 0;
-
-            color: #8f8f8f;
-
-            line-height: 1.9;
-
-            font-size: 14px;
+            overflow:
+                hidden;
         }
 
 
-        /* =========================================================
-           HERO ORB
-        ========================================================= */
+        /* HERO RING */
 
-        .orb {
-            position: absolute;
+        .hero-ring {
 
-            width: 430px;
-            height: 430px;
+            position:
+                absolute;
 
-            border-radius: 50%;
+            width:
+                min(650px,80vw);
 
-            background:
-                radial-gradient(
-                    circle at 35% 30%,
-                    rgba(255,240,170,0.22),
-                    transparent 7%
-                ),
-                radial-gradient(
-                    circle,
-                    rgba(200,169,75,0.12),
-                    transparent 62%
-                );
+            height:
+                min(650px,80vw);
+
+            border-radius:
+                50%;
 
             border:
-                1px solid rgba(200,169,75,0.2);
+                1px solid
+                rgba(212,175,55,.12);
 
             box-shadow:
-                inset 0 0 80px rgba(200,169,75,0.06),
-                0 0 100px rgba(200,169,75,0.08);
+                0 0 0 25px
+                rgba(212,175,55,.012),
 
-            transform:
-                translateZ(-100px);
+                0 0 0 65px
+                rgba(212,175,55,.008);
 
             animation:
-                orbFloat 7s ease-in-out infinite;
+                rotateRing
+                35s
+                linear
+                infinite;
         }
 
-        .orb::before {
-            content: "龍";
+        @keyframes rotateRing {
 
-            position: absolute;
+            from {
+                transform:
+                    rotate(0deg);
+            }
 
-            inset: 0;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            font-family: "Cinzel", serif;
-
-            font-size: 180px;
-
-            color: rgba(200,169,75,0.055);
-
-            text-shadow:
-                0 0 50px rgba(200,169,75,0.08);
+            to {
+                transform:
+                    rotate(360deg);
+            }
         }
 
-        @keyframes orbFloat {
 
-            0%,
-            100% {
+        /* HERO CONTENT */
+
+        .hero-content {
+
+            position:
+                relative;
+
+            z-index:
+                5;
+
+            max-width:
+                950px;
+
+            animation:
+                heroEnter
+                1.1s
+                ease
+                both;
+        }
+
+        @keyframes heroEnter {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(40px)
+                    scale(.96);
+            }
+
+            to {
+                opacity: 1;
+
                 transform:
                     translateY(0)
                     scale(1);
             }
+        }
 
-            50% {
-                transform:
-                    translateY(-15px)
-                    scale(1.025);
+
+        .crest {
+
+            color:
+                #d4af37;
+
+            font-size:
+                22px;
+
+            letter-spacing:
+                15px;
+
+            margin-bottom:
+                28px;
+
+            text-shadow:
+                0 0 25px
+                rgba(212,175,55,.45);
+        }
+
+
+        .eyebrow {
+
+            color:
+                #999;
+
+            text-transform:
+                uppercase;
+
+            font-size:
+                10px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                6px;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .hero h1 {
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                clamp(55px, 10vw, 125px);
+
+            line-height:
+                .92;
+
+            letter-spacing:
+                7px;
+
+            font-weight:
+                900;
+
+            color:
+                #fff;
+
+            text-shadow:
+                0 4px 0 #222,
+                0 15px 45px rgba(0,0,0,.8);
+        }
+
+
+        .hero h1 span {
+
+            display:
+                block;
+
+            background:
+                linear-gradient(
+                    110deg,
+                    #806019,
+                    #f7df7c,
+                    #a97c1d,
+                    #ffeaa0,
+                    #806019
+                );
+
+            background-size:
+                250% auto;
+
+            -webkit-background-clip:
+                text;
+
+            background-clip:
+                text;
+
+            -webkit-text-fill-color:
+                transparent;
+
+            animation:
+                goldFlow
+                5s
+                linear
+                infinite;
+        }
+
+        @keyframes goldFlow {
+
+            to {
+                background-position:
+                    250% center;
             }
         }
 
 
-        /* =========================================================
+        .hero h2 {
+
+            margin-top:
+                30px;
+
+            font-size:
+                clamp(16px,3vw,24px);
+
+            letter-spacing:
+                5px;
+
+            color:
+                #ddd;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .hero-description {
+
+            max-width:
+                700px;
+
+            margin:
+                22px auto 0;
+
+            color:
+                #888;
+
+            line-height:
+                1.9;
+
+            font-size:
+                14px;
+        }
+
+
+        /* =====================================================
            BUTTONS
-        ========================================================= */
+        ===================================================== */
 
         .buttons {
-            margin-top: 40px;
 
-            display: flex;
+            margin-top:
+                38px;
 
-            justify-content: center;
+            display:
+                flex;
 
-            flex-wrap: wrap;
+            justify-content:
+                center;
 
-            gap: 10px;
+            flex-wrap:
+                wrap;
         }
+
 
         .btn {
-            padding: 15px 28px;
 
-            border-radius: 999px;
+            display:
+                inline-flex;
 
-            font-size: 11px;
+            align-items:
+                center;
 
-            font-weight: 800;
+            justify-content:
+                center;
 
-            letter-spacing: 1px;
+            gap:
+                10px;
+
+            padding:
+                15px 27px;
+
+            margin:
+                6px;
+
+            border-radius:
+                50px;
+
+            text-decoration:
+                none;
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                .7px;
 
             transition:
-                transform 0.3s,
-                box-shadow 0.3s,
-                background 0.3s;
+                .35s;
+
+            cursor:
+                pointer;
         }
 
+
         .btn-primary {
-            color: #090909;
+
+            color:
+                #050505;
 
             background:
                 linear-gradient(
                     135deg,
-                    #f0d879,
-                    #a98228
+                    #f1d46b,
+                    #b88b24
                 );
 
             box-shadow:
-                0 10px 35px rgba(200,169,75,0.2);
+                0 10px 35px
+                rgba(212,175,55,.16);
         }
 
         .btn-primary:hover {
-            transform: translateY(-5px);
+
+            transform:
+                translateY(-5px);
 
             box-shadow:
-                0 18px 45px rgba(200,169,75,0.3);
+                0 18px 45px
+                rgba(212,175,55,.28);
         }
 
-        .btn-outline {
-            border:
-                1px solid rgba(200,169,75,0.5);
 
-            color: #d9bd61;
+        .btn-outline {
+
+            color:
+                #d4af37;
+
+            border:
+                1px solid
+                rgba(212,175,55,.55);
 
             background:
-                rgba(200,169,75,0.03);
+                rgba(212,175,55,.03);
         }
 
         .btn-outline:hover {
-            background: #c8a94b;
 
-            color: #050505;
+            color:
+                #050505;
 
-            transform: translateY(-5px);
+            background:
+                #d4af37;
+
+            transform:
+                translateY(-5px);
         }
 
 
-        /* =========================================================
+        /* =====================================================
            SECTION
-        ========================================================= */
+        ===================================================== */
 
-        section:not(.hero) {
-            padding: 110px 7%;
+        section {
 
-            border-top:
-                1px solid rgba(255,255,255,0.05);
+            padding:
+                105px 7%;
+
+            position:
+                relative;
         }
 
-        .section-heading {
-            text-align: center;
 
-            margin-bottom: 60px;
+        .section-title {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                55px;
         }
 
-        .section-heading small {
-            color: #c8a94b;
 
-            font-size: 9px;
+        .section-title small {
 
-            font-weight: 800;
+            display:
+                block;
 
-            letter-spacing: 6px;
-
-            text-transform: uppercase;
-        }
-
-        .section-heading h2 {
-            margin-top: 12px;
-
-            font-family: "Cinzel", serif;
+            color:
+                #d4af37;
 
             font-size:
-                clamp(35px, 5vw, 55px);
+                10px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                6px;
+
+            text-transform:
+                uppercase;
         }
 
-        .section-heading h2 span {
-            color: #c8a94b;
+
+        .section-title h2 {
+
+            margin-top:
+                12px;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                clamp(35px,5vw,55px);
         }
 
 
-        /* =========================================================
+        .section-title h2 span {
+            color:
+                #d4af37;
+        }
+
+
+        /* =====================================================
            ABOUT
-        ========================================================= */
+        ===================================================== */
 
-        .about {
-            display: grid;
+        .about-grid {
+
+            display:
+                grid;
 
             grid-template-columns:
-                0.85fr 1.15fr;
+                1fr 1fr;
 
-            gap: 25px;
+            gap:
+                25px;
         }
 
-        .profile-card,
-        .about-card {
-            padding: 35px;
 
-            border:
-                1px solid rgba(200,169,75,0.12);
+        .glass-card {
+
+            padding:
+                38px;
 
             background:
                 linear-gradient(
                     145deg,
-                    rgba(255,255,255,0.045),
-                    rgba(255,255,255,0.015)
+                    rgba(25,25,25,.95),
+                    rgba(8,8,8,.98)
                 );
 
-            border-radius: 24px;
-
-            backdrop-filter: blur(15px);
-
-            transition: 0.4s;
-        }
-
-        .profile-card:hover,
-        .about-card:hover {
-            transform:
-                translateY(-8px)
-                rotateX(2deg);
-
-            border-color:
-                rgba(200,169,75,0.35);
-        }
-
-        .profile-image {
-            width: 180px;
-            height: 180px;
-
-            margin: 0 auto 25px;
-
-            border-radius: 50%;
-
             border:
-                2px solid rgba(200,169,75,0.55);
+                1px solid
+                rgba(212,175,55,.12);
 
-            padding: 6px;
+            border-radius:
+                22px;
 
-            overflow: hidden;
-
-            background: #111;
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
-            border-radius: 50%;
-        }
-
-        .profile-card {
-            text-align: center;
-        }
-
-        .profile-card h3 {
-            font-family: "Cinzel", serif;
-
-            font-size: 23px;
-        }
-
-        .profile-card p {
-            margin-top: 10px;
-
-            color: #888;
-
-            font-size: 12px;
-        }
-
-        .about-card h3 {
-            font-family: "Cinzel", serif;
-
-            font-size: 25px;
-
-            margin-bottom: 20px;
-        }
-
-        .about-card p {
-            color: #929292;
-
-            font-size: 14px;
-
-            line-height: 2;
-        }
-
-
-        /* =========================================================
-           SKILLS
-        ========================================================= */
-
-        .skills {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 18px;
-        }
-
-        .skill {
-            min-height: 190px;
-
-            padding: 30px;
-
-            position: relative;
-
-            border:
-                1px solid rgba(200,169,75,0.1);
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255,255,255,0.045),
-                    rgba(255,255,255,0.012)
-                );
-
-            border-radius: 22px;
-
-            transform-style: preserve-3d;
+            box-shadow:
+                0 25px 55px rgba(0,0,0,.4);
 
             transition:
-                transform 0.4s,
-                border 0.4s;
+                .45s;
+
+            transform-style:
+                preserve-3d;
         }
 
-        .skill:hover {
+
+        .glass-card:hover {
+
             transform:
-                perspective(900px)
-                rotateX(6deg)
-                rotateY(-6deg)
-                translateY(-10px);
+                translateY(-10px)
+                rotateX(2deg)
+                rotateY(-2deg);
 
             border-color:
-                rgba(200,169,75,0.45);
-        }
+                rgba(212,175,55,.45);
 
-        .skill-icon {
-            color: #c8a94b;
-
-            font-size: 28px;
-
-            margin-bottom: 20px;
-        }
-
-        .skill h3 {
-            font-family: "Cinzel", serif;
-
-            font-size: 18px;
-        }
-
-        .skill p {
-            margin-top: 10px;
-
-            color: #858585;
-
-            font-size: 12px;
-
-            line-height: 1.7;
+            box-shadow:
+                0 35px 70px rgba(0,0,0,.65);
         }
 
 
-        /* =========================================================
-           PROJECTS
-        ========================================================= */
+        .card-number {
 
-        .projects {
-            display: grid;
+            color:
+                #d4af37;
+
+            font-size:
+                10px;
+
+            letter-spacing:
+                4px;
+
+            font-weight:
+                800;
+
+            margin-bottom:
+                20px;
+        }
+
+
+        .glass-card h3 {
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                24px;
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .glass-card p {
+
+            color:
+                #888;
+
+            font-size:
+                14px;
+
+            line-height:
+                1.9;
+        }
+
+
+        /* =====================================================
+           SKILLS
+        ===================================================== */
+
+        .skills-grid {
+
+            display:
+                grid;
 
             grid-template-columns:
-                repeat(3, 1fr);
+                repeat(3,1fr);
 
-            gap: 20px;
+            gap:
+                18px;
         }
 
-        .project {
-            min-height: 270px;
 
-            padding: 30px;
+        .skill {
 
-            position: relative;
+            position:
+                relative;
 
-            overflow: hidden;
+            padding:
+                35px 25px;
 
-            border:
-                1px solid rgba(200,169,75,0.12);
+            text-align:
+                center;
 
             background:
                 linear-gradient(
                     145deg,
-                    rgba(255,255,255,0.05),
-                    rgba(255,255,255,0.012)
+                    #151515,
+                    #080808
                 );
 
-            border-radius: 24px;
+            border:
+                1px solid
+                rgba(255,255,255,.06);
 
-            transform-style: preserve-3d;
+            border-radius:
+                20px;
 
-            transition: 0.45s;
+            transition:
+                .4s;
+
+            overflow:
+                hidden;
         }
 
-        .project::after {
-            content: "";
 
-            position: absolute;
+        .skill::before {
 
-            width: 150px;
-            height: 150px;
+            content:
+                "";
 
-            right: -70px;
-            bottom: -70px;
+            position:
+                absolute;
 
-            border-radius: 50%;
+            width:
+                130px;
+
+            height:
+                130px;
+
+            left:
+                50%;
+
+            top:
+                -80px;
+
+            transform:
+                translateX(-50%);
 
             background:
                 radial-gradient(
                     circle,
-                    rgba(200,169,75,0.18),
+                    rgba(212,175,55,.12),
                     transparent 70%
                 );
         }
 
-        .project:hover {
+
+        .skill:hover {
+
             transform:
-                perspective(900px)
-                rotateX(5deg)
-                rotateY(-5deg)
-                translateY(-12px);
+                translateY(-9px);
 
             border-color:
-                rgba(200,169,75,0.4);
+                rgba(212,175,55,.45);
 
             box-shadow:
-                0 30px 70px rgba(0,0,0,0.35);
-        }
-
-        .project-number {
-            color: #c8a94b;
-
-            font-size: 9px;
-
-            letter-spacing: 4px;
-
-            font-weight: 800;
-        }
-
-        .project h3 {
-            margin: 18px 0;
-
-            font-family: "Cinzel", serif;
-
-            font-size: 21px;
-        }
-
-        .project p {
-            color: #888;
-
-            font-size: 12px;
-
-            line-height: 1.8;
-        }
-
-        .project a {
-            display: inline-block;
-
-            margin-top: 25px;
-
-            color: #d7b958;
-
-            font-size: 11px;
-
-            font-weight: 800;
-
-            letter-spacing: 1px;
+                0 25px 50px rgba(0,0,0,.55);
         }
 
 
-        /* =========================================================
-           SOCIAL
-        ========================================================= */
+        .skill-icon {
 
-        .social {
-            display: grid;
+            font-size:
+                32px;
+
+            color:
+                #d4af37;
+
+            margin-bottom:
+                17px;
+        }
+
+
+        .skill h3 {
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                17px;
+        }
+
+
+        .skill p {
+
+            margin-top:
+                9px;
+
+            color:
+                #777;
+
+            font-size:
+                11px;
+
+            line-height:
+                1.6;
+        }
+
+
+        /* =====================================================
+           PROJECTS
+        ===================================================== */
+
+        .projects-grid {
+
+            display:
+                grid;
 
             grid-template-columns:
-                repeat(6, 1fr);
+                repeat(3,1fr);
 
-            gap: 12px;
+            gap:
+                22px;
         }
 
-        .social a {
-            padding: 25px 10px;
 
-            text-align: center;
+        .project {
+
+            position:
+                relative;
+
+            min-height:
+                290px;
+
+            padding:
+                30px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                space-between;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #161616,
+                    #070707
+                );
 
             border:
-                1px solid rgba(200,169,75,0.1);
+                1px solid
+                rgba(212,175,55,.10);
+
+            border-radius:
+                22px;
+
+            transition:
+                .45s;
+
+            transform-style:
+                preserve-3d;
+
+            overflow:
+                hidden;
+        }
+
+
+        .project::after {
+
+            content:
+                "";
+
+            position:
+                absolute;
+
+            width:
+                180px;
+
+            height:
+                180px;
+
+            right:
+                -90px;
+
+            bottom:
+                -90px;
+
+            border-radius:
+                50%;
 
             background:
-                rgba(255,255,255,0.025);
-
-            border-radius: 18px;
-
-            transition: 0.35s;
+                radial-gradient(
+                    circle,
+                    rgba(212,175,55,.11),
+                    transparent 70%
+                );
         }
 
-        .social i {
-            display: block;
 
-            color: #c8a94b;
+        .project:hover {
 
-            font-size: 22px;
-
-            margin-bottom: 12px;
-        }
-
-        .social strong {
-            display: block;
-
-            font-size: 11px;
-        }
-
-        .social span {
-            display: block;
-
-            color: #666;
-
-            font-size: 8px;
-
-            margin-top: 7px;
-        }
-
-        .social a:hover {
-            transform: translateY(-8px);
+            transform:
+                translateY(-12px)
+                rotateX(3deg)
+                rotateY(-2deg);
 
             border-color:
-                rgba(200,169,75,0.45);
+                rgba(212,175,55,.5);
+
+            box-shadow:
+                0 35px 70px rgba(0,0,0,.65);
+        }
+
+
+        .project-number {
+
+            color:
+                #d4af37;
+
+            font-size:
+                10px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                4px;
+        }
+
+
+        .project h3 {
+
+            margin:
+                15px 0 10px;
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                22px;
+        }
+
+
+        .project p {
+
+            color:
+                #858585;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.75;
+        }
+
+
+        .project-link {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            margin-top:
+                22px;
+
+            color:
+                #d4af37;
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            text-decoration:
+                none;
+
+            position:
+                relative;
+
+            z-index:
+                3;
+        }
+
+        .project-link:hover {
+            color:
+                #ffe58a;
+        }
+
+
+        /* =====================================================
+           SOCIAL
+        ===================================================== */
+
+        .social-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(5,1fr);
+
+            gap:
+                14px;
+        }
+
+
+        .social {
+
+            padding:
+                28px 10px;
+
+            text-align:
+                center;
+
+            text-decoration:
+                none;
 
             background:
-                rgba(200,169,75,0.06);
+                #101010;
+
+            border:
+                1px solid
+                rgba(255,255,255,.06);
+
+            border-radius:
+                18px;
+
+            transition:
+                .35s;
         }
 
 
-        /* =========================================================
+        .social i {
+
+            display:
+                block;
+
+            font-size:
+                25px;
+
+            color:
+                #d4af37;
+
+            margin-bottom:
+                12px;
+        }
+
+
+        .social strong {
+
+            display:
+                block;
+
+            font-size:
+                12px;
+        }
+
+
+        .social span {
+
+            display:
+                block;
+
+            margin-top:
+                6px;
+
+            color:
+                #666;
+
+            font-size:
+                9px;
+        }
+
+
+        .social:hover {
+
+            transform:
+                translateY(-8px);
+
+            border-color:
+                rgba(212,175,55,.5);
+
+            box-shadow:
+                0 20px 45px rgba(0,0,0,.55);
+        }
+
+
+        /* =====================================================
            CONTACT
-        ========================================================= */
+        ===================================================== */
 
         .contact {
-            text-align: center;
+
+            text-align:
+                center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(212,175,55,.08),
+                    transparent 60%
+                );
         }
+
+
+        .contact h2 {
+
+            font-family:
+                "Cinzel",
+                serif;
+
+            font-size:
+                clamp(32px,5vw,50px);
+
+            margin-bottom:
+                15px;
+        }
+
+
+        .contact h2 span {
+            color:
+                #d4af37;
+        }
+
 
         .contact p {
-            max-width: 620px;
 
-            margin: auto;
+            max-width:
+                620px;
 
-            color: #888;
+            margin:
+                auto;
 
-            line-height: 1.9;
+            color:
+                #888;
 
-            font-size: 14px;
+            line-height:
+                1.9;
+
+            font-size:
+                14px;
         }
+
 
         .contact-buttons {
-            margin-top: 35px;
 
-            display: flex;
+            margin-top:
+                30px;
 
-            justify-content: center;
+            display:
+                flex;
 
-            flex-wrap: wrap;
+            justify-content:
+                center;
 
-            gap: 10px;
+            flex-wrap:
+                wrap;
         }
 
 
-        /* =========================================================
+        /* =====================================================
            FOOTER
-        ========================================================= */
+        ===================================================== */
 
         footer {
-            padding: 35px;
 
-            text-align: center;
+            text-align:
+                center;
 
-            color: #555;
-
-            font-size: 10px;
+            padding:
+                38px;
 
             border-top:
-                1px solid rgba(255,255,255,0.05);
+                1px solid
+                rgba(255,255,255,.05);
+
+            color:
+                #555;
+
+            font-size:
+                10px;
+
+            letter-spacing:
+                1px;
         }
+
 
         footer strong {
-            color: #c8a94b;
+            color:
+                #d4af37;
         }
 
 
-        /* =========================================================
+        /* =====================================================
            SCROLL REVEAL
-        ========================================================= */
+        ===================================================== */
 
         .reveal {
-            opacity: 0;
+
+            opacity:
+                0;
 
             transform:
                 translateY(35px);
 
             transition:
-                opacity 0.8s ease,
-                transform 0.8s ease;
+                opacity .8s ease,
+                transform .8s ease;
         }
 
+
         .reveal.visible {
-            opacity: 1;
+
+            opacity:
+                1;
 
             transform:
                 translateY(0);
         }
 
 
-        /* =========================================================
+        /* =====================================================
            MOBILE
-        ========================================================= */
+        ===================================================== */
 
-        @media (max-width: 1000px) {
+        @media (max-width: 950px) {
 
             nav ul {
-                display: none;
+                display:
+                    none;
             }
 
-            .skills {
+            .page {
+                width:
+                    94%;
+
+                margin-top:
+                    95px;
+            }
+
+            .skills-grid,
+            .projects-grid {
+
                 grid-template-columns:
-                    repeat(2, 1fr);
+                    repeat(2,1fr);
             }
 
-            .projects {
+            .social-grid {
+
                 grid-template-columns:
-                    repeat(2, 1fr);
+                    repeat(3,1fr);
             }
-
-            .social {
-                grid-template-columns:
-                    repeat(3, 1fr);
-            }
-
         }
 
 
-        @media (max-width: 700px) {
-
-            main {
-                width: 94%;
-
-                margin-top: 95px;
-
-                border-radius: 22px;
-            }
-
-            .hero {
-                min-height: 650px;
-
-                padding: 100px 20px;
-            }
-
-            .orb {
-                width: 290px;
-                height: 290px;
-            }
-
-            .orb::before {
-                font-size: 120px;
-            }
-
-            .about,
-            .skills,
-            .projects {
-                grid-template-columns: 1fr;
-            }
-
-            .social {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
-            section:not(.hero) {
-                padding:
-                    80px 6%;
-            }
-
-        }
-
-
-        @media (max-width: 430px) {
+        @media (max-width: 650px) {
 
             nav {
+                width:
+                    94%;
+
                 padding:
                     14px 17px;
             }
 
             .logo {
-                font-size: 17px;
+                font-size:
+                    18px;
+            }
+
+            .hero {
+
+                min-height:
+                    700px;
+
+                padding:
+                    90px 20px;
             }
 
             .hero h1 {
-                font-size: 48px;
 
-                letter-spacing: 2px;
+                font-size:
+                    54px;
+
+                letter-spacing:
+                    3px;
             }
 
             .hero h2 {
-                font-size: 15px;
 
-                letter-spacing: 2px;
+                font-size:
+                    15px;
+
+                letter-spacing:
+                    2px;
+
+                line-height:
+                    1.7;
             }
 
-            .hero p {
-                font-size: 12px;
+            .hero-description {
+
+                font-size:
+                    12px;
             }
 
-            .social {
-                grid-template-columns: 1fr;
+            section {
+
+                padding:
+                    75px 6%;
+            }
+
+            .about-grid,
+            .skills-grid,
+            .projects-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+            .social-grid {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+            .dragon-symbol {
+
+                font-size:
+                    500px;
+            }
+        }
+
+
+        @media (max-width: 400px) {
+
+            .hero h1 {
+                font-size:
+                    45px;
+            }
+
+            .social-grid {
+                grid-template-columns:
+                    1fr;
             }
 
             .btn {
-                width: 100%;
+                width:
+                    100%;
             }
-
         }
 
     </style>
+
 </head>
 
 
 <body>
 
-    <!-- =========================================================
+
+    <!-- =====================================================
          BACKGROUND
-    ========================================================== -->
+    ====================================================== -->
 
-    <div class="background"></div>
+    <div class="background">
 
-    <div class="grid"></div>
+        <div class="dragon-symbol">
+            龍
+        </div>
 
-    <canvas id="scene"></canvas>
-
-    <div class="tribal left"></div>
-    <div class="tribal right"></div>
-
-
-    <!-- GOLD DUST -->
-
-    <div class="dust">
-
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        <div class="ambient-light"></div>
 
     </div>
 
 
-    <!-- =========================================================
+    <!-- =====================================================
+         PARTICLES
+    ====================================================== -->
+
+    <div class="particles">
+
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+        <span class="particle"></span>
+
+    </div>
+
+
+    <!-- MOUSE LIGHT -->
+
+    <div id="mouseGlow"></div>
+
+
+    <!-- =====================================================
          NAVIGATION
-    ========================================================== -->
+    ====================================================== -->
 
     <nav>
 
-        <a href="#" class="logo">
+        <a href="#home"
+           class="logo">
+
             AMIR<span>.</span>
+
         </a>
+
 
         <ul>
 
             <li>
-                <a href="#about">ABOUT</a>
+                <a href="#about">
+                    About
+                </a>
             </li>
 
             <li>
-                <a href="#skills">SKILLS</a>
+                <a href="#skills">
+                    Skills
+                </a>
             </li>
 
             <li>
-                <a href="#projects">PROJECTS</a>
+                <a href="#projects">
+                    Projects
+                </a>
             </li>
 
             <li>
-                <a href="#social">SOCIAL</a>
+                <a href="#social">
+                    Social
+                </a>
             </li>
 
             <li>
-                <a href="#contact">CONTACT</a>
+                <a href="#contact">
+                    Contact
+                </a>
             </li>
 
         </ul>
@@ -1297,135 +1852,85 @@
     </nav>
 
 
-    <!-- =========================================================
+    <!-- =====================================================
          MAIN
-    ========================================================== -->
+    ====================================================== -->
 
-    <main>
+    <main class="page">
 
 
-        <!-- =====================================================
+        <!-- =================================================
              HERO
-        ====================================================== -->
+        ================================================== -->
 
-        <section class="hero">
+        <section id="home"
+                 class="hero">
 
-            <div class="orb"></div>
+            <div class="hero-ring"></div>
 
-            <div class="hero-content reveal">
+
+            <div class="hero-content">
+
+                <div class="crest">
+                    ✦ ◇ 龍 ◇ ✦
+                </div>
+
 
                 <div class="eyebrow">
-                    Creative Technology · Digital Art
+                    Digital Creator • Developer • Artist
                 </div>
+
 
                 <h1>
-                    AMIR<br>
-                    BORANI
+
+                    AMIR
+
+                    <span>
+                        BORANI
+                    </span>
+
                 </h1>
 
-                <h2>
-                    Creative Developer
-                    <span>·</span>
-                    Digital Artist
-                </h2>
-
-                <p>
-                    Programming · Video Editing · Graphic Design ·
-                    Photography · AI · Streaming
-                </p>
-
-                <div class="buttons">
-
-                    <a
-                        href="#projects"
-                        class="btn btn-primary">
-                        EXPLORE MY WORK
-                    </a>
-
-                    <a
-                        href="#contact"
-                        class="btn btn-outline">
-                        LET'S WORK TOGETHER
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =====================================================
-             ABOUT
-        ====================================================== -->
-
-        <section id="about">
-
-            <div class="section-heading reveal">
-
-                <small>
-                    Who I Am
-                </small>
 
                 <h2>
-                    About <span>Me</span>
+                    Creative Digital Artist
                 </h2>
 
-            </div>
 
+                <p class="hero-description">
 
-            <div class="about">
-
-                <div class="profile-card reveal">
-
-                    <div class="profile-image">
-
-                        <!--
-                        IMPORTANT:
-                        Put your real GitHub image here.
-
-                        Example:
-                        images/profile.jpg
-                        -->
-
-                        <img
-                            src="images/profile.jpg"
-                            alt="Amir Borani">
-
-                    </div>
-
-                    <h3>
-                        Amir Borani
-                    </h3>
-
-                    <p>
-                        Creative Developer · Editor · Designer
-                    </p>
-
-                </div>
-
-
-                <div class="about-card reveal">
-
-                    <h3>
-                        Creativity Meets Technology
-                    </h3>
-
-                    <p>
-                        I'm Amir Borani, a multidisciplinary digital
-                        creator working across programming, web design,
-                        video editing, graphic design, photography,
-                        artificial intelligence and live streaming.
-                    </p>
+                    Programmer • Streamer • Video Editor
+                    • Web Designer • Graphic Designer
+                    • Photographer • AI Creator
 
                     <br>
 
-                    <p>
-                        I enjoy combining technology and visual
-                        creativity to build digital experiences,
-                        content and projects that feel modern,
-                        original and memorable.
-                    </p>
+                    I create digital experiences by combining
+                    technology, creativity and visual storytelling.
+
+                </p>
+
+
+                <div class="buttons">
+
+                    <a href="#projects"
+                       class="btn btn-primary">
+
+                        <i class="fa-solid fa-arrow-down"></i>
+
+                        Explore My Work
+
+                    </a>
+
+
+                    <a href="#contact"
+                       class="btn btn-outline">
+
+                        <i class="fa-solid fa-paper-plane"></i>
+
+                        Let's Work Together
+
+                    </a>
 
                 </div>
 
@@ -1434,16 +1939,91 @@
         </section>
 
 
-        <!-- =====================================================
-             SKILLS
-        ====================================================== -->
+        <!-- =================================================
+             ABOUT
+        ================================================== -->
 
-        <section id="skills">
+        <section id="about"
+                 class="reveal">
 
-            <div class="section-heading reveal">
+            <div class="section-title">
 
                 <small>
-                    What I Do
+                    About Me
+                </small>
+
+                <h2>
+                    Behind The <span>Work</span>
+                </h2>
+
+            </div>
+
+
+            <div class="about-grid">
+
+
+                <div class="glass-card">
+
+                    <div class="card-number">
+                        01 — IDENTITY
+                    </div>
+
+                    <h3>
+                        Who I Am
+                    </h3>
+
+                    <p>
+
+                        I'm Amir Borani, a multidisciplinary
+                        digital creator working across
+                        programming, video editing, web design,
+                        graphic design, photography, AI and
+                        live streaming.
+
+                    </p>
+
+                </div>
+
+
+                <div class="glass-card">
+
+                    <div class="card-number">
+                        02 — VISION
+                    </div>
+
+                    <h3>
+                        What I Create
+                    </h3>
+
+                    <p>
+
+                        My goal is to combine technology and
+                        creativity to create modern websites,
+                        engaging videos, digital visuals,
+                        AI-powered content and memorable
+                        online experiences.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SKILLS
+        ================================================== -->
+
+        <section id="skills"
+                 class="reveal">
+
+            <div class="section-title">
+
+                <small>
+                    Expertise
                 </small>
 
                 <h2>
@@ -1453,46 +2033,12 @@
             </div>
 
 
-            <div class="skills">
+            <div class="skills-grid">
 
 
-                <div class="skill reveal">
+                <!-- VIDEO -->
 
-                    <div class="skill-icon">
-                        <i class="fa-solid fa-code"></i>
-                    </div>
-
-                    <h3>
-                        Programming
-                    </h3>
-
-                    <p>
-                        Web development, coding and
-                        creative digital projects.
-                    </p>
-
-                </div>
-
-
-                <div class="skill reveal">
-
-                    <div class="skill-icon">
-                        <i class="fa-solid fa-globe"></i>
-                    </div>
-
-                    <h3>
-                        Web Design
-                    </h3>
-
-                    <p>
-                        Modern responsive websites
-                        with HTML, CSS and JavaScript.
-                    </p>
-
-                </div>
-
-
-                <div class="skill reveal">
+                <div class="skill">
 
                     <div class="skill-icon">
                         <i class="fa-solid fa-video"></i>
@@ -1503,17 +2049,59 @@
                     </h3>
 
                     <p>
-                        TikTok, YouTube Shorts, Reels
-                        and creative video content.
+                        CapCut • Premiere Pro • Short Form
+                        • Social Media Content
                     </p>
 
                 </div>
 
 
-                <div class="skill reveal">
+                <!-- PROGRAMMING -->
+
+                <div class="skill">
 
                     <div class="skill-icon">
-                        <i class="fa-solid fa-palette"></i>
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+
+                    <h3>
+                        Programming
+                    </h3>
+
+                    <p>
+                        HTML • CSS • Web Development
+                        • Coding
+                    </p>
+
+                </div>
+
+
+                <!-- WEB -->
+
+                <div class="skill">
+
+                    <div class="skill-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+
+                    <h3>
+                        Web Design
+                    </h3>
+
+                    <p>
+                        Modern Websites • Responsive Design
+                        • UI
+                    </p>
+
+                </div>
+
+
+                <!-- GRAPHIC -->
+
+                <div class="skill">
+
+                    <div class="skill-icon">
+                        <i class="fa-solid fa-pen-nib"></i>
                     </div>
 
                     <h3>
@@ -1521,14 +2109,16 @@
                     </h3>
 
                     <p>
-                        Photoshop, thumbnails,
-                        branding and digital visuals.
+                        Photoshop • Thumbnails • Branding
+                        • Visual Design
                     </p>
 
                 </div>
 
 
-                <div class="skill reveal">
+                <!-- PHOTOGRAPHY -->
+
+                <div class="skill">
 
                     <div class="skill-icon">
                         <i class="fa-solid fa-camera"></i>
@@ -1539,14 +2129,16 @@
                     </h3>
 
                     <p>
-                        Creative photography,
-                        composition and photo editing.
+                        Photography • Photo Editing
+                        • Visual Composition
                     </p>
 
                 </div>
 
 
-                <div class="skill reveal">
+                <!-- AI -->
+
+                <div class="skill">
 
                     <div class="skill-icon">
                         <i class="fa-solid fa-robot"></i>
@@ -1557,14 +2149,16 @@
                     </h3>
 
                     <p>
-                        AI tools, creative workflows,
-                        automation and experimentation.
+                        AI Tools • Creative Workflows
+                        • AI Content
                     </p>
 
                 </div>
 
 
-                <div class="skill reveal">
+                <!-- STREAM -->
+
+                <div class="skill">
 
                     <div class="skill-icon">
                         <i class="fa-solid fa-tower-broadcast"></i>
@@ -1575,17 +2169,19 @@
                     </h3>
 
                     <p>
-                        Kick streaming, gaming,
-                        GTA V and live content.
+                        Kick • GTA V • Gaming
+                        • Live Content
                     </p>
 
                 </div>
 
 
-                <div class="skill reveal">
+                <!-- CONTENT -->
+
+                <div class="skill">
 
                     <div class="skill-icon">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <i class="fa-solid fa-mobile-screen"></i>
                     </div>
 
                     <h3>
@@ -1593,227 +2189,310 @@
                     </h3>
 
                     <p>
-                        Social media strategy,
-                        creative concepts and digital content.
+                        TikTok • YouTube • Reels
+                        • Social Media
                     </p>
 
                 </div>
 
 
-                <div class="skill reveal">
+                <!-- CREATIVE -->
+
+                <div class="skill">
 
                     <div class="skill-icon">
-                        <i class="fa-brands fa-github"></i>
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
                     </div>
 
                     <h3>
-                        GitHub
+                        Creative Direction
                     </h3>
 
                     <p>
-                        Version control, repositories
-                        and publishing projects online.
+                        Ideas • Storytelling • Digital
+                        Experiences
                     </p>
 
                 </div>
+
 
             </div>
 
         </section>
 
 
-        <!-- =====================================================
+        <!-- =================================================
              PROJECTS
-        ====================================================== -->
+        ================================================== -->
 
-        <section id="projects">
+        <section id="projects"
+                 class="reveal">
 
-            <div class="section-heading reveal">
+            <div class="section-title">
 
                 <small>
-                    Real Work
+                    Selected Work
                 </small>
 
                 <h2>
-                    Selected <span>Projects</span>
+                    Real <span>Projects</span>
                 </h2>
 
             </div>
 
 
-            <div class="projects">
+            <div class="projects-grid">
 
 
-                <div class="project reveal">
+                <!-- TIKTOK -->
 
-                    <div class="project-number">
-                        01 · SOCIAL CONTENT
+                <article class="project">
+
+                    <div>
+
+                        <div class="project-number">
+                            01 — SOCIAL CONTENT
+                        </div>
+
+                        <h3>
+                            TikTok Creator
+                        </h3>
+
+                        <p>
+
+                            Short-form video content,
+                            creative edits and social media
+                            projects published on TikTok.
+
+                        </p>
+
                     </div>
 
-                    <h3>
-                        TikTok Content
-                    </h3>
-
-                    <p>
-                        Short-form video content,
-                        editing and creative social media work.
-                    </p>
 
                     <a
+                        class="project-link"
                         href="https://www.tiktok.com/@amirsoltan086"
                         target="_blank"
                         rel="noopener noreferrer">
 
-                        VIEW TIKTOK →
+                        View TikTok
+
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
 
                     </a>
 
-                </div>
+                </article>
 
 
-                <div class="project reveal">
+                <!-- YOUTUBE -->
 
-                    <div class="project-number">
-                        02 · STREAMING
+                <article class="project">
+
+                    <div>
+
+                        <div class="project-number">
+                            02 — VIDEO
+                        </div>
+
+                        <h3>
+                            YouTube Channel
+                        </h3>
+
+                        <p>
+
+                            Video content and creative
+                            projects published on YouTube.
+
+                        </p>
+
                     </div>
 
-                    <h3>
-                        Kick Streaming
-                    </h3>
-
-                    <p>
-                        Gaming and live streaming content
-                        focused on GTA V and entertainment.
-                    </p>
 
                     <a
-                        href="https://kick.com/amirgtalive"
-                        target="_blank"
-                        rel="noopener noreferrer">
-
-                        WATCH KICK →
-
-                    </a>
-
-                </div>
-
-
-                <div class="project reveal">
-
-                    <div class="project-number">
-                        03 · WEB DEVELOPMENT
-                    </div>
-
-                    <h3>
-                        Personal Portfolio
-                    </h3>
-
-                    <p>
-                        A custom portfolio website built
-                        with HTML, CSS and JavaScript.
-                    </p>
-
-                    <a
-                        href="https://github.com/amirborani/portfolio-website"
-                        target="_blank"
-                        rel="noopener noreferrer">
-
-                        VIEW GITHUB →
-
-                    </a>
-
-                </div>
-
-
-                <div class="project reveal">
-
-                    <div class="project-number">
-                        04 · YOUTUBE
-                    </div>
-
-                    <h3>
-                        YouTube Content
-                    </h3>
-
-                    <p>
-                        Video content and creative projects
-                        published on YouTube.
-                    </p>
-
-                    <a
+                        class="project-link"
                         href="https://www.youtube.com/@ayoubrider8433"
                         target="_blank"
                         rel="noopener noreferrer">
 
-                        WATCH YOUTUBE →
+                        Watch YouTube
+
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
 
                     </a>
 
-                </div>
+                </article>
 
 
-                <div class="project reveal">
+                <!-- KICK -->
 
-                    <div class="project-number">
-                        05 · AI
+                <article class="project">
+
+                    <div>
+
+                        <div class="project-number">
+                            03 — LIVE
+                        </div>
+
+                        <h3>
+                            Amir GTA Live
+                        </h3>
+
+                        <p>
+
+                            Gaming streams and GTA V live
+                            content on Kick.
+
+                        </p>
+
                     </div>
 
-                    <h3>
-                        AI Creative Work
-                    </h3>
-
-                    <p>
-                        Exploring AI-powered workflows
-                        for images, videos and digital creation.
-                    </p>
-
-                    <a href="#contact">
-
-                        COLLABORATE →
-
-                    </a>
-
-                </div>
-
-
-                <div class="project reveal">
-
-                    <div class="project-number">
-                        06 · DEVELOPMENT
-                    </div>
-
-                    <h3>
-                        GitHub Projects
-                    </h3>
-
-                    <p>
-                        Programming experiments, websites
-                        and digital development projects.
-                    </p>
 
                     <a
+                        class="project-link"
+                        href="https://kick.com/amirgtalive"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        Watch Kick
+
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                    </a>
+
+                </article>
+
+
+                <!-- GITHUB -->
+
+                <article class="project">
+
+                    <div>
+
+                        <div class="project-number">
+                            04 — DEVELOPMENT
+                        </div>
+
+                        <h3>
+                            GitHub Projects
+                        </h3>
+
+                        <p>
+
+                            Websites, programming projects
+                            and experiments built while
+                            developing my coding skills.
+
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        class="project-link"
                         href="https://github.com/amirborani"
                         target="_blank"
                         rel="noopener noreferrer">
 
-                        VIEW GITHUB →
+                        View GitHub
+
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
 
                     </a>
 
-                </div>
+                </article>
+
+
+                <!-- PORTFOLIO -->
+
+                <article class="project">
+
+                    <div>
+
+                        <div class="project-number">
+                            05 — WEB DESIGN
+                        </div>
+
+                        <h3>
+                            Personal Portfolio
+                        </h3>
+
+                        <p>
+
+                            This website — designed and
+                            developed as my personal digital
+                            portfolio.
+
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        class="project-link"
+                        href="https://github.com/amirborani/portfolio-website"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        View Source
+
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                    </a>
+
+                </article>
+
+
+                <!-- AI -->
+
+                <article class="project">
+
+                    <div>
+
+                        <div class="project-number">
+                            06 — AI
+                        </div>
+
+                        <h3>
+                            AI Creative Lab
+                        </h3>
+
+                        <p>
+
+                            Exploring AI tools for video,
+                            image creation, content production
+                            and digital workflows.
+
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        class="project-link"
+                        href="#contact">
+
+                        Collaborate
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </article>
+
 
             </div>
 
         </section>
 
 
-        <!-- =====================================================
+        <!-- =================================================
              SOCIAL MEDIA
-        ====================================================== -->
+        ================================================== -->
 
-        <section id="social">
+        <section id="social"
+                 class="reveal">
 
-            <div class="section-heading reveal">
+            <div class="section-title">
 
                 <small>
                     Find Me Online
@@ -1826,18 +2505,22 @@
             </div>
 
 
-            <div class="social">
+            <div class="social-grid">
 
+
+                <!-- TIKTOK -->
 
                 <a
+                    class="social"
                     href="https://www.tiktok.com/@amirsoltan086"
                     target="_blank"
-                    rel="noopener noreferrer"
-                    class="reveal">
+                    rel="noopener noreferrer">
 
                     <i class="fa-brands fa-tiktok"></i>
 
-                    <strong>TikTok</strong>
+                    <strong>
+                        TikTok
+                    </strong>
 
                     <span>
                         @amirsoltan086
@@ -1846,15 +2529,19 @@
                 </a>
 
 
+                <!-- YOUTUBE -->
+
                 <a
+                    class="social"
                     href="https://www.youtube.com/@ayoubrider8433"
                     target="_blank"
-                    rel="noopener noreferrer"
-                    class="reveal">
+                    rel="noopener noreferrer">
 
                     <i class="fa-brands fa-youtube"></i>
 
-                    <strong>YouTube</strong>
+                    <strong>
+                        YouTube
+                    </strong>
 
                     <span>
                         @ayoubrider8433
@@ -1863,15 +2550,19 @@
                 </a>
 
 
+                <!-- INSTAGRAM -->
+
                 <a
+                    class="social"
                     href="https://www.instagram.com/soltanamir007/"
                     target="_blank"
-                    rel="noopener noreferrer"
-                    class="reveal">
+                    rel="noopener noreferrer">
 
                     <i class="fa-brands fa-instagram"></i>
 
-                    <strong>Instagram</strong>
+                    <strong>
+                        Instagram
+                    </strong>
 
                     <span>
                         @soltanamir007
@@ -1880,15 +2571,19 @@
                 </a>
 
 
+                <!-- FACEBOOK -->
+
                 <a
+                    class="social"
                     href="https://www.facebook.com/profile.php?id=61585599247149"
                     target="_blank"
-                    rel="noopener noreferrer"
-                    class="reveal">
+                    rel="noopener noreferrer">
 
                     <i class="fa-brands fa-facebook"></i>
 
-                    <strong>Facebook</strong>
+                    <strong>
+                        Facebook
+                    </strong>
 
                     <span>
                         Amir Borani
@@ -1897,15 +2592,19 @@
                 </a>
 
 
+                <!-- KICK -->
+
                 <a
+                    class="social"
                     href="https://kick.com/amirgtalive"
                     target="_blank"
-                    rel="noopener noreferrer"
-                    class="reveal">
+                    rel="noopener noreferrer">
 
                     <i class="fa-solid fa-tower-broadcast"></i>
 
-                    <strong>Kick</strong>
+                    <strong>
+                        Kick
+                    </strong>
 
                     <span>
                         @AmirGTALive
@@ -1914,402 +2613,195 @@
                 </a>
 
 
-                <a
-                    href="https://github.com/amirborani"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="reveal">
-
-                    <i class="fa-brands fa-github"></i>
-
-                    <strong>GitHub</strong>
-
-                    <span>
-                        @amirborani
-                    </span>
-
-                </a>
-
             </div>
 
         </section>
 
 
-        <!-- =====================================================
+        <!-- =================================================
              CONTACT
-        ====================================================== -->
+        ================================================== -->
 
-        <section id="contact" class="contact">
+        <section id="contact"
+                 class="contact reveal">
 
-            <div class="section-heading reveal">
+            <div class="section-title">
 
                 <small>
-                    Let's Create
+                    Start A Project
                 </small>
 
                 <h2>
-                    Let's Build Something
-                    <span>Great</span>
+                    Let's Create
+                    <span>Something Great</span>
                 </h2>
 
             </div>
 
 
-            <p class="reveal">
+            <p>
 
-                Have a project, collaboration or creative idea?
-                I'm always interested in creating something
-                modern and different.
+                Have a project, collaboration, website,
+                video, design or creative idea?
+
+                <br>
+
+                Let's turn the idea into something real.
 
             </p>
 
 
-            <div class="contact-buttons reveal">
+            <div class="contact-buttons">
+
 
                 <a
+                    class="btn btn-primary"
                     href="https://wa.me/660820196851"
                     target="_blank"
-                    rel="noopener noreferrer"
-                    class="btn btn-primary">
+                    rel="noopener noreferrer">
 
                     <i class="fa-brands fa-whatsapp"></i>
 
-                    WHATSAPP
+                    WhatsApp
 
                 </a>
 
 
                 <a
-                    href="mailto:anouarayoub66@gmail.com"
-                    class="btn btn-outline">
+                    class="btn btn-outline"
+                    href="mailto:anouarayoub66@gmail.com">
 
                     <i class="fa-solid fa-envelope"></i>
 
-                    EMAIL ME
+                    Email Me
 
                 </a>
+
 
             </div>
 
         </section>
 
 
-        <!-- =====================================================
+        <!-- =================================================
              FOOTER
-        ====================================================== -->
+        ================================================== -->
 
         <footer>
 
             © 2026
-            <strong>AMIR BORANI</strong>
-            · Creative Digital Portfolio
+
+            <strong>
+                Amir Borani
+            </strong>
+
+            — Digital Creator & Developer
 
         </footer>
+
 
     </main>
 
 
-    <!-- =========================================================
+    <!-- =====================================================
          JAVASCRIPT
-    ========================================================== -->
+    ====================================================== -->
 
     <script>
 
-        /* =====================================================
-           THREE.JS 3D SCENE
-        ====================================================== */
+        /* =================================================
+           MOUSE GOLD LIGHT
+        ================================================= */
 
-        const canvas =
-            document.getElementById("scene");
+        const mouseGlow =
+            document.getElementById("mouseGlow");
 
-        const scene =
-            new THREE.Scene();
-
-        const camera =
-            new THREE.PerspectiveCamera(
-                60,
-                window.innerWidth / window.innerHeight,
-                0.1,
-                1000
-            );
-
-        camera.position.z = 5;
-
-
-        const renderer =
-            new THREE.WebGLRenderer({
-                canvas: canvas,
-                alpha: true,
-                antialias: true
-            });
-
-        renderer.setPixelRatio(
-            Math.min(window.devicePixelRatio, 2)
-        );
-
-        renderer.setSize(
-            window.innerWidth,
-            window.innerHeight
-        );
-
-
-        /* =====================================================
-           GOLD PARTICLES
-        ====================================================== */
-
-        const particleCount = 900;
-
-        const positions =
-            new Float32Array(
-                particleCount * 3
-            );
-
-        for (
-            let i = 0;
-            i < particleCount;
-            i++
-        ) {
-
-            const radius =
-                4 + Math.random() * 8;
-
-            const angle =
-                Math.random() * Math.PI * 2;
-
-            positions[i * 3] =
-                Math.cos(angle) * radius;
-
-            positions[i * 3 + 1] =
-                (Math.random() - 0.5) * 9;
-
-            positions[i * 3 + 2] =
-                (Math.random() - 0.5) * 8;
-
-        }
-
-
-        const particleGeometry =
-            new THREE.BufferGeometry();
-
-        particleGeometry.setAttribute(
-            "position",
-            new THREE.BufferAttribute(
-                positions,
-                3
-            )
-        );
-
-
-        const particleMaterial =
-            new THREE.PointsMaterial({
-                color: 0xc8a94b,
-                size: 0.025,
-                transparent: true,
-                opacity: 0.55
-            });
-
-
-        const particles =
-            new THREE.Points(
-                particleGeometry,
-                particleMaterial
-            );
-
-        scene.add(particles);
-
-
-        /* =====================================================
-           3D TORUS
-        ====================================================== */
-
-        const torusGeometry =
-            new THREE.TorusGeometry(
-                2.1,
-                0.018,
-                12,
-                120
-            );
-
-        const torusMaterial =
-            new THREE.MeshBasicMaterial({
-                color: 0xc8a94b,
-                transparent: true,
-                opacity: 0.35
-            });
-
-        const torus =
-            new THREE.Mesh(
-                torusGeometry,
-                torusMaterial
-            );
-
-        torus.rotation.x =
-            Math.PI / 2.4;
-
-        scene.add(torus);
-
-
-        /* =====================================================
-           SECOND RING
-        ====================================================== */
-
-        const ringGeometry =
-            new THREE.TorusGeometry(
-                2.7,
-                0.012,
-                12,
-                120
-            );
-
-        const ringMaterial =
-            new THREE.MeshBasicMaterial({
-                color: 0x9c792b,
-                transparent: true,
-                opacity: 0.2
-            });
-
-        const ring =
-            new THREE.Mesh(
-                ringGeometry,
-                ringMaterial
-            );
-
-        ring.rotation.x =
-            Math.PI / 2;
-
-        ring.rotation.y =
-            0.5;
-
-        scene.add(ring);
-
-
-        /* =====================================================
-           MOUSE MOVEMENT
-        ====================================================== */
-
-        let mouseX = 0;
-        let mouseY = 0;
 
         document.addEventListener(
             "mousemove",
-            (event) => {
+            function(event) {
 
-                mouseX =
-                    (event.clientX /
-                        window.innerWidth
-                    ) * 2 - 1;
+                mouseGlow.style.left =
+                    event.clientX + "px";
 
-                mouseY =
-                    -(event.clientY /
-                        window.innerHeight
-                    ) * 2 + 1;
+                mouseGlow.style.top =
+                    event.clientY + "px";
 
             }
         );
 
 
-        /* =====================================================
-           ANIMATION
-        ====================================================== */
+        /* =================================================
+           3D PAGE MOVEMENT
+        ================================================= */
 
-        const clock =
-            new THREE.Clock();
-
-        function animate() {
-
-            requestAnimationFrame(
-                animate
-            );
-
-            const time =
-                clock.getElapsedTime();
+        const page =
+            document.querySelector(".page");
 
 
-            particles.rotation.y =
-                time * 0.015;
+        document.addEventListener(
+            "mousemove",
+            function(event) {
 
-            particles.rotation.x =
-                Math.sin(time * 0.1) * 0.05;
+                if (window.innerWidth < 950) {
+                    return;
+                }
 
+                const x =
+                    (window.innerWidth / 2 - event.clientX)
+                    / 280;
 
-            torus.rotation.z =
-                time * 0.15;
-
-            torus.rotation.x +=
-                (mouseY * 0.4 -
-                    torus.rotation.x) * 0.02;
-
-
-            ring.rotation.z =
-                -time * 0.08;
+                const y =
+                    (window.innerHeight / 2 - event.clientY)
+                    / 350;
 
 
-            scene.rotation.y +=
-                (mouseX * 0.12 -
-                    scene.rotation.y) * 0.025;
-
-
-            scene.rotation.x +=
-                (-mouseY * 0.08 -
-                    scene.rotation.x) * 0.025;
-
-
-            renderer.render(
-                scene,
-                camera
-            );
-
-        }
-
-        animate();
-
-
-        /* =====================================================
-           RESIZE
-        ====================================================== */
-
-        window.addEventListener(
-            "resize",
-            () => {
-
-                camera.aspect =
-                    window.innerWidth /
-                    window.innerHeight;
-
-                camera.updateProjectionMatrix();
-
-                renderer.setSize(
-                    window.innerWidth,
-                    window.innerHeight
-                );
+                page.style.transform =
+                    `
+                    perspective(1800px)
+                    rotateY(${x}deg)
+                    rotateX(${y}deg)
+                    `;
 
             }
         );
 
 
-        /* =====================================================
+        document.addEventListener(
+            "mouseleave",
+            function() {
+
+                page.style.transform =
+                    `
+                    perspective(1800px)
+                    rotateY(0deg)
+                    rotateX(0deg)
+                    `;
+
+            }
+        );
+
+
+        /* =================================================
            SCROLL REVEAL
-        ====================================================== */
+        ================================================= */
 
-        const reveals =
-            document.querySelectorAll(
-                ".reveal"
-            );
+        const revealElements =
+            document.querySelectorAll(".reveal");
 
-        const observer =
+
+        const revealObserver =
             new IntersectionObserver(
-                (entries) => {
+                function(entries) {
 
                     entries.forEach(
-                        (entry) => {
+                        function(entry) {
 
-                            if (
-                                entry.isIntersecting
-                            ) {
+                            if (entry.isIntersecting) {
 
-                                entry.target.classList.add(
-                                    "visible"
-                                );
+                                entry.target
+                                    .classList
+                                    .add("visible");
 
                             }
 
@@ -2317,81 +2809,158 @@
                     );
 
                 },
+
                 {
-                    threshold: 0.12
+                    threshold: .12
                 }
             );
 
 
-        reveals.forEach(
-            (element) => {
-                observer.observe(element);
+        revealElements.forEach(
+            function(element) {
+
+                revealObserver.observe(element);
+
             }
         );
 
 
-        /* =====================================================
-           3D PROJECT CARD TILT
-        ====================================================== */
+        /* =================================================
+           ACTIVE NAVIGATION
+        ================================================= */
 
-        const cards =
+        const sections =
             document.querySelectorAll(
-                ".project, .skill"
+                "section[id]"
             );
 
-        cards.forEach(
-            (card) => {
+        const navLinks =
+            document.querySelectorAll(
+                "nav a[href^='#']"
+            );
 
-                card.addEventListener(
-                    "mousemove",
-                    (event) => {
+
+        window.addEventListener(
+            "scroll",
+            function() {
+
+                let current = "";
+
+
+                sections.forEach(
+                    function(section) {
+
+                        const top =
+                            section.offsetTop - 180;
+
 
                         if (
-                            window.innerWidth < 800
+                            window.scrollY >= top
                         ) {
-                            return;
+
+                            current =
+                                section.getAttribute(
+                                    "id"
+                                );
+
                         }
-
-                        const rect =
-                            card.getBoundingClientRect();
-
-                        const x =
-                            event.clientX -
-                            rect.left;
-
-                        const y =
-                            event.clientY -
-                            rect.top;
-
-                        const centerX =
-                            rect.width / 2;
-
-                        const centerY =
-                            rect.height / 2;
-
-                        const rotateY =
-                            (x - centerX) /
-                            22;
-
-                        const rotateX =
-                            (centerY - y) /
-                            22;
-
-                        card.style.transform =
-                            `perspective(900px)
-                             rotateX(${rotateX}deg)
-                             rotateY(${rotateY}deg)
-                             translateY(-10px)`;
 
                     }
                 );
 
 
-                card.addEventListener(
-                    "mouseleave",
-                    () => {
+                navLinks.forEach(
+                    function(link) {
 
-                        card.style.transform =
+                        link.style.color =
+                            "";
+
+
+                        if (
+                            link.getAttribute(
+                                "href"
+                            )
+                            ===
+                            "#" + current
+                        ) {
+
+                            link.style.color =
+                                "#d4af37";
+
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =================================================
+           3D PROJECT TILT
+        ================================================= */
+
+        const projects =
+            document.querySelectorAll(
+                ".project"
+            );
+
+
+        projects.forEach(
+            function(project) {
+
+                project.addEventListener(
+                    "mousemove",
+                    function(event) {
+
+                        if (
+                            window.innerWidth < 950
+                        ) {
+                            return;
+                        }
+
+
+                        const rect =
+                            project.getBoundingClientRect();
+
+
+                        const x =
+                            event.clientX
+                            - rect.left;
+
+
+                        const y =
+                            event.clientY
+                            - rect.top;
+
+
+                        const rotateY =
+                            ((x / rect.width) - .5)
+                            * 8;
+
+
+                        const rotateX =
+                            ((y / rect.height) - .5)
+                            * -8;
+
+
+                        project.style.transform =
+                            `
+                            perspective(800px)
+                            translateY(-12px)
+                            rotateX(${rotateX}deg)
+                            rotateY(${rotateY}deg)
+                            `;
+
+                    }
+                );
+
+
+                project.addEventListener(
+                    "mouseleave",
+                    function() {
+
+                        project.style.transform =
                             "";
 
                     }
@@ -2400,8 +2969,22 @@
             }
         );
 
+
+        /* =================================================
+           CONSOLE
+        ================================================= */
+
+        console.log(
+            "%c AMIR BORANI ",
+            "color:#d4af37;font-size:20px;font-weight:bold;"
+        );
+
+        console.log(
+            "Creative Digital Portfolio"
+        );
+
     </script>
+
 
 </body>
 </html>
-```
