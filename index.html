@@ -5,29 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Amir Borani | Creative Digital Artist</title>
+    <title>Amir Borani | Creative Developer & Digital Artist</title>
 
     <meta name="description"
-          content="Amir Borani — Video Editor, Content Creator, Web Designer, AI Enthusiast, Programmer and Streamer.">
+        content="Amir Borani — Creative Developer, Video Editor, Designer, Photographer, AI Creator and Streamer.">
 
     <meta name="author" content="Amir Borani">
 
-    <!-- Google Fonts -->
+    <!-- =========================
+         FONTS
+    ========================== -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- =========================
+         FONT AWESOME
+    ========================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- =========================
+         THREE.JS
+    ========================== -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
 
     <style>
 
-        /* =========================================
+        /* =========================================================
            RESET
-        ========================================= */
+        ========================================================= */
 
         * {
             margin: 0;
@@ -40,448 +55,814 @@
         }
 
         body {
-            font-family: "Poppins", sans-serif;
-            background:
-                radial-gradient(circle at top, #f8f4e9 0%, #eee9dd 40%, #ddd8ce 100%);
-            color: #111;
+            font-family: "Inter", sans-serif;
+            background: #050505;
+            color: #f4f1e8;
             overflow-x: hidden;
+        }
+
+        body::selection {
+            background: #c8a94b;
+            color: #050505;
         }
 
         a {
             color: inherit;
+            text-decoration: none;
         }
 
-        /* =========================================
-           BACKGROUND
-        ========================================= */
 
-        body::before {
-            content: "";
+        /* =========================================================
+           GLOBAL BACKGROUND
+        ========================================================= */
+
+        .background {
             position: fixed;
             inset: 0;
+            z-index: -10;
+            background:
+                radial-gradient(
+                    circle at 50% 30%,
+                    rgba(170, 135, 45, 0.13),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 10% 90%,
+                    rgba(130, 90, 20, 0.08),
+                    transparent 30%
+                ),
+                #050505;
+        }
+
+        .grid {
+            position: fixed;
+            inset: 0;
+            z-index: -8;
+            pointer-events: none;
 
             background-image:
                 linear-gradient(
-                    rgba(0, 0, 0, 0.025) 1px,
+                    rgba(200,169,75,0.035) 1px,
                     transparent 1px
                 ),
                 linear-gradient(
                     90deg,
-                    rgba(0, 0, 0, 0.025) 1px,
+                    rgba(200,169,75,0.035) 1px,
                     transparent 1px
                 );
 
-            background-size: 40px 40px;
-            pointer-events: none;
-            z-index: -5;
+            background-size: 70px 70px;
+
+            mask-image:
+                radial-gradient(
+                    ellipse at center,
+                    black 15%,
+                    transparent 75%
+                );
         }
 
-        /* =========================================
-           PARTICLES
-        ========================================= */
 
-        .particles {
+        /* =========================================================
+           3D CANVAS
+        ========================================================= */
+
+        #scene {
             position: fixed;
             inset: 0;
+            z-index: -7;
             pointer-events: none;
-            z-index: -2;
-            overflow: hidden;
         }
 
-        .particles span {
+
+        /* =========================================================
+           TRIBAL ORNAMENT
+        ========================================================= */
+
+        .tribal {
             position: absolute;
-            width: 5px;
-            height: 5px;
-            background: #a38327;
+            width: 420px;
+            height: 420px;
+
+            border: 1px solid rgba(200,169,75,0.15);
             border-radius: 50%;
-            opacity: 0.35;
-            animation: floatParticle 12s infinite ease-in-out;
+
+            opacity: 0.45;
+
+            pointer-events: none;
         }
 
-        .particles span:nth-child(1) {
-            left: 10%;
+        .tribal::before,
+        .tribal::after {
+            content: "";
+
+            position: absolute;
+            inset: 35px;
+
+            border: 1px solid rgba(200,169,75,0.12);
+            border-radius: 50%;
+        }
+
+        .tribal::after {
+            inset: 80px;
+
+            border-style: dashed;
+            animation: spin 40s linear infinite;
+        }
+
+        .tribal.left {
+            left: -230px;
+            top: 30%;
+        }
+
+        .tribal.right {
+            right: -230px;
             top: 20%;
         }
 
-        .particles span:nth-child(2) {
-            left: 25%;
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        /* =========================================================
+           GOLD DUST
+        ========================================================= */
+
+        .dust {
+            position: fixed;
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: -4;
+        }
+
+        .dust span {
+            position: absolute;
+
+            width: 3px;
+            height: 3px;
+
+            border-radius: 50%;
+
+            background: #c8a94b;
+
+            opacity: 0.45;
+
+            animation:
+                dustFloat 12s infinite ease-in-out;
+        }
+
+        .dust span:nth-child(1) {
+            left: 10%;
+            top: 25%;
+        }
+
+        .dust span:nth-child(2) {
+            left: 22%;
             top: 70%;
             animation-delay: 2s;
         }
 
-        .particles span:nth-child(3) {
-            left: 50%;
+        .dust span:nth-child(3) {
+            left: 40%;
             top: 15%;
             animation-delay: 4s;
         }
 
-        .particles span:nth-child(4) {
-            left: 70%;
-            top: 55%;
+        .dust span:nth-child(4) {
+            left: 60%;
+            top: 75%;
             animation-delay: 1s;
         }
 
-        .particles span:nth-child(5) {
-            left: 85%;
-            top: 25%;
+        .dust span:nth-child(5) {
+            left: 80%;
+            top: 30%;
             animation-delay: 5s;
         }
 
-        .particles span:nth-child(6) {
-            left: 40%;
-            top: 85%;
+        .dust span:nth-child(6) {
+            left: 90%;
+            top: 70%;
             animation-delay: 3s;
         }
 
-        .particles span:nth-child(7) {
-            left: 90%;
-            top: 80%;
-            animation-delay: 6s;
-        }
+        @keyframes dustFloat {
 
-        @keyframes floatParticle {
             0%,
             100% {
-                transform: translateY(0) scale(1);
+                transform:
+                    translate3d(0,0,0)
+                    scale(1);
             }
 
             50% {
-                transform: translateY(-60px) scale(1.5);
+                transform:
+                    translate3d(20px,-70px,0)
+                    scale(1.8);
             }
         }
 
-        /* =========================================
-           MOUSE GLOW
-        ========================================= */
 
-        .mouse-glow {
-            position: fixed;
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            pointer-events: none;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(163, 131, 39, 0.12),
-                    transparent 70%
-                );
-
-            transform: translate(-50%, -50%);
-            z-index: -1;
-        }
-
-        /* =========================================
+        /* =========================================================
            NAVIGATION
-        ========================================= */
+        ========================================================= */
 
         nav {
-            width: 92%;
-            max-width: 1250px;
-
             position: fixed;
-            top: 20px;
+
+            top: 22px;
             left: 50%;
+
             transform: translateX(-50%);
 
+            width: min(94%, 1250px);
+
+            padding: 16px 24px;
+
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
 
-            padding: 16px 25px;
+            border:
+                1px solid rgba(200,169,75,0.18);
 
-            background: rgba(255, 255, 255, 0.82);
-            backdrop-filter: blur(15px);
+            background:
+                rgba(8,8,8,0.72);
 
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(22px);
+
             border-radius: 18px;
 
             box-shadow:
-                0 15px 35px rgba(0, 0, 0, 0.08);
+                0 20px 70px rgba(0,0,0,0.35);
 
             z-index: 1000;
         }
 
         .logo {
-            text-decoration: none;
             font-family: "Cinzel", serif;
-            font-weight: 800;
-            font-size: 22px;
-            letter-spacing: 2px;
+
+            font-size: 21px;
+
+            font-weight: 900;
+
+            letter-spacing: 3px;
         }
 
         .logo span {
-            color: #a38327;
+            color: #c8a94b;
         }
 
         nav ul {
-            list-style: none;
             display: flex;
-            gap: 28px;
+            gap: 30px;
+
+            list-style: none;
         }
 
-        nav ul li a {
-            text-decoration: none;
-            font-size: 12px;
+        nav ul a {
+            color: #aaa;
+
+            font-size: 11px;
+
             font-weight: 700;
+
+            letter-spacing: 1px;
+
             transition: 0.3s;
         }
 
-        nav ul li a:hover {
-            color: #a38327;
+        nav ul a:hover {
+            color: #c8a94b;
         }
 
-        /* =========================================
-           MAIN PAGE
-        ========================================= */
 
-        .page {
-            width: 90%;
-            max-width: 1250px;
+        /* =========================================================
+           MAIN
+        ========================================================= */
 
-            margin: 110px auto 50px;
+        main {
+            width: min(94%, 1250px);
 
-            background: rgba(255, 255, 255, 0.74);
+            margin: 110px auto 40px;
 
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 28px;
+            border:
+                1px solid rgba(200,169,75,0.13);
 
-            box-shadow:
-                10px 12px 0 #111,
-                25px 30px 60px rgba(0, 0, 0, 0.16);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(15,15,15,0.82),
+                    rgba(7,7,7,0.92)
+                );
+
+            border-radius: 32px;
 
             overflow: hidden;
 
-            transition: transform 0.25s ease;
+            box-shadow:
+                0 40px 120px rgba(0,0,0,0.65);
         }
 
-        /* =========================================
+
+        /* =========================================================
            HERO
-        ========================================= */
+        ========================================================= */
 
         .hero {
-            min-height: 720px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            text-align: center;
-
-            padding: 100px 30px;
+            min-height: 760px;
 
             position: relative;
 
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(163, 131, 39, 0.12),
-                    transparent 45%
-                );
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 120px 30px;
         }
 
         .hero-content {
-            max-width: 850px;
+            max-width: 900px;
+
+            position: relative;
+
+            z-index: 5;
         }
 
-        .crest {
-            color: #a38327;
-            font-size: 28px;
-            letter-spacing: 10px;
-            margin-bottom: 25px;
+        .eyebrow {
+            color: #c8a94b;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 7px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 28px;
         }
 
         .hero h1 {
             font-family: "Cinzel", serif;
 
-            font-size: clamp(55px, 10vw, 110px);
+            font-size:
+                clamp(55px, 10vw, 115px);
 
-            line-height: 0.95;
+            line-height: 0.9;
 
             letter-spacing: 5px;
 
-            text-shadow:
-                5px 6px 0 rgba(0, 0, 0, 0.08);
+            font-weight: 900;
+
+            background:
+                linear-gradient(
+                    120deg,
+                    #f6f0dc,
+                    #c8a94b,
+                    #fff3b0,
+                    #9c792b
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+
+            background-size: 250% auto;
+
+            animation:
+                goldShine 7s linear infinite;
         }
 
-        .hero h1 span {
-            color: #a38327;
+        @keyframes goldShine {
+
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 250% center;
+            }
         }
 
         .hero h2 {
-            margin-top: 25px;
+            margin-top: 30px;
 
-            font-size: clamp(18px, 3vw, 28px);
-
-            font-weight: 600;
+            font-size:
+                clamp(16px, 2.5vw, 24px);
 
             letter-spacing: 4px;
+
+            color: #eee;
+
+            font-weight: 500;
+        }
+
+        .hero h2 span {
+            color: #c8a94b;
         }
 
         .hero p {
-            margin-top: 20px;
+            max-width: 700px;
 
-            color: #707070;
+            margin: 25px auto 0;
+
+            color: #8f8f8f;
 
             line-height: 1.9;
 
             font-size: 14px;
         }
 
-        /* =========================================
+
+        /* =========================================================
+           HERO ORB
+        ========================================================= */
+
+        .orb {
+            position: absolute;
+
+            width: 430px;
+            height: 430px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 35% 30%,
+                    rgba(255,240,170,0.22),
+                    transparent 7%
+                ),
+                radial-gradient(
+                    circle,
+                    rgba(200,169,75,0.12),
+                    transparent 62%
+                );
+
+            border:
+                1px solid rgba(200,169,75,0.2);
+
+            box-shadow:
+                inset 0 0 80px rgba(200,169,75,0.06),
+                0 0 100px rgba(200,169,75,0.08);
+
+            transform:
+                translateZ(-100px);
+
+            animation:
+                orbFloat 7s ease-in-out infinite;
+        }
+
+        .orb::before {
+            content: "龍";
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            font-family: "Cinzel", serif;
+
+            font-size: 180px;
+
+            color: rgba(200,169,75,0.055);
+
+            text-shadow:
+                0 0 50px rgba(200,169,75,0.08);
+        }
+
+        @keyframes orbFloat {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+
+            50% {
+                transform:
+                    translateY(-15px)
+                    scale(1.025);
+            }
+        }
+
+
+        /* =========================================================
            BUTTONS
-        ========================================= */
+        ========================================================= */
 
         .buttons {
-            margin-top: 35px;
+            margin-top: 40px;
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
         }
 
         .btn {
-            display: inline-block;
+            padding: 15px 28px;
 
-            padding: 15px 30px;
+            border-radius: 999px;
 
-            margin: 6px;
+            font-size: 11px;
 
-            border-radius: 50px;
-
-            font-size: 12px;
             font-weight: 800;
 
-            text-decoration: none;
+            letter-spacing: 1px;
 
-            transition: 0.35s;
+            transition:
+                transform 0.3s,
+                box-shadow 0.3s,
+                background 0.3s;
         }
 
-        .primary {
-            color: white;
-            background: #111;
+        .btn-primary {
+            color: #090909;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #f0d879,
+                    #a98228
+                );
 
             box-shadow:
-                0 7px 0 #777,
-                0 15px 30px rgba(0, 0, 0, 0.16);
+                0 10px 35px rgba(200,169,75,0.2);
         }
 
-        .primary:hover {
-            transform: translateY(-6px);
+        .btn-primary:hover {
+            transform: translateY(-5px);
 
             box-shadow:
-                0 12px 0 #777,
-                0 22px 35px rgba(0, 0, 0, 0.2);
+                0 18px 45px rgba(200,169,75,0.3);
         }
 
-        .gold {
-            color: #866a1d;
-            background: white;
+        .btn-outline {
+            border:
+                1px solid rgba(200,169,75,0.5);
 
-            border: 1px solid #a38327;
+            color: #d9bd61;
+
+            background:
+                rgba(200,169,75,0.03);
         }
 
-        .gold:hover {
-            background: #a38327;
-            color: white;
-            transform: translateY(-6px);
+        .btn-outline:hover {
+            background: #c8a94b;
+
+            color: #050505;
+
+            transform: translateY(-5px);
         }
 
-        /* =========================================
-           SECTIONS
-        ========================================= */
 
-        section {
-            padding: 100px 7%;
-            position: relative;
-            z-index: 5;
+        /* =========================================================
+           SECTION
+        ========================================================= */
+
+        section:not(.hero) {
+            padding: 110px 7%;
+
+            border-top:
+                1px solid rgba(255,255,255,0.05);
         }
 
-        .section-title {
+        .section-heading {
             text-align: center;
-            margin-bottom: 55px;
+
+            margin-bottom: 60px;
         }
 
-        .section-title small {
-            color: #a38327;
+        .section-heading small {
+            color: #c8a94b;
 
-            text-transform: uppercase;
+            font-size: 9px;
+
+            font-weight: 800;
 
             letter-spacing: 6px;
 
-            font-size: 10px;
-
-            font-weight: 800;
+            text-transform: uppercase;
         }
 
-        .section-title h2 {
+        .section-heading h2 {
+            margin-top: 12px;
+
             font-family: "Cinzel", serif;
 
-            font-size: clamp(34px, 5vw, 52px);
-
-            margin-top: 10px;
+            font-size:
+                clamp(35px, 5vw, 55px);
         }
 
-        .section-title h2 span {
-            color: #a38327;
+        .section-heading h2 span {
+            color: #c8a94b;
         }
 
-        /* =========================================
+
+        /* =========================================================
            ABOUT
-        ========================================= */
+        ========================================================= */
 
         .about {
             display: grid;
 
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns:
+                0.85fr 1.15fr;
 
             gap: 25px;
         }
 
-        .card {
+        .profile-card,
+        .about-card {
             padding: 35px;
+
+            border:
+                1px solid rgba(200,169,75,0.12);
 
             background:
                 linear-gradient(
                     145deg,
-                    rgba(255, 255, 255, 0.95),
-                    rgba(242, 239, 232, 0.9)
+                    rgba(255,255,255,0.045),
+                    rgba(255,255,255,0.015)
                 );
 
-            border: 1px solid rgba(0, 0, 0, 0.12);
+            border-radius: 24px;
 
-            border-radius: 22px;
-
-            box-shadow:
-                8px 9px 0 rgba(0, 0, 0, 0.06),
-                0 20px 35px rgba(0, 0, 0, 0.06);
+            backdrop-filter: blur(15px);
 
             transition: 0.4s;
         }
 
-        .card:hover {
+        .profile-card:hover,
+        .about-card:hover {
             transform:
-                translateY(-9px)
+                translateY(-8px)
                 rotateX(2deg);
 
-            box-shadow:
-                12px 15px 0 rgba(157, 123, 32, 0.12),
-                0 25px 45px rgba(0, 0, 0, 0.1);
+            border-color:
+                rgba(200,169,75,0.35);
         }
 
-        .card h3 {
+        .profile-image {
+            width: 180px;
+            height: 180px;
+
+            margin: 0 auto 25px;
+
+            border-radius: 50%;
+
+            border:
+                2px solid rgba(200,169,75,0.55);
+
+            padding: 6px;
+
+            overflow: hidden;
+
+            background: #111;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+        }
+
+        .profile-card {
+            text-align: center;
+        }
+
+        .profile-card h3 {
             font-family: "Cinzel", serif;
-            margin-bottom: 15px;
+
+            font-size: 23px;
         }
 
-        .card p {
-            color: #707070;
-            line-height: 1.8;
+        .profile-card p {
+            margin-top: 10px;
+
+            color: #888;
+
+            font-size: 12px;
+        }
+
+        .about-card h3 {
+            font-family: "Cinzel", serif;
+
+            font-size: 25px;
+
+            margin-bottom: 20px;
+        }
+
+        .about-card p {
+            color: #929292;
+
             font-size: 14px;
+
+            line-height: 2;
         }
 
-        /* =========================================
+
+        /* =========================================================
            SKILLS
-        ========================================= */
+        ========================================================= */
 
         .skills {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 18px;
+        }
+
+        .skill {
+            min-height: 190px;
+
+            padding: 30px;
+
+            position: relative;
+
+            border:
+                1px solid rgba(200,169,75,0.1);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.045),
+                    rgba(255,255,255,0.012)
+                );
+
+            border-radius: 22px;
+
+            transform-style: preserve-3d;
+
+            transition:
+                transform 0.4s,
+                border 0.4s;
+        }
+
+        .skill:hover {
+            transform:
+                perspective(900px)
+                rotateX(6deg)
+                rotateY(-6deg)
+                translateY(-10px);
+
+            border-color:
+                rgba(200,169,75,0.45);
+        }
+
+        .skill-icon {
+            color: #c8a94b;
+
+            font-size: 28px;
+
+            margin-bottom: 20px;
+        }
+
+        .skill h3 {
+            font-family: "Cinzel", serif;
+
+            font-size: 18px;
+        }
+
+        .skill p {
+            margin-top: 10px;
+
+            color: #858585;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================================
+           PROJECTS
+        ========================================================= */
+
+        .projects {
             display: grid;
 
             grid-template-columns:
@@ -490,97 +871,71 @@
             gap: 20px;
         }
 
-        .skill {
-            text-align: center;
-
-            padding: 32px 20px;
-
-            background: white;
-
-            border: 1px solid rgba(0, 0, 0, 0.1);
-
-            border-radius: 20px;
-
-            box-shadow:
-                7px 8px 0 rgba(0, 0, 0, 0.055);
-
-            transition: 0.35s;
-        }
-
-        .skill:hover {
-            transform: translateY(-10px);
-
-            border-color: #a38327;
-
-            box-shadow:
-                10px 13px 0 rgba(163, 131, 39, 0.14);
-        }
-
-        .skill-icon {
-            font-size: 35px;
-            margin-bottom: 15px;
-            color: #a38327;
-        }
-
-        .skill h3 {
-            font-family: "Cinzel", serif;
-            font-size: 17px;
-        }
-
-        .skill p {
-            margin-top: 9px;
-
-            color: #777;
-
-            font-size: 12px;
-
-            line-height: 1.6;
-        }
-
-        /* =========================================
-           PROJECTS
-        ========================================= */
-
-        .projects {
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 22px;
-        }
-
         .project {
-            padding: 32px;
+            min-height: 270px;
 
-            background: white;
+            padding: 30px;
 
-            border-radius: 22px;
+            position: relative;
 
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            overflow: hidden;
 
-            box-shadow:
-                0 18px 35px rgba(0, 0, 0, 0.07);
+            border:
+                1px solid rgba(200,169,75,0.12);
 
-            transition: 0.4s;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.05),
+                    rgba(255,255,255,0.012)
+                );
+
+            border-radius: 24px;
 
             transform-style: preserve-3d;
+
+            transition: 0.45s;
+        }
+
+        .project::after {
+            content: "";
+
+            position: absolute;
+
+            width: 150px;
+            height: 150px;
+
+            right: -70px;
+            bottom: -70px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(200,169,75,0.18),
+                    transparent 70%
+                );
         }
 
         .project:hover {
             transform:
-                translateY(-12px)
-                rotateX(3deg)
-                rotateY(-2deg);
+                perspective(900px)
+                rotateX(5deg)
+                rotateY(-5deg)
+                translateY(-12px);
+
+            border-color:
+                rgba(200,169,75,0.4);
 
             box-shadow:
-                0 30px 50px rgba(0, 0, 0, 0.13);
+                0 30px 70px rgba(0,0,0,0.35);
         }
 
         .project-number {
-            color: #a38327;
+            color: #c8a94b;
 
-            font-size: 10px;
+            font-size: 9px;
 
             letter-spacing: 4px;
 
@@ -588,48 +943,47 @@
         }
 
         .project h3 {
+            margin: 18px 0;
+
             font-family: "Cinzel", serif;
 
-            margin: 15px 0;
+            font-size: 21px;
         }
 
         .project p {
-            color: #707070;
+            color: #888;
 
-            font-size: 13px;
+            font-size: 12px;
 
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
         .project a {
             display: inline-block;
 
-            margin-top: 20px;
+            margin-top: 25px;
 
-            color: #866a1d;
+            color: #d7b958;
 
-            text-decoration: none;
-
-            font-size: 12px;
+            font-size: 11px;
 
             font-weight: 800;
+
+            letter-spacing: 1px;
         }
 
-        .project a:hover {
-            color: #111;
-        }
 
-        /* =========================================
+        /* =========================================================
            SOCIAL
-        ========================================= */
+        ========================================================= */
 
         .social {
             display: grid;
 
             grid-template-columns:
-                repeat(5, 1fr);
+                repeat(6, 1fr);
 
-            gap: 14px;
+            gap: 12px;
         }
 
         .social a {
@@ -637,131 +991,140 @@
 
             text-align: center;
 
-            text-decoration: none;
+            border:
+                1px solid rgba(200,169,75,0.1);
 
-            color: #111;
-
-            background: white;
-
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            background:
+                rgba(255,255,255,0.025);
 
             border-radius: 18px;
-
-            font-weight: 800;
 
             transition: 0.35s;
         }
 
-        .social a i {
+        .social i {
             display: block;
+
+            color: #c8a94b;
 
             font-size: 22px;
 
-            margin-bottom: 10px;
-
-            color: #a38327;
+            margin-bottom: 12px;
         }
 
-        .social a:hover {
-            transform: translateY(-8px);
+        .social strong {
+            display: block;
 
-            color: #a38327;
-
-            border-color: #a38327;
+            font-size: 11px;
         }
 
         .social span {
             display: block;
 
-            color: #888;
+            color: #666;
 
-            font-size: 9px;
+            font-size: 8px;
 
             margin-top: 7px;
         }
 
-        /* =========================================
+        .social a:hover {
+            transform: translateY(-8px);
+
+            border-color:
+                rgba(200,169,75,0.45);
+
+            background:
+                rgba(200,169,75,0.06);
+        }
+
+
+        /* =========================================================
            CONTACT
-        ========================================= */
+        ========================================================= */
 
         .contact {
             text-align: center;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(0, 0, 0, 0.035),
-                    rgba(163, 131, 39, 0.08)
-                );
-        }
-
-        .contact h2 {
-            font-family: "Cinzel", serif;
-
-            font-size: 40px;
-
-            margin-bottom: 15px;
         }
 
         .contact p {
-            color: #707070;
-
-            max-width: 600px;
+            max-width: 620px;
 
             margin: auto;
 
-            line-height: 1.8;
+            color: #888;
+
+            line-height: 1.9;
+
+            font-size: 14px;
         }
 
         .contact-buttons {
-            margin-top: 30px;
+            margin-top: 35px;
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
         }
 
-        /* =========================================
+
+        /* =========================================================
            FOOTER
-        ========================================= */
+        ========================================================= */
 
         footer {
-            position: relative;
-
-            z-index: 5;
+            padding: 35px;
 
             text-align: center;
 
-            padding: 40px;
+            color: #555;
 
-            color: #888;
+            font-size: 10px;
 
-            font-size: 11px;
+            border-top:
+                1px solid rgba(255,255,255,0.05);
         }
 
         footer strong {
-            color: #111;
+            color: #c8a94b;
         }
 
-        /* =========================================
-           MOBILE
-        ========================================= */
 
-        @media (max-width: 900px) {
+        /* =========================================================
+           SCROLL REVEAL
+        ========================================================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform:
+                translateY(35px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+        /* =========================================================
+           MOBILE
+        ========================================================= */
+
+        @media (max-width: 1000px) {
 
             nav ul {
                 display: none;
-            }
-
-            .page {
-                width: 94%;
-
-                margin-top: 100px;
-
-                box-shadow:
-                    8px 9px 0 #111,
-                    20px 25px 45px rgba(0, 0, 0, 0.16);
-            }
-
-            .about,
-            .projects {
-                grid-template-columns: 1fr;
             }
 
             .skills {
@@ -769,82 +1132,137 @@
                     repeat(2, 1fr);
             }
 
+            .projects {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .social {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            main {
+                width: 94%;
+
+                margin-top: 95px;
+
+                border-radius: 22px;
+            }
+
+            .hero {
+                min-height: 650px;
+
+                padding: 100px 20px;
+            }
+
+            .orb {
+                width: 290px;
+                height: 290px;
+            }
+
+            .orb::before {
+                font-size: 120px;
+            }
+
+            .about,
+            .skills,
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
             .social {
                 grid-template-columns:
                     repeat(2, 1fr);
             }
 
-            .hero {
-                min-height: 650px;
+            section:not(.hero) {
+                padding:
+                    80px 6%;
             }
+
         }
 
-        @media (max-width: 500px) {
+
+        @media (max-width: 430px) {
 
             nav {
-                width: 94%;
+                padding:
+                    14px 17px;
             }
 
             .logo {
-                font-size: 18px;
+                font-size: 17px;
             }
 
-            .skills,
+            .hero h1 {
+                font-size: 48px;
+
+                letter-spacing: 2px;
+            }
+
+            .hero h2 {
+                font-size: 15px;
+
+                letter-spacing: 2px;
+            }
+
+            .hero p {
+                font-size: 12px;
+            }
+
             .social {
                 grid-template-columns: 1fr;
             }
 
-            .hero {
-                min-height: 600px;
-
-                padding:
-                    100px 20px;
+            .btn {
+                width: 100%;
             }
 
-            .hero h1 {
-                font-size: 52px;
-            }
-
-            .hero h2 {
-                font-size: 17px;
-                letter-spacing: 2px;
-            }
-
-            section {
-                padding:
-                    70px 6%;
-            }
-
-            .contact h2 {
-                font-size: 32px;
-            }
         }
 
     </style>
 </head>
 
+
 <body>
 
-    <!-- GOLD PARTICLES -->
+    <!-- =========================================================
+         BACKGROUND
+    ========================================================== -->
 
-    <div class="particles">
+    <div class="background"></div>
+
+    <div class="grid"></div>
+
+    <canvas id="scene"></canvas>
+
+    <div class="tribal left"></div>
+    <div class="tribal right"></div>
+
+
+    <!-- GOLD DUST -->
+
+    <div class="dust">
+
         <span></span>
         <span></span>
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-        <span></span>
+
     </div>
 
-    <!-- MOUSE LIGHT -->
 
-    <div class="mouse-glow" id="mouseGlow"></div>
-
-
-    <!-- =========================================
+    <!-- =========================================================
          NAVIGATION
-    ========================================= -->
+    ========================================================== -->
 
     <nav>
 
@@ -853,73 +1271,81 @@
         </a>
 
         <ul>
+
             <li>
-                <a href="#about">About</a>
+                <a href="#about">ABOUT</a>
             </li>
 
             <li>
-                <a href="#skills">Skills</a>
+                <a href="#skills">SKILLS</a>
             </li>
 
             <li>
-                <a href="#projects">Projects</a>
+                <a href="#projects">PROJECTS</a>
             </li>
 
             <li>
-                <a href="#social">Social</a>
+                <a href="#social">SOCIAL</a>
             </li>
 
             <li>
-                <a href="#contact">Contact</a>
+                <a href="#contact">CONTACT</a>
             </li>
+
         </ul>
 
     </nav>
 
 
-    <!-- =========================================
+    <!-- =========================================================
          MAIN
-    ========================================= -->
+    ========================================================== -->
 
-    <main class="page">
+    <main>
 
 
-        <!-- =====================================
+        <!-- =====================================================
              HERO
-        ===================================== -->
+        ====================================================== -->
 
         <section class="hero">
 
-            <div class="hero-content">
+            <div class="orb"></div>
 
-                <div class="crest">
-                    ✦ ◇ ✦
+            <div class="hero-content reveal">
+
+                <div class="eyebrow">
+                    Creative Technology · Digital Art
                 </div>
 
                 <h1>
-                    AMIR <span>BORANI</span>
+                    AMIR<br>
+                    BORANI
                 </h1>
 
                 <h2>
-                    Creative Digital Artist
+                    Creative Developer
+                    <span>·</span>
+                    Digital Artist
                 </h2>
 
                 <p>
-                    Video Editor • Content Creator • Web Designer
-                    <br>
-                    AI Enthusiast • Programmer • Streamer
+                    Programming · Video Editing · Graphic Design ·
+                    Photography · AI · Streaming
                 </p>
 
                 <div class="buttons">
 
-                    <a href="#projects"
-                       class="btn primary">
-                        Explore My Work
+                    <a
+                        href="#projects"
+                        class="btn btn-primary">
+                        EXPLORE MY WORK
                     </a>
 
-                    <a href="#contact"
-                       class="btn gold">
-                        Let's Work Together
+                    <a
+                        href="#contact"
+                        class="btn btn-outline">
+                        LET'S WORK TOGETHER
                     </a>
 
                 </div>
@@ -929,16 +1355,16 @@
         </section>
 
 
-        <!-- =====================================
+        <!-- =====================================================
              ABOUT
-        ===================================== -->
+        ====================================================== -->
 
         <section id="about">
 
-            <div class="section-title">
+            <div class="section-heading reveal">
 
                 <small>
-                    My Story
+                    Who I Am
                 </small>
 
                 <h2>
@@ -950,32 +1376,55 @@
 
             <div class="about">
 
-                <div class="card">
+                <div class="profile-card reveal">
+
+                    <div class="profile-image">
+
+                        <!--
+                        IMPORTANT:
+                        Put your real GitHub image here.
+
+                        Example:
+                        images/profile.jpg
+                        -->
+
+                        <img
+                            src="images/profile.jpg"
+                            alt="Amir Borani">
+
+                    </div>
 
                     <h3>
-                        Who I Am
+                        Amir Borani
                     </h3>
 
                     <p>
-                        I'm Amir Borani, a creative digital creator
-                        interested in video editing, web design,
-                        artificial intelligence, programming,
-                        streaming and digital content.
+                        Creative Developer · Editor · Designer
                     </p>
 
                 </div>
 
 
-                <div class="card">
+                <div class="about-card reveal">
 
                     <h3>
-                        My Vision
+                        Creativity Meets Technology
                     </h3>
 
                     <p>
-                        I combine creativity and technology to build
-                        modern visual experiences, digital projects
-                        and engaging content that stands out.
+                        I'm Amir Borani, a multidisciplinary digital
+                        creator working across programming, web design,
+                        video editing, graphic design, photography,
+                        artificial intelligence and live streaming.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        I enjoy combining technology and visual
+                        creativity to build digital experiences,
+                        content and projects that feel modern,
+                        original and memorable.
                     </p>
 
                 </div>
@@ -985,16 +1434,16 @@
         </section>
 
 
-        <!-- =====================================
+        <!-- =====================================================
              SKILLS
-        ===================================== -->
+        ====================================================== -->
 
         <section id="skills">
 
-            <div class="section-title">
+            <div class="section-heading reveal">
 
                 <small>
-                    Expertise
+                    What I Do
                 </small>
 
                 <h2>
@@ -1007,58 +1456,7 @@
             <div class="skills">
 
 
-                <div class="skill">
-
-                    <div class="skill-icon">
-                        <i class="fa-solid fa-video"></i>
-                    </div>
-
-                    <h3>
-                        Video Editing
-                    </h3>
-
-                    <p>
-                        CapCut • Premiere Pro • Short-form Content
-                    </p>
-
-                </div>
-
-
-                <div class="skill">
-
-                    <div class="skill-icon">
-                        <i class="fa-solid fa-palette"></i>
-                    </div>
-
-                    <h3>
-                        Graphic Design
-                    </h3>
-
-                    <p>
-                        Photoshop • Thumbnails • Visual Design
-                    </p>
-
-                </div>
-
-
-                <div class="skill">
-
-                    <div class="skill-icon">
-                        <i class="fa-solid fa-globe"></i>
-                    </div>
-
-                    <h3>
-                        Web Design
-                    </h3>
-
-                    <p>
-                        HTML • CSS • Responsive Websites
-                    </p>
-
-                </div>
-
-
-                <div class="skill">
+                <div class="skill reveal">
 
                     <div class="skill-icon">
                         <i class="fa-solid fa-code"></i>
@@ -1069,13 +1467,86 @@
                     </h3>
 
                     <p>
-                        Web Development • Coding • Learning
+                        Web development, coding and
+                        creative digital projects.
                     </p>
 
                 </div>
 
 
-                <div class="skill">
+                <div class="skill reveal">
+
+                    <div class="skill-icon">
+                        <i class="fa-solid fa-globe"></i>
+                    </div>
+
+                    <h3>
+                        Web Design
+                    </h3>
+
+                    <p>
+                        Modern responsive websites
+                        with HTML, CSS and JavaScript.
+                    </p>
+
+                </div>
+
+
+                <div class="skill reveal">
+
+                    <div class="skill-icon">
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+
+                    <h3>
+                        Video Editing
+                    </h3>
+
+                    <p>
+                        TikTok, YouTube Shorts, Reels
+                        and creative video content.
+                    </p>
+
+                </div>
+
+
+                <div class="skill reveal">
+
+                    <div class="skill-icon">
+                        <i class="fa-solid fa-palette"></i>
+                    </div>
+
+                    <h3>
+                        Graphic Design
+                    </h3>
+
+                    <p>
+                        Photoshop, thumbnails,
+                        branding and digital visuals.
+                    </p>
+
+                </div>
+
+
+                <div class="skill reveal">
+
+                    <div class="skill-icon">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+
+                    <h3>
+                        Photography
+                    </h3>
+
+                    <p>
+                        Creative photography,
+                        composition and photo editing.
+                    </p>
+
+                </div>
+
+
+                <div class="skill reveal">
 
                     <div class="skill-icon">
                         <i class="fa-solid fa-robot"></i>
@@ -1086,16 +1557,17 @@
                     </h3>
 
                     <p>
-                        AI Tools • Creative Workflows • Automation
+                        AI tools, creative workflows,
+                        automation and experimentation.
                     </p>
 
                 </div>
 
 
-                <div class="skill">
+                <div class="skill reveal">
 
                     <div class="skill-icon">
-                        <i class="fa-solid fa-gamepad"></i>
+                        <i class="fa-solid fa-tower-broadcast"></i>
                     </div>
 
                     <h3>
@@ -1103,31 +1575,67 @@
                     </h3>
 
                     <p>
-                        Gaming • GTA V • Live Content
+                        Kick streaming, gaming,
+                        GTA V and live content.
                     </p>
 
                 </div>
 
+
+                <div class="skill reveal">
+
+                    <div class="skill-icon">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    </div>
+
+                    <h3>
+                        Content Creation
+                    </h3>
+
+                    <p>
+                        Social media strategy,
+                        creative concepts and digital content.
+                    </p>
+
+                </div>
+
+
+                <div class="skill reveal">
+
+                    <div class="skill-icon">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+
+                    <h3>
+                        GitHub
+                    </h3>
+
+                    <p>
+                        Version control, repositories
+                        and publishing projects online.
+                    </p>
+
+                </div>
 
             </div>
 
         </section>
 
 
-        <!-- =====================================
+        <!-- =====================================================
              PROJECTS
-        ===================================== -->
+        ====================================================== -->
 
         <section id="projects">
 
-            <div class="section-title">
+            <div class="section-heading reveal">
 
                 <small>
-                    Selected Work
+                    Real Work
                 </small>
 
                 <h2>
-                    My <span>Projects</span>
+                    Selected <span>Projects</span>
                 </h2>
 
             </div>
@@ -1136,12 +1644,10 @@
             <div class="projects">
 
 
-                <!-- PROJECT 01 -->
-
-                <div class="project">
+                <div class="project reveal">
 
                     <div class="project-number">
-                        01 — VIDEO
+                        01 · SOCIAL CONTENT
                     </div>
 
                     <h3>
@@ -1149,104 +1655,80 @@
                     </h3>
 
                     <p>
-                        Short-form videos and creative content
-                        created for social media.
+                        Short-form video content,
+                        editing and creative social media work.
                     </p>
 
-                    <a href="https://www.tiktok.com/@amirsoltan086"
-                       target="_blank"
-                       rel="noopener noreferrer">
+                    <a
+                        href="https://www.tiktok.com/@amirsoltan086"
+                        target="_blank"
+                        rel="noopener noreferrer">
 
-                        View TikTok →
+                        VIEW TIKTOK →
+
                     </a>
 
                 </div>
 
 
-                <!-- PROJECT 02 -->
-
-                <div class="project">
+                <div class="project reveal">
 
                     <div class="project-number">
-                        02 — STREAMING
+                        02 · STREAMING
                     </div>
 
                     <h3>
-                        GTA V Streaming
+                        Kick Streaming
                     </h3>
 
                     <p>
-                        Gaming content and live streaming
-                        focused on GTA V.
+                        Gaming and live streaming content
+                        focused on GTA V and entertainment.
                     </p>
 
-                    <a href="https://kick.com/amirgtalive"
-                       target="_blank"
-                       rel="noopener noreferrer">
+                    <a
+                        href="https://kick.com/amirgtalive"
+                        target="_blank"
+                        rel="noopener noreferrer">
 
-                        Watch Kick →
+                        WATCH KICK →
+
                     </a>
 
                 </div>
 
 
-                <!-- PROJECT 03 -->
-
-                <div class="project">
+                <div class="project reveal">
 
                     <div class="project-number">
-                        03 — WEB
+                        03 · WEB DEVELOPMENT
                     </div>
 
                     <h3>
-                        Portfolio Website
+                        Personal Portfolio
                     </h3>
 
                     <p>
-                        A modern personal portfolio built
-                        using HTML and CSS.
+                        A custom portfolio website built
+                        with HTML, CSS and JavaScript.
                     </p>
 
-                    <a href="https://github.com/amirborani/portfolio-website"
-                       target="_blank"
-                       rel="noopener noreferrer">
+                    <a
+                        href="https://github.com/amirborani/portfolio-website"
+                        target="_blank"
+                        rel="noopener noreferrer">
 
-                        View GitHub →
+                        VIEW GITHUB →
+
                     </a>
 
                 </div>
 
 
-                <!-- PROJECT 04 -->
-
-                <div class="project">
+                <div class="project reveal">
 
                     <div class="project-number">
-                        04 — AI
-                    </div>
-
-                    <h3>
-                        AI Creative Projects
-                    </h3>
-
-                    <p>
-                        Exploring artificial intelligence
-                        for digital content creation.
-                    </p>
-
-                    <a href="#contact">
-                        Collaborate →
-                    </a>
-
-                </div>
-
-
-                <!-- PROJECT 05 -->
-
-                <div class="project">
-
-                    <div class="project-number">
-                        05 — YOUTUBE
+                        04 · YOUTUBE
                     </div>
 
                     <h3>
@@ -1254,62 +1736,87 @@
                     </h3>
 
                     <p>
-                        Creative videos and digital
-                        content projects.
+                        Video content and creative projects
+                        published on YouTube.
                     </p>
 
-                    <a href="https://www.youtube.com/@ayoubrider8433"
-                       target="_blank"
-                       rel="noopener noreferrer">
+                    <a
+                        href="https://www.youtube.com/@ayoubrider8433"
+                        target="_blank"
+                        rel="noopener noreferrer">
 
-                        View YouTube →
+                        WATCH YOUTUBE →
+
                     </a>
 
                 </div>
 
 
-                <!-- PROJECT 06 -->
-
-                <div class="project">
+                <div class="project reveal">
 
                     <div class="project-number">
-                        06 — DEVELOPMENT
+                        05 · AI
                     </div>
 
                     <h3>
-                        Programming
+                        AI Creative Work
                     </h3>
 
                     <p>
-                        Learning and building websites,
-                        tools and creative digital projects.
+                        Exploring AI-powered workflows
+                        for images, videos and digital creation.
                     </p>
 
-                    <a href="https://github.com/amirborani"
-                       target="_blank"
-                       rel="noopener noreferrer">
+                    <a href="#contact">
 
-                        View GitHub →
+                        COLLABORATE →
+
                     </a>
 
                 </div>
 
+
+                <div class="project reveal">
+
+                    <div class="project-number">
+                        06 · DEVELOPMENT
+                    </div>
+
+                    <h3>
+                        GitHub Projects
+                    </h3>
+
+                    <p>
+                        Programming experiments, websites
+                        and digital development projects.
+                    </p>
+
+                    <a
+                        href="https://github.com/amirborani"
+                        target="_blank"
+                        rel="noopener noreferrer">
+
+                        VIEW GITHUB →
+
+                    </a>
+
+                </div>
 
             </div>
 
         </section>
 
 
-        <!-- =====================================
+        <!-- =====================================================
              SOCIAL MEDIA
-        ===================================== -->
+        ====================================================== -->
 
         <section id="social">
 
-            <div class="section-title">
+            <div class="section-heading reveal">
 
                 <small>
-                    Connect
+                    Find Me Online
                 </small>
 
                 <h2>
@@ -1322,13 +1829,15 @@
             <div class="social">
 
 
-                <a href="https://www.tiktok.com/@amirsoltan086"
-                   target="_blank"
-                   rel="noopener noreferrer">
+                <a
+                    href="https://www.tiktok.com/@amirsoltan086"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="reveal">
 
                     <i class="fa-brands fa-tiktok"></i>
 
-                    TikTok
+                    <strong>TikTok</strong>
 
                     <span>
                         @amirsoltan086
@@ -1337,13 +1846,15 @@
                 </a>
 
 
-                <a href="https://www.youtube.com/@ayoubrider8433"
-                   target="_blank"
-                   rel="noopener noreferrer">
+                <a
+                    href="https://www.youtube.com/@ayoubrider8433"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="reveal">
 
                     <i class="fa-brands fa-youtube"></i>
 
-                    YouTube
+                    <strong>YouTube</strong>
 
                     <span>
                         @ayoubrider8433
@@ -1352,13 +1863,15 @@
                 </a>
 
 
-                <a href="https://www.instagram.com/soltanamir007/"
-                   target="_blank"
-                   rel="noopener noreferrer">
+                <a
+                    href="https://www.instagram.com/soltanamir007/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="reveal">
 
                     <i class="fa-brands fa-instagram"></i>
 
-                    Instagram
+                    <strong>Instagram</strong>
 
                     <span>
                         @soltanamir007
@@ -1367,13 +1880,15 @@
                 </a>
 
 
-                <a href="https://www.facebook.com/profile.php?id=61585599247149"
-                   target="_blank"
-                   rel="noopener noreferrer">
+                <a
+                    href="https://www.facebook.com/profile.php?id=61585599247149"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="reveal">
 
                     <i class="fa-brands fa-facebook"></i>
 
-                    Facebook
+                    <strong>Facebook</strong>
 
                     <span>
                         Amir Borani
@@ -1382,13 +1897,15 @@
                 </a>
 
 
-                <a href="https://kick.com/amirgtalive"
-                   target="_blank"
-                   rel="noopener noreferrer">
+                <a
+                    href="https://kick.com/amirgtalive"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="reveal">
 
                     <i class="fa-solid fa-tower-broadcast"></i>
 
-                    Kick
+                    <strong>Kick</strong>
 
                     <span>
                         @AmirGTALive
@@ -1397,54 +1914,79 @@
                 </a>
 
 
+                <a
+                    href="https://github.com/amirborani"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="reveal">
+
+                    <i class="fa-brands fa-github"></i>
+
+                    <strong>GitHub</strong>
+
+                    <span>
+                        @amirborani
+                    </span>
+
+                </a>
+
             </div>
 
         </section>
 
 
-        <!-- =====================================
+        <!-- =====================================================
              CONTACT
-        ===================================== -->
+        ====================================================== -->
 
-        <section id="contact"
-                 class="contact">
+        <section id="contact" class="contact">
 
-            <div class="section-title">
+            <div class="section-heading reveal">
 
                 <small>
-                    Let's Connect
+                    Let's Create
                 </small>
 
                 <h2>
-                    Create Something <span>Great</span>
+                    Let's Build Something
+                    <span>Great</span>
                 </h2>
 
             </div>
 
 
-            <p>
+            <p class="reveal">
+
                 Have a project, collaboration or creative idea?
-                Let's build something unique together.
+                I'm always interested in creating something
+                modern and different.
+
             </p>
 
 
-            <div class="contact-buttons">
+            <div class="contact-buttons reveal">
 
-                <a class="btn primary"
-                   href="https://wa.me/660820196851"
-                   target="_blank"
-                   rel="noopener noreferrer">
+                <a
+                    href="https://wa.me/660820196851"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-primary">
 
                     <i class="fa-brands fa-whatsapp"></i>
-                    WhatsApp
+
+                    WHATSAPP
+
                 </a>
 
 
-                <a class="btn gold"
-                   href="mailto:anouarayoub66@gmail.com">
+                <a
+                    href="mailto:anouarayoub66@gmail.com"
+                    class="btn btn-outline">
 
                     <i class="fa-solid fa-envelope"></i>
-                    Email Me
+
+                    EMAIL ME
+
                 </a>
 
             </div>
@@ -1452,117 +1994,411 @@
         </section>
 
 
-        <!-- =====================================
+        <!-- =====================================================
              FOOTER
-        ===================================== -->
+        ====================================================== -->
 
         <footer>
 
             © 2026
-            <strong>Amir Borani</strong>
-            — Creative Digital Portfolio
+            <strong>AMIR BORANI</strong>
+            · Creative Digital Portfolio
 
         </footer>
-
 
     </main>
 
 
-    <!-- =========================================
+    <!-- =========================================================
          JAVASCRIPT
-    ========================================= -->
+    ========================================================== -->
 
     <script>
 
-        /* =====================================
-           MOUSE GOLD LIGHT
-        ===================================== */
+        /* =====================================================
+           THREE.JS 3D SCENE
+        ====================================================== */
 
-        const glow =
-            document.getElementById("mouseGlow");
+        const canvas =
+            document.getElementById("scene");
 
-        document.addEventListener("mousemove", function (event) {
+        const scene =
+            new THREE.Scene();
 
-            glow.style.left =
-                event.clientX + "px";
+        const camera =
+            new THREE.PerspectiveCamera(
+                60,
+                window.innerWidth / window.innerHeight,
+                0.1,
+                1000
+            );
 
-            glow.style.top =
-                event.clientY + "px";
-
-        });
+        camera.position.z = 5;
 
 
-        /* =====================================
-           SUBTLE 3D PAGE MOVEMENT
-        ===================================== */
+        const renderer =
+            new THREE.WebGLRenderer({
+                canvas: canvas,
+                alpha: true,
+                antialias: true
+            });
 
-        const page =
-            document.querySelector(".page");
+        renderer.setPixelRatio(
+            Math.min(window.devicePixelRatio, 2)
+        );
 
-        document.addEventListener("mousemove", function (event) {
+        renderer.setSize(
+            window.innerWidth,
+            window.innerHeight
+        );
 
-            if (window.innerWidth < 900) {
-                return;
+
+        /* =====================================================
+           GOLD PARTICLES
+        ====================================================== */
+
+        const particleCount = 900;
+
+        const positions =
+            new Float32Array(
+                particleCount * 3
+            );
+
+        for (
+            let i = 0;
+            i < particleCount;
+            i++
+        ) {
+
+            const radius =
+                4 + Math.random() * 8;
+
+            const angle =
+                Math.random() * Math.PI * 2;
+
+            positions[i * 3] =
+                Math.cos(angle) * radius;
+
+            positions[i * 3 + 1] =
+                (Math.random() - 0.5) * 9;
+
+            positions[i * 3 + 2] =
+                (Math.random() - 0.5) * 8;
+
+        }
+
+
+        const particleGeometry =
+            new THREE.BufferGeometry();
+
+        particleGeometry.setAttribute(
+            "position",
+            new THREE.BufferAttribute(
+                positions,
+                3
+            )
+        );
+
+
+        const particleMaterial =
+            new THREE.PointsMaterial({
+                color: 0xc8a94b,
+                size: 0.025,
+                transparent: true,
+                opacity: 0.55
+            });
+
+
+        const particles =
+            new THREE.Points(
+                particleGeometry,
+                particleMaterial
+            );
+
+        scene.add(particles);
+
+
+        /* =====================================================
+           3D TORUS
+        ====================================================== */
+
+        const torusGeometry =
+            new THREE.TorusGeometry(
+                2.1,
+                0.018,
+                12,
+                120
+            );
+
+        const torusMaterial =
+            new THREE.MeshBasicMaterial({
+                color: 0xc8a94b,
+                transparent: true,
+                opacity: 0.35
+            });
+
+        const torus =
+            new THREE.Mesh(
+                torusGeometry,
+                torusMaterial
+            );
+
+        torus.rotation.x =
+            Math.PI / 2.4;
+
+        scene.add(torus);
+
+
+        /* =====================================================
+           SECOND RING
+        ====================================================== */
+
+        const ringGeometry =
+            new THREE.TorusGeometry(
+                2.7,
+                0.012,
+                12,
+                120
+            );
+
+        const ringMaterial =
+            new THREE.MeshBasicMaterial({
+                color: 0x9c792b,
+                transparent: true,
+                opacity: 0.2
+            });
+
+        const ring =
+            new THREE.Mesh(
+                ringGeometry,
+                ringMaterial
+            );
+
+        ring.rotation.x =
+            Math.PI / 2;
+
+        ring.rotation.y =
+            0.5;
+
+        scene.add(ring);
+
+
+        /* =====================================================
+           MOUSE MOVEMENT
+        ====================================================== */
+
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener(
+            "mousemove",
+            (event) => {
+
+                mouseX =
+                    (event.clientX /
+                        window.innerWidth
+                    ) * 2 - 1;
+
+                mouseY =
+                    -(event.clientY /
+                        window.innerHeight
+                    ) * 2 + 1;
+
             }
-
-            const x =
-                (window.innerWidth / 2 - event.clientX) / 180;
-
-            const y =
-                (window.innerHeight / 2 - event.clientY) / 220;
-
-            page.style.transform =
-                `perspective(1400px)
-                 rotateY(${x}deg)
-                 rotateX(${y}deg)`;
-
-        });
+        );
 
 
-        document.addEventListener("mouseleave", function () {
+        /* =====================================================
+           ANIMATION
+        ====================================================== */
 
-            page.style.transform =
-                "perspective(1400px) rotateY(0deg) rotateX(0deg)";
+        const clock =
+            new THREE.Clock();
 
-        });
+        function animate() {
+
+            requestAnimationFrame(
+                animate
+            );
+
+            const time =
+                clock.getElapsedTime();
 
 
-        /* =====================================
-           ACTIVE NAVIGATION
-        ===================================== */
+            particles.rotation.y =
+                time * 0.015;
 
-        const sections =
-            document.querySelectorAll("section[id]");
+            particles.rotation.x =
+                Math.sin(time * 0.1) * 0.05;
 
-        const navLinks =
-            document.querySelectorAll("nav a[href^='#']");
 
-        window.addEventListener("scroll", function () {
+            torus.rotation.z =
+                time * 0.15;
 
-            let current = "";
+            torus.rotation.x +=
+                (mouseY * 0.4 -
+                    torus.rotation.x) * 0.02;
 
-            sections.forEach(function (section) {
 
-                const sectionTop =
-                    section.offsetTop - 150;
+            ring.rotation.z =
+                -time * 0.08;
 
-                if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute("id");
+
+            scene.rotation.y +=
+                (mouseX * 0.12 -
+                    scene.rotation.y) * 0.025;
+
+
+            scene.rotation.x +=
+                (-mouseY * 0.08 -
+                    scene.rotation.x) * 0.025;
+
+
+            renderer.render(
+                scene,
+                camera
+            );
+
+        }
+
+        animate();
+
+
+        /* =====================================================
+           RESIZE
+        ====================================================== */
+
+        window.addEventListener(
+            "resize",
+            () => {
+
+                camera.aspect =
+                    window.innerWidth /
+                    window.innerHeight;
+
+                camera.updateProjectionMatrix();
+
+                renderer.setSize(
+                    window.innerWidth,
+                    window.innerHeight
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           SCROLL REVEAL
+        ====================================================== */
+
+        const reveals =
+            document.querySelectorAll(
+                ".reveal"
+            );
+
+        const observer =
+            new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach(
+                        (entry) => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target.classList.add(
+                                    "visible"
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.12
                 }
+            );
 
-            });
 
-            navLinks.forEach(function (link) {
+        reveals.forEach(
+            (element) => {
+                observer.observe(element);
+            }
+        );
 
-                link.style.color = "";
 
-                if (link.getAttribute("href") === "#" + current) {
-                    link.style.color = "#a38327";
-                }
+        /* =====================================================
+           3D PROJECT CARD TILT
+        ====================================================== */
 
-            });
+        const cards =
+            document.querySelectorAll(
+                ".project, .skill"
+            );
 
-        });
+        cards.forEach(
+            (card) => {
+
+                card.addEventListener(
+                    "mousemove",
+                    (event) => {
+
+                        if (
+                            window.innerWidth < 800
+                        ) {
+                            return;
+                        }
+
+                        const rect =
+                            card.getBoundingClientRect();
+
+                        const x =
+                            event.clientX -
+                            rect.left;
+
+                        const y =
+                            event.clientY -
+                            rect.top;
+
+                        const centerX =
+                            rect.width / 2;
+
+                        const centerY =
+                            rect.height / 2;
+
+                        const rotateY =
+                            (x - centerX) /
+                            22;
+
+                        const rotateX =
+                            (centerY - y) /
+                            22;
+
+                        card.style.transform =
+                            `perspective(900px)
+                             rotateX(${rotateX}deg)
+                             rotateY(${rotateY}deg)
+                             translateY(-10px)`;
+
+                    }
+                );
+
+
+                card.addEventListener(
+                    "mouseleave",
+                    () => {
+
+                        card.style.transform =
+                            "";
+
+                    }
+                );
+
+            }
+        );
 
     </script>
 
