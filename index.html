@@ -4,514 +4,205 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amir Borani | Digital Creator</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Amir Borani | Creative Digital Artist</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    scroll-behavior:smooth;
+}
+
+html,body{
+    width:100%;
+    height:100%;
 }
 
 body{
-    font-family:'Poppins',sans-serif;
-    background:#050505;
-    color:#fff;
-    overflow-x:hidden;
+    overflow:hidden;
+    font-family:Poppins,sans-serif;
+    background:#07120e;
 }
 
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:
-      radial-gradient(circle at 15% 20%, rgba(163,131,39,.15), transparent 25%),
-      radial-gradient(circle at 85% 70%, rgba(163,131,39,.10), transparent 30%);
-    pointer-events:none;
-    z-index:-2;
-}
 
-body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    background-image:
-      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-    background-size:55px 55px;
-    mask-image:linear-gradient(to bottom,black,transparent);
-    pointer-events:none;
-    z-index:-1;
-}
-
-.gold{
-    color:#d4af37;
-}
-
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    padding:20px 6%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    backdrop-filter:blur(15px);
-    background:rgba(5,5,5,.65);
-    border-bottom:1px solid rgba(212,175,55,.15);
-    z-index:1000;
-}
-
-.logo{
-    font-family:'Cinzel',serif;
-    font-size:22px;
-    color:#d4af37;
-    letter-spacing:2px;
-}
-
-nav ul{
-    display:flex;
-    list-style:none;
-    gap:30px;
-}
-
-nav a{
-    color:#bbb;
-    text-decoration:none;
-    font-size:14px;
-    transition:.3s;
-}
-
-nav a:hover{
-    color:#d4af37;
-}
+/* =====================================
+   MAIN WORLD
+===================================== */
 
 .hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    padding:120px 8% 70px;
+
     position:relative;
-}
 
-.hero-content{
-    max-width:850px;
-}
+    width:100vw;
+    height:100vh;
 
-.profile{
-    width:95px;
-    height:95px;
-    border-radius:50%;
-    object-fit:cover;
-    border:2px solid #d4af37;
-    padding:4px;
-    box-shadow:
-        0 0 15px rgba(212,175,55,.35),
-        0 0 50px rgba(212,175,55,.12);
-    margin-bottom:25px;
-}
-
-.badge{
-    display:inline-block;
-    padding:8px 16px;
-    border:1px solid rgba(212,175,55,.45);
-    border-radius:30px;
-    color:#d4af37;
-    font-size:12px;
-    letter-spacing:2px;
-    margin-bottom:22px;
-    background:rgba(212,175,55,.04);
-}
-
-.hero h1{
-    font-family:'Cinzel',serif;
-    font-size:clamp(48px,8vw,100px);
-    line-height:.95;
-    letter-spacing:-2px;
-}
-
-.hero h1 span{
-    display:block;
-    background:linear-gradient(90deg,#fff,#d4af37,#fff);
-    background-size:200%;
-    -webkit-background-clip:text;
-    color:transparent;
-    animation:shine 5s linear infinite;
-}
-
-@keyframes shine{
-    to{background-position:200% center}
-}
-
-.hero p{
-    margin-top:28px;
-    max-width:700px;
-    color:#aaa;
-    font-size:17px;
-    line-height:1.8;
-}
-
-.buttons{
-    display:flex;
-    gap:15px;
-    margin-top:35px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    padding:14px 25px;
-    border-radius:8px;
-    text-decoration:none;
-    font-weight:600;
-    transition:.3s;
-}
-
-.primary{
-    background:#d4af37;
-    color:#050505;
-}
-
-.primary:hover{
-    transform:translateY(-4px);
-    box-shadow:0 10px 30px rgba(212,175,55,.25);
-}
-
-.secondary{
-    border:1px solid #555;
-    color:white;
-}
-
-.secondary:hover{
-    border-color:#d4af37;
-    color:#d4af37;
-}
-
-section{
-    padding:100px 8%;
-}
-
-.section-title{
-    font-family:'Cinzel',serif;
-    font-size:40px;
-    margin-bottom:50px;
-}
-
-.section-title span{
-    color:#d4af37;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:20px;
-}
-
-.card{
-    padding:30px;
-    min-height:210px;
-    border:1px solid rgba(255,255,255,.08);
-    background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.015));
-    border-radius:18px;
-    transition:.4s;
-    position:relative;
     overflow:hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 70% 15%,
+            rgba(255,210,120,.75),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            135deg,
+            #dff7e7 0%,
+            #bde8d0 25%,
+            #7dbb91 50%,
+            #47765c 75%,
+            #172d23 100%
+        );
+
 }
 
-.card::before{
-    content:"";
+
+/* =====================================
+   SUN
+===================================== */
+
+.sun{
+
     position:absolute;
-    width:100px;
-    height:100px;
-    background:#d4af37;
-    filter:blur(70px);
-    opacity:.08;
-    top:-40px;
-    right:-40px;
+
+    width:45vw;
+    height:45vw;
+
+    right:-12vw;
+    top:-22vw;
+
+    border-radius:50%;
+
+    background:
+
+        radial-gradient(
+            circle,
+            #fff9d6 0%,
+            #ffd878 18%,
+            rgba(255,185,70,.35) 40%,
+            transparent 70%
+        );
+
+    filter:blur(8px);
+
+    animation:
+        sunMove 16s ease-in-out infinite alternate;
+
 }
 
-.card:hover{
-    transform:translateY(-8px);
-    border-color:rgba(212,175,55,.5);
-    box-shadow:0 15px 50px rgba(0,0,0,.4);
-}
+@keyframes sunMove{
 
-.icon{
-    font-size:35px;
-    margin-bottom:20px;
-}
-
-.card h3{
-    margin-bottom:12px;
-    font-size:20px;
-}
-
-.card p{
-    color:#999;
-    line-height:1.7;
-    font-size:14px;
-}
-
-.socials{
-    display:flex;
-    flex-wrap:wrap;
-    gap:15px;
-}
-
-.social{
-    padding:15px 22px;
-    border:1px solid #292929;
-    border-radius:12px;
-    color:#ddd;
-    text-decoration:none;
-    transition:.3s;
-}
-
-.social:hover{
-    color:#d4af37;
-    border-color:#d4af37;
-    transform:translateY(-4px);
-}
-
-.contact{
-    text-align:center;
-    border-top:1px solid #191919;
-}
-
-.contact p{
-    color:#999;
-    margin:15px auto 30px;
-    max-width:600px;
-}
-
-footer{
-    text-align:center;
-    padding:30px;
-    color:#555;
-    border-top:1px solid #151515;
-    font-size:13px;
-}
-
-footer span{
-    color:#d4af37;
-}
-
-@media(max-width:700px){
-    nav ul{
-        display:none;
+    0%{
+        transform:translate(0,0) scale(1);
     }
 
-    .hero{
-        padding-left:6%;
-        padding-right:6%;
+    100%{
+        transform:translate(-8vw,8vh) scale(1.12);
     }
 
-    section{
-        padding:75px 6%;
-    }
-
-    .hero h1{
-        font-size:55px;
-    }
-
-    .profile{
-        width:80px;
-        height:80px;
-    }
 }
-</style>
-</head>
 
-<body>
 
-<nav>
-    <div class="logo">AMIR BORANI</div>
+/* =====================================
+   MOUNTAINS
+===================================== */
 
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#social">Social</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
+.mountain{
 
-<section class="hero">
+    position:absolute;
 
-    <div class="hero-content">
+    left:-5%;
 
-        <!-- Your photo -->
-        <img src="images/hero-portfolio.png" class="profile" alt="Amir Borani">
+    width:110%;
 
-        <div class="badge">DIGITAL CREATOR • STREAMER</div>
+    bottom:24%;
 
-        <h1>
-            AMIR
-            <span>BORANI</span>
-        </h1>
+    height:45%;
 
-        <p>
-            Video Editor • Content Creator • Web Designer •
-            AI Enthusiast • Programmer • <strong class="gold">Kick Streamer</strong>
-        </p>
+    clip-path:polygon(
 
-        <div class="buttons">
-            <a href="#social" class="btn primary">Explore My World</a>
-            <a href="#contact" class="btn secondary">Contact Me</a>
-        </div>
+        0 75%,
+        8% 50%,
+        18% 68%,
+        31% 30%,
+        42% 62%,
+        55% 25%,
+        67% 63%,
+        80% 35%,
+        92% 62%,
+        100% 45%,
+        100% 100%,
+        0 100%
 
-    </div>
+    );
 
-</section>
+    background:
 
-<section id="about">
+        linear-gradient(
+            145deg,
+            #7fa88a,
+            #31563e
+        );
 
-    <h2 class="section-title">
-        About <span>Me</span>
-    </h2>
+    opacity:.55;
 
-    <div class="card">
-        <p>
-            I'm Amir Borani, a creative digital artist passionate about
-            video editing, web design, programming, AI and gaming.
-            I create digital experiences, visual content and live gaming
-            streams while constantly exploring new technologies.
-        </p>
-    </div>
+    animation:
+        mountainMove 20s ease-in-out infinite alternate;
 
-</section>
+}
 
-<section id="skills">
+@keyframes mountainMove{
 
-    <h2 class="section-title">
-        What I <span>Do</span>
-    </h2>
+    from{
+        transform:translateX(-1%);
+    }
 
-    <div class="cards">
+    to{
+        transform:translateX(2%);
+    }
 
-        <div class="card">
-            <div class="icon">🎬</div>
-            <h3>Video Editing</h3>
-            <p>
-                Short-form videos, social media content,
-                cinematic edits and creative storytelling.
-            </p>
-        </div>
+}
 
-        <div class="card">
-            <div class="icon">🎮</div>
-            <h3>Kick Streamer</h3>
-            <p>
-                Live gaming content, GTA V streams,
-                entertainment and gaming community.
-            </p>
-        </div>
 
-        <div class="card">
-            <div class="icon">💻</div>
-            <h3>Web Design</h3>
-            <p>
-                Modern responsive websites with creative
-                interfaces and unique visual identities.
-            </p>
-        </div>
+/* =====================================
+   FOREST
+===================================== */
 
-        <div class="card">
-            <div class="icon">🤖</div>
-            <h3>AI & Technology</h3>
-            <p>
-                Exploring AI tools, automation, creative workflows
-                and modern digital technology.
-            </p>
-        </div>
+.forest{
 
-        <div class="card">
-            <div class="icon">🎨</div>
-            <h3>Creative Design</h3>
-            <p>
-                Photoshop, digital art, photography and
-                visual content creation.
-            </p>
-        </div>
+    position:absolute;
 
-        <div class="card">
-            <div class="icon">⌨️</div>
-            <h3>Programming</h3>
-            <p>
-                Building websites and experimenting with
-                modern programming technologies.
-            </p>
-        </div>
+    left:0;
+    bottom:10%;
 
-    </div>
+    width:100%;
+    height:45%;
 
-</section>
+    background:
 
-<section id="social">
+        radial-gradient(
+            ellipse at 10% 70%,
+            #1d5639 0 8%,
+            transparent 9%
+        ),
 
-    <h2 class="section-title">
-        Find <span>Me</span>
-    </h2>
+        radial-gradient(
+            ellipse at 20% 65%,
+            #286946 0 9%,
+            transparent 10%
+        ),
 
-    <div class="socials">
+        radial-gradient(
+            ellipse at 35% 72%,
+            #174b31 0 11%,
+            transparent 12%
+        ),
 
-        <a class="social" href="https://github.com/amirborani" target="_blank">
-            💻 GitHub
-        </a>
-
-        <a class="social" href="https://www.youtube.com/@ayoubrider8433" target="_blank">
-            ▶ YouTube
-        </a>
-
-        <a class="social" href="https://www.tiktok.com/@amirsoltan086" target="_blank">
-            ♪ TikTok
-        </a>
-
-        <a class="social" href="https://www.instagram.com/soltanamir007" target="_blank">
-            📸 Instagram
-        </a>
-
-        <a class="social" href="https://www.facebook.com/" target="_blank">
-            👤 Facebook
-        </a>
-
-        <a class="social" href="https://kick.com/amirdalam007" target="_blank">
-            🎮 Kick
-        </a>
-
-    </div>
-
-</section>
-
-<section id="contact" class="contact">
-
-    <h2 class="section-title">
-        Let's <span>Connect</span>
-    </h2>
-
-    <p>
-        Have a project, collaboration or just want to say hello?
-        Let's create something amazing.
-    </p>
-
-    <div class="buttons" style="justify-content:center">
-
-        <a href="mailto:your@email.com" class="btn primary">
-            Send Email
-        </a>
-
-    </div>
-
-</section>
-
-<footer>
-    © 2026 <span>Amir Borani</span> — All Rights Reserved.
-</footer>
-
-</body>
-</html>
+        radial-gradient(
+            ellipse at 52%
 ```
