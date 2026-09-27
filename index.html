@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,202 +6,2091 @@
 
 <title>Amir Borani | Creative Digital Artist</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="Amir Borani — Creative Digital Artist, Video Editor, Web Designer, AI Enthusiast, Programmer and Streamer.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html,body{
-    width:100%;
-    height:100%;
+html {
+    scroll-behavior: smooth;
 }
 
-body{
-    overflow:hidden;
-    font-family:Poppins,sans-serif;
-    background:#07120e;
+body {
+    font-family: "Inter", sans-serif;
+    background: #030507;
+    color: #fff;
+    overflow-x: hidden;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
 
-/* =====================================
-   MAIN WORLD
-===================================== */
+button,
+input,
+textarea {
+    font-family: inherit;
+}
 
-.hero{
+/* =========================
+   VARIABLES
+========================= */
 
-    position:relative;
+:root {
+    --gold: #d4af37;
+    --gold-light: #f4df8a;
+    --dark: #030507;
+    --glass: rgba(255,255,255,0.055);
+    --border: rgba(212,175,55,0.25);
+}
 
-    width:100vw;
-    height:100vh;
+/* =========================
+   GLOBAL BACKGROUND
+========================= */
 
-    overflow:hidden;
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
 
     background:
-
         radial-gradient(
-            circle at 70% 15%,
-            rgba(255,210,120,.75),
-            transparent 25%
-        ),
+            circle at 50% 20%,
+            rgba(212,175,55,0.08),
+            transparent 35%
+        );
 
+    mix-blend-mode: screen;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    z-index: 100;
+
+    background: rgba(3,5,7,0.35);
+    backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+
+    transition: 0.4s;
+}
+
+nav.scrolled {
+    background: rgba(3,5,7,0.92);
+}
+
+.logo {
+    font-family: "Cinzel", serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: var(--gold-light);
+
+    text-shadow:
+        0 0 15px rgba(212,175,55,0.35);
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+    list-style: none;
+}
+
+.nav-links a {
+    position: relative;
+
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+
+    color: rgba(255,255,255,0.7);
+
+    transition: 0.3s;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 0;
+    height: 1px;
+
+    background: var(--gold);
+
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--gold-light);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+    position: relative;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.section-inner {
+    position: relative;
+    width: min(1200px, 90%);
+    margin: auto;
+    z-index: 5;
+}
+
+/* =========================
+   CINEMATIC WORLD
+========================= */
+
+.world {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 20%,
+            #192733 0%,
+            #071016 42%,
+            #020406 100%
+        );
+}
+
+/* Moon */
+
+.moon {
+    position: absolute;
+
+    width: 230px;
+    height: 230px;
+
+    right: 9%;
+    top: 12%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fffdf0,
+            #d9d6c4 45%,
+            #858174 100%
+        );
+
+    box-shadow:
+        0 0 50px rgba(255,245,190,0.18),
+        0 0 130px rgba(255,245,190,0.08);
+}
+
+/* Mountains */
+
+.mountains {
+    position: absolute;
+    left: -5%;
+    bottom: 17%;
+
+    width: 110%;
+    height: 45%;
+
+    background:
         linear-gradient(
             135deg,
-            #dff7e7 0%,
-            #bde8d0 25%,
-            #7dbb91 50%,
-            #47765c 75%,
-            #172d23 100%
+            transparent 28%,
+            #172329 28%,
+            #172329 42%,
+            transparent 42%
+        ),
+        linear-gradient(
+            45deg,
+            transparent 32%,
+            #0d171c 32%,
+            #0d171c 50%,
+            transparent 50%
         );
 
+    clip-path: polygon(
+        0 100%,
+        10% 65%,
+        18% 80%,
+        28% 38%,
+        39% 72%,
+        51% 25%,
+        62% 65%,
+        72% 40%,
+        82% 74%,
+        92% 48%,
+        100% 68%,
+        100% 100%
+    );
+
+    opacity: 0.95;
 }
 
+/* Snow */
 
-/* =====================================
-   SUN
-===================================== */
+.snow {
+    position: absolute;
+    left: 0;
+    bottom: 32%;
 
-.sun{
-
-    position:absolute;
-
-    width:45vw;
-    height:45vw;
-
-    right:-12vw;
-    top:-22vw;
-
-    border-radius:50%;
+    width: 100%;
+    height: 25%;
 
     background:
-
-        radial-gradient(
-            circle,
-            #fff9d6 0%,
-            #ffd878 18%,
-            rgba(255,185,70,.35) 40%,
-            transparent 70%
+        linear-gradient(
+            135deg,
+            transparent 40%,
+            rgba(255,255,255,0.12) 40%,
+            rgba(255,255,255,0.12) 43%,
+            transparent 43%
         );
 
-    filter:blur(8px);
+    clip-path: polygon(
+        0 100%,
+        12% 70%,
+        18% 79%,
+        28% 44%,
+        38% 74%,
+        51% 32%,
+        62% 68%,
+        72% 46%,
+        82% 76%,
+        92% 52%,
+        100% 70%,
+        100% 100%
+    );
 
-    animation:
-        sunMove 16s ease-in-out infinite alternate;
-
+    opacity: 0.45;
 }
 
-@keyframes sunMove{
+/* Forest */
 
-    0%{
-        transform:translate(0,0) scale(1);
-    }
+.forest {
+    position: absolute;
+    bottom: 0;
+    left: 0;
 
-    100%{
-        transform:translate(-8vw,8vh) scale(1.12);
-    }
+    width: 100%;
+    height: 32%;
 
+    background:
+        linear-gradient(
+            135deg,
+            #07110e 25%,
+            #030806 25%,
+            #030806 45%,
+            #07110e 45%
+        );
+
+    clip-path: polygon(
+        0 100%,
+        0 55%,
+        4% 62%,
+        7% 45%,
+        10% 60%,
+        13% 40%,
+        16% 61%,
+        19% 48%,
+        22% 65%,
+        26% 42%,
+        29% 62%,
+        33% 45%,
+        36% 65%,
+        40% 43%,
+        44% 63%,
+        48% 42%,
+        52% 62%,
+        56% 45%,
+        60% 65%,
+        64% 40%,
+        68% 62%,
+        72% 44%,
+        76% 64%,
+        80% 42%,
+        84% 62%,
+        88% 45%,
+        92% 65%,
+        96% 42%,
+        100% 58%,
+        100% 100%
+    );
 }
 
+/* River */
 
-/* =====================================
-   MOUNTAINS
-===================================== */
+.river {
+    position: absolute;
 
-.mountain{
+    bottom: -5%;
+    left: 43%;
 
-    position:absolute;
+    width: 17%;
+    height: 65%;
 
-    left:-5%;
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(43,145,170,0.35),
+            rgba(150,230,245,0.18),
+            rgba(43,145,170,0.35),
+            transparent
+        );
 
-    width:110%;
-
-    bottom:24%;
-
-    height:45%;
-
-    clip-path:polygon(
-
-        0 75%,
-        8% 50%,
-        18% 68%,
-        31% 30%,
-        42% 62%,
-        55% 25%,
-        67% 63%,
-        80% 35%,
-        92% 62%,
-        100% 45%,
+    clip-path: polygon(
+        42% 0,
+        60% 0,
+        73% 25%,
+        60% 48%,
+        82% 72%,
         100% 100%,
-        0 100%
+        0 100%,
+        25% 75%,
+        43% 52%,
+        28% 25%
+    );
+
+    filter: blur(1px);
+}
+
+/* =========================
+   PARTICLES
+========================= */
+
+.particles {
+    position: absolute;
+    inset: 0;
+}
+
+.particle {
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: var(--gold-light);
+
+    box-shadow:
+        0 0 10px var(--gold);
+
+    opacity: 0.5;
+
+    animation: floatParticle 7s infinite ease-in-out;
+}
+
+.particle:nth-child(1) { left: 8%; top: 25%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 15%; top: 60%; animation-delay: 1s; }
+.particle:nth-child(3) { left: 25%; top: 30%; animation-delay: 2s; }
+.particle:nth-child(4) { left: 35%; top: 70%; animation-delay: 3s; }
+.particle:nth-child(5) { left: 48%; top: 20%; animation-delay: 4s; }
+.particle:nth-child(6) { left: 60%; top: 55%; animation-delay: 1.5s; }
+.particle:nth-child(7) { left: 72%; top: 30%; animation-delay: 2.5s; }
+.particle:nth-child(8) { left: 84%; top: 65%; animation-delay: 3.5s; }
+.particle:nth-child(9) { left: 92%; top: 22%; animation-delay: 4.5s; }
+
+@keyframes floatParticle {
+    0%,100% {
+        transform: translateY(0);
+        opacity: 0.25;
+    }
+
+    50% {
+        transform: translateY(-35px);
+        opacity: 0.8;
+    }
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    text-align: center;
+}
+
+.hero-small {
+    color: var(--gold-light);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    letter-spacing: 6px;
+
+    margin-bottom: 25px;
+}
+
+.hero h1 {
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(55px, 10vw, 125px);
+
+    line-height: 0.9;
+
+    letter-spacing: 7px;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 20px rgba(255,255,255,0.08),
+        0 0 60px rgba(212,175,55,0.1);
+}
+
+.hero h1 span {
+    display: block;
+
+    color: transparent;
+
+    background:
+        linear-gradient(
+            120deg,
+            #9b7722,
+            #fff0a6,
+            #c99d28,
+            #fff2a7
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    background-size: 250% auto;
+
+    animation: goldMove 5s linear infinite;
+}
+
+@keyframes goldMove {
+    to {
+        background-position: 250% center;
+    }
+}
+
+.hero p {
+    max-width: 700px;
+    margin: 30px auto;
+
+    color: rgba(255,255,255,0.65);
+
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+
+    margin-top: 35px;
+}
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 170px;
+
+    padding: 15px 25px;
+
+    border: 1px solid var(--gold);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    transition: 0.4s;
+}
+
+.btn-primary {
+    background: var(--gold);
+    color: #050505;
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.03);
+    color: white;
+}
+
+.btn:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 15px 40px rgba(212,175,55,0.2);
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section-title {
+    margin-bottom: 50px;
+}
+
+.section-label {
+    color: var(--gold-light);
+
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 12px;
+}
+
+.section-title h2 {
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(35px, 5vw, 65px);
+
+    font-weight: 600;
+
+    letter-spacing: 3px;
+}
+
+.section-title h2 span {
+    color: var(--gold);
+}
+
+/* =========================
+   GLASS
+========================= */
+
+.glass {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.075),
+            rgba(255,255,255,0.025)
+        );
+
+    border: 1px solid rgba(255,255,255,0.09);
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,0.25);
+
+    backdrop-filter: blur(18px);
+}
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-grid {
+    display: grid;
+
+    grid-template-columns:
+        0.8fr
+        1.2fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+.about-portrait {
+    min-height: 500px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(212,175,55,0.15),
+            transparent 60%
+        );
+}
+
+.portrait-placeholder {
+    width: 260px;
+    height: 360px;
+
+    border: 1px solid rgba(212,175,55,0.4);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    font-family: "Cinzel", serif;
+
+    color: rgba(255,255,255,0.5);
+
+    letter-spacing: 3px;
+
+    position: relative;
+}
+
+.portrait-placeholder::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 15px;
+
+    border: 1px solid rgba(212,175,55,0.18);
+}
+
+.about-text p {
+    color: rgba(255,255,255,0.68);
+
+    line-height: 1.9;
+
+    margin-bottom: 20px;
+}
+
+.about-info {
+    display: grid;
+
+    grid-template-columns: repeat(2,1fr);
+
+    gap: 15px;
+
+    margin-top: 35px;
+}
+
+.info-box {
+    padding: 20px;
+
+    border-left: 2px solid var(--gold);
+
+    background: rgba(255,255,255,0.025);
+}
+
+.info-box small {
+    display: block;
+
+    color: var(--gold-light);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 7px;
+}
+
+.info-box strong {
+    font-size: 13px;
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.projects-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 25px;
+}
+
+.project {
+    overflow: hidden;
+
+    position: relative;
+
+    min-height: 420px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    transition: 0.5s;
+}
+
+.project:hover {
+    transform: translateY(-12px);
+
+    border-color: var(--border);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,0.5);
+}
+
+.project-visual {
+    height: 250px;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #162a32,
+            #071014 50%,
+            #0c0b06
+        );
+}
+
+.project:nth-child(2) .project-visual {
+    background:
+        linear-gradient(
+            135deg,
+            #282018,
+            #0c0a08 55%,
+            #1d1508
+        );
+}
+
+.project:nth-child(3) .project-visual {
+    background:
+        linear-gradient(
+            135deg,
+            #111d29,
+            #060a10 55%,
+            #1a1022
+        );
+}
+
+.project-visual::before {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    border-radius: 50%;
+
+    top: 35px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border: 1px solid rgba(212,175,55,0.35);
+
+    box-shadow:
+        0 0 70px rgba(212,175,55,0.12);
+}
+
+.project-number {
+    position: absolute;
+
+    top: 20px;
+    left: 20px;
+
+    font-family: "Cinzel", serif;
+
+    color: var(--gold);
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+}
+
+.project-content {
+    padding: 25px;
+}
+
+.project-content h3 {
+    font-family: "Cinzel", serif;
+
+    font-size: 21px;
+
+    margin-bottom: 12px;
+}
+
+.project-content p {
+    color: rgba(255,255,255,0.55);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 20px;
+}
+
+.skill-card {
+    padding: 30px;
+
+    min-height: 260px;
+
+    transition: 0.4s;
+}
+
+.skill-card:hover {
+    transform: translateY(-8px);
+
+    border-color: var(--border);
+}
+
+.skill-icon {
+    font-size: 35px;
+
+    color: var(--gold);
+
+    margin-bottom: 25px;
+}
+
+.skill-card h3 {
+    font-family: "Cinzel", serif;
+
+    font-size: 18px;
+
+    margin-bottom: 12px;
+}
+
+.skill-card p {
+    color: rgba(255,255,255,0.52);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+.skill-bar {
+    margin-top: 25px;
+
+    width: 100%;
+    height: 2px;
+
+    background: rgba(255,255,255,0.08);
+}
+
+.skill-bar span {
+    display: block;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #8b681d,
+            #f4df8a
+        );
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-grid {
+    display: grid;
+
+    grid-template-columns:
+        0.8fr
+        1.2fr;
+
+    gap: 30px;
+}
+
+.contact-info {
+    padding: 40px;
+}
+
+.contact-info h3 {
+    font-family: "Cinzel", serif;
+
+    font-size: 28px;
+
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    color: rgba(255,255,255,0.6);
+
+    line-height: 1.8;
+
+    margin-bottom: 30px;
+}
+
+.contact-links {
+    display: grid;
+
+    gap: 12px;
+}
+
+.contact-link {
+    padding: 15px;
+
+    background: rgba(255,255,255,0.025);
+
+    border-left: 1px solid var(--gold);
+
+    color: rgba(255,255,255,0.75);
+
+    font-size: 12px;
+
+    transition: 0.3s;
+}
+
+.contact-link:hover {
+    padding-left: 25px;
+
+    color: var(--gold-light);
+}
+
+.contact-form {
+    padding: 40px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+
+    color: var(--gold-light);
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+
+    padding: 15px;
+
+    color: white;
+
+    background: rgba(0,0,0,0.25);
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    outline: none;
+
+    transition: 0.3s;
+}
+
+.form-group textarea {
+    min-height: 150px;
+
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--gold);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    position: relative;
+
+    padding: 40px 7%;
+
+    text-align: center;
+
+    background: #020304;
+
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+footer p {
+    color: rgba(255,255,255,0.4);
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+}
+
+footer span {
+    color: var(--gold);
+}
+
+/* =========================
+   REVEAL
+========================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(50px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.reveal.show {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px) {
+
+    nav {
+        padding: 0 5%;
+    }
+
+    .nav-links {
+        gap: 13px;
+    }
+
+    .nav-links a {
+        font-size: 8px;
+
+        letter-spacing: 1px;
+    }
+
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .about-portrait {
+        min-height: 400px;
+    }
+
+}
+
+@media(max-width:600px) {
+
+    nav {
+        height: 65px;
+    }
+
+    .logo {
+        font-size: 14px;
+
+        letter-spacing: 2px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    section {
+        min-height: auto;
+
+        padding:
+            120px 0;
+    }
+
+    #home {
+        min-height: 100vh;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+
+        letter-spacing: 3px;
+    }
+
+    .hero-small {
+        font-size: 9px;
+
+        letter-spacing: 3px;
+    }
+
+    .moon {
+        width: 120px;
+        height: 120px;
+
+        right: 5%;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .about-info {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info,
+    .contact-form {
+        padding: 25px;
+    }
+
+}
+
+/* =========================
+   CUSTOM SCROLLBAR
+========================= */
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020304;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #80631e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gold);
+}
+
+</style>
+</head>
+
+
+<body>
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav id="navbar">
+
+    <a href="#home" class="logo">
+        AMIR BORANI
+    </a>
+
+    <ul class="nav-links">
+
+        <li>
+            <a href="#home" class="active">
+                HOME
+            </a>
+        </li>
+
+        <li>
+            <a href="#about">
+                ABOUT
+            </a>
+        </li>
+
+        <li>
+            <a href="#projects">
+                PROJECTS
+            </a>
+        </li>
+
+        <li>
+            <a href="#skills">
+                SKILLS
+            </a>
+        </li>
+
+        <li>
+            <a href="#contact">
+                CONTACT
+            </a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =========================
+     HOME
+========================= -->
+
+<section id="home">
+
+    <div class="world">
+
+        <div class="moon"></div>
+
+        <div class="mountains"></div>
+
+        <div class="snow"></div>
+
+        <div class="river"></div>
+
+        <div class="forest"></div>
+
+        <div class="particles">
+
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+
+        </div>
+
+    </div>
+
+
+    <div class="section-inner hero reveal">
+
+        <div class="hero-small">
+            CREATIVE DIGITAL ARTIST
+        </div>
+
+        <h1>
+            AMIR
+            <span>BORANI</span>
+        </h1>
+
+        <p>
+            Video Editor • Content Creator • Web Designer •
+            AI Enthusiast • Programmer • Streamer
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="#projects" class="btn btn-primary">
+                Explore My World
+            </a>
+
+            <a href="#contact" class="btn btn-secondary">
+                Contact Me
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section id="about">
+
+    <div class="world">
+
+        <div class="moon"></div>
+
+        <div class="mountains"></div>
+
+        <div class="forest"></div>
+
+        <div class="particles">
+
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+            <span class="particle"></span>
+
+        </div>
+
+    </div>
+
+
+    <div class="section-inner">
+
+        <div class="section-title reveal">
+
+            <div class="section-label">
+                Discover
+            </div>
+
+            <h2>
+                About <span>Me</span>
+            </h2>
+
+        </div>
+
+
+        <div class="about-grid">
+
+            <div class="about-portrait glass reveal">
+
+                <div class="portrait-placeholder">
+
+                    AMIR<br>
+                    BORANI
+
+                </div>
+
+            </div>
+
+
+            <div class="about-text reveal">
+
+                <p>
+                    I am Amir Borani, a creative digital artist
+                    passionate about transforming ideas into
+                    visual experiences.
+                </p>
+
+                <p>
+                    My world combines video editing, web design,
+                    artificial intelligence, programming,
+                    photography, digital art and content creation.
+                </p>
+
+                <p>
+                    I believe a portfolio should feel like an
+                    experience — not simply a collection of pages.
+                </p>
+
+
+                <div class="about-info">
+
+                    <div class="info-box">
+
+                        <small>
+                            BASE
+                        </small>
+
+                        <strong>
+                            Thailand
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <small>
+                            SPECIALITY
+                        </small>
+
+                        <strong>
+                            Digital Creation
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <small>
+                            BRAND
+                        </small>
+
+                        <strong>
+                            Amir Borani
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-box">
+
+                        <small>
+                            FOCUS
+                        </small>
+
+                        <strong>
+                            Creative Technology
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PROJECTS
+========================= -->
+
+<section id="projects">
+
+    <div class="world">
+
+        <div class="mountains"></div>
+
+        <div class="river"></div>
+
+        <div class="forest"></div>
+
+    </div>
+
+
+    <div class="section-inner">
+
+        <div class="section-title reveal">
+
+            <div class="section-label">
+                Selected Work
+            </div>
+
+            <h2>
+                My <span>Projects</span>
+            </h2>
+
+        </div>
+
+
+        <div class="projects-grid">
+
+
+            <article class="project glass reveal">
+
+                <div class="project-visual">
+
+                    <div class="project-number">
+                        01
+                    </div>
+
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+                        Video Creation
+                    </h3>
+
+                    <p>
+                        Short-form videos, creative edits,
+                        cinematic content and social media
+                        visual storytelling.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="project glass reveal">
+
+                <div class="project-visual">
+
+                    <div class="project-number">
+                        02
+                    </div>
+
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+                        Web Design
+                    </h3>
+
+                    <p>
+                        Modern responsive websites combining
+                        luxury aesthetics, animation and
+                        interactive experiences.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="project glass reveal">
+
+                <div class="project-visual">
+
+                    <div class="project-number">
+                        03
+                    </div>
+
+                </div>
+
+                <div class="project-content">
+
+                    <h3>
+                        AI & Digital Art
+                    </h3>
+
+                    <p>
+                        Experimental digital experiences
+                        combining artificial intelligence,
+                        design and imagination.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SKILLS
+========================= -->
+
+<section id="skills">
+
+    <div class="world">
+
+        <div class="moon"></div>
+
+        <div class="mountains"></div>
+
+        <div class="forest"></div>
+
+    </div>
+
+
+    <div class="section-inner">
+
+        <div class="section-title reveal">
+
+            <div class="section-label">
+                Creative Arsenal
+            </div>
+
+            <h2>
+                My <span>Skills</span>
+            </h2>
+
+        </div>
+
+
+        <div class="skills-grid">
+
+
+            <div class="skill-card glass reveal">
+
+                <div class="skill-icon">
+                    ◈
+                </div>
+
+                <h3>
+                    Video Editing
+                </h3>
+
+                <p>
+                    Short-form content, cinematic editing,
+                    transitions, storytelling and social media
+                    content.
+                </p>
+
+                <div class="skill-bar">
+                    <span style="width:90%"></span>
+                </div>
+
+            </div>
+
+
+            <div class="skill-card glass reveal">
+
+                <div class="skill-icon">
+                    ◇
+                </div>
+
+                <h3>
+                    Web Design
+                </h3>
+
+                <p>
+                    HTML, CSS, JavaScript and responsive
+                    interactive website design.
+                </p>
+
+                <div class="skill-bar">
+                    <span style="width:85%"></span>
+                </div>
+
+            </div>
+
+
+            <div class="skill-card glass reveal">
+
+                <div class="skill-icon">
+                    ✦
+                </div>
+
+                <h3>
+                    AI & Design
+                </h3>
+
+                <p>
+                    AI-assisted creativity, digital art,
+                    image generation and experimental ideas.
+                </p>
+
+                <div class="skill-bar">
+                    <span style="width:82%"></span>
+                </div>
+
+            </div>
+
+
+            <div class="skill-card glass reveal">
+
+                <div class="skill-icon">
+                    ⌘
+                </div>
+
+                <h3>
+                    Programming
+                </h3>
+
+                <p>
+                    Creative coding, websites, automation
+                    concepts and digital projects.
+                </p>
+
+                <div class="skill-bar">
+                    <span style="width:78%"></span>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section id="contact">
+
+    <div class="world">
+
+        <div class="moon"></div>
+
+        <div class="mountains"></div>
+
+        <div class="forest"></div>
+
+        <div class="river"></div>
+
+    </div>
+
+
+    <div class="section-inner">
+
+        <div class="section-title reveal">
+
+            <div class="section-label">
+                Let's Create
+            </div>
+
+            <h2>
+                Contact <span>Me</span>
+            </h2>
+
+        </div>
+
+
+        <div class="contact-grid">
+
+
+            <div class="contact-info glass reveal">
+
+                <h3>
+                    Let's build something
+                    extraordinary.
+                </h3>
+
+                <p>
+                    Have a project, creative idea or
+                    collaboration in mind?
+                    Send me a message and let's create
+                    something unique.
+                </p>
+
+
+                <div class="contact-links">
+
+                    <a
+                        href="mailto:your@email.com"
+                        class="contact-link"
+                    >
+                        EMAIL — your@email.com
+                    </a>
+
+
+                    <a
+                        href="https://github.com/amirborani"
+                        target="_blank"
+                        class="contact-link"
+                    >
+                        GITHUB — @amirborani
+                    </a>
+
+
+                    <a
+                        href="https://www.tiktok.com/"
+                        target="_blank"
+                        class="contact-link"
+                    >
+                        TIKTOK — @amirsoltan086
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <form
+                class="contact-form glass reveal"
+                onsubmit="sendMessage(event)"
+            >
+
+                <div class="form-group">
+
+                    <label>
+                        NAME
+                    </label>
+
+                    <input
+                        id="name"
+                        type="text"
+                        placeholder="Your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        EMAIL
+                    </label>
+
+                    <input
+                        id="email"
+                        type="email"
+                        placeholder="your@email.com"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        MESSAGE
+                    </label>
+
+                    <textarea
+                        id="message"
+                        placeholder="Tell me about your project..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-primary"
+                >
+                    Send Message
+                </button>
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        © 2026
+        <span>Amir Borani</span>.
+        All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+/* =========================
+   NAVBAR
+========================= */
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 50) {
+
+        navbar.classList.add("scrolled");
+
+    } else {
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+});
+
+
+/* =========================
+   ACTIVE NAVIGATION
+========================= */
+
+const sections =
+    document.querySelectorAll("section");
+
+const navLinks =
+    document.querySelectorAll(".nav-links a");
+
+const observer =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    navLinks.forEach(link => {
+
+                        link.classList.remove("active");
+
+                    });
+
+                    const active =
+                        document.querySelector(
+                            `.nav-links a[href="#${entry.target.id}"]`
+                        );
+
+                    if (active) {
+
+                        active.classList.add("active");
+
+                    }
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.45
+        }
 
     );
 
-    background:
 
-        linear-gradient(
-            145deg,
-            #7fa88a,
-            #31563e
+sections.forEach(section => {
+
+    observer.observe(section);
+
+});
+
+
+/* =========================
+   REVEAL ANIMATION
+========================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+const revealObserver =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("show");
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+
+revealElements.forEach(element => {
+
+    revealObserver.observe(element);
+
+});
+
+
+/* =========================
+   CONTACT FORM
+========================= */
+
+function sendMessage(event) {
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("name").value;
+
+    const email =
+        document.getElementById("email").value;
+
+    const message =
+        document.getElementById("message").value;
+
+
+    const subject =
+        encodeURIComponent(
+            "Portfolio Contact — " + name
         );
 
-    opacity:.55;
 
-    animation:
-        mountainMove 20s ease-in-out infinite alternate;
+    const body =
+        encodeURIComponent(
+            "Name: " +
+            name +
+            "\nEmail: " +
+            email +
+            "\n\nMessage:\n" +
+            message
+        );
+
+
+    window.location.href =
+        "mailto:your@email.com?subject=" +
+        subject +
+        "&body=" +
+        body;
 
 }
 
-@keyframes mountainMove{
 
-    from{
-        transform:translateX(-1%);
+/* =========================
+   MOUSE PARALLAX
+========================= */
+
+document.addEventListener(
+    "mousemove",
+    event => {
+
+        const x =
+            (event.clientX / window.innerWidth - 0.5);
+
+        const y =
+            (event.clientY / window.innerHeight - 0.5);
+
+
+        document.querySelectorAll(
+            ".mountains, .moon"
+        ).forEach(element => {
+
+            element.style.transform =
+                `translate(${x * 15}px, ${y * 10}px)`;
+
+        });
+
     }
+);
 
-    to{
-        transform:translateX(2%);
-    }
+</script>
 
-}
-
-
-/* =====================================
-   FOREST
-===================================== */
-
-.forest{
-
-    position:absolute;
-
-    left:0;
-    bottom:10%;
-
-    width:100%;
-    height:45%;
-
-    background:
-
-        radial-gradient(
-            ellipse at 10% 70%,
-            #1d5639 0 8%,
-            transparent 9%
-        ),
-
-        radial-gradient(
-            ellipse at 20% 65%,
-            #286946 0 9%,
-            transparent 10%
-        ),
-
-        radial-gradient(
-            ellipse at 35% 72%,
-            #174b31 0 11%,
-            transparent 12%
-        ),
-
-        radial-gradient(
-            ellipse at 52%
-```
+</body>
+</html>
