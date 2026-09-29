@@ -72,10 +72,9 @@
 
 
             <!-- Main portrait will be added in the next step -->
-
-            <div class="hero-image">
-                <div class="image-placeholder">
-                    YOUR PHOTO
+<div class="hero-image">
+    <img src="image/profile.jpg" alt="Amir Borani">
+</div>
                 </div>
             </div>
 
