@@ -1,0 +1,367 @@
+/* =========================================
+   AMIR BORANI — BASE STYLE
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #080808;
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.navbar {
+    width: 100%;
+    padding: 25px 6%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 4px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #d8b45a;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+    min-height: 100vh;
+    padding: 140px 8% 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    position: relative;
+    background:
+        radial-gradient(circle at 70% 40%, #222222 0%, #080808 45%, #030303 100%);
+}
+
+.hero-content {
+    width: 55%;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-small {
+    color: #d8b45a;
+    font-size: 14px;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(70px, 11vw, 160px);
+    line-height: 0.85;
+    letter-spacing: -5px;
+    font-weight: 900;
+    margin-bottom: 35px;
+}
+
+.hero-description {
+    max-width: 600px;
+    color: #bdbdbd;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.hero-buttons a {
+    display: inline-block;
+    padding: 14px 25px;
+    border: 1px solid #d8b45a;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.3s ease;
+}
+
+.hero-buttons a:first-child {
+    background: #d8b45a;
+    color: #080808;
+}
+
+.hero-buttons a:hover {
+    transform: translateY(-4px);
+}
+
+
+/* =========================================
+   HERO IMAGE PLACEHOLDER
+========================================= */
+
+.hero-image {
+    width: 38%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.image-placeholder {
+    width: min(430px, 100%);
+    aspect-ratio: 3 / 4;
+    border: 1px solid #333333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #555555;
+    letter-spacing: 4px;
+    font-size: 12px;
+    background:
+        linear-gradient(
+            145deg,
+            #151515,
+            #090909
+        );
+}
+
+
+/* =========================================
+   GENERAL SECTIONS
+========================================= */
+
+.section {
+    min-height: 70vh;
+    padding: 130px 8%;
+    border-top: 1px solid #1d1d1d;
+    position: relative;
+}
+
+.section-number {
+    color: #d8b45a;
+    font-size: 13px;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+
+.section h2 {
+    font-size: clamp(45px, 7vw, 100px);
+    line-height: 0.95;
+    letter-spacing: -3px;
+    margin-bottom: 40px;
+}
+
+.section > p:not(.section-number) {
+    max-width: 750px;
+    color: #aaaaaa;
+    font-size: 18px;
+}
+
+
+/* =========================================
+   PROJECTS
+========================================= */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.project-card {
+    min-height: 250px;
+    padding: 35px;
+    border: 1px solid #242424;
+    background: #0d0d0d;
+    transition: 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: #d8b45a;
+}
+
+.project-card h3 {
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.project-card p {
+    color: #999999;
+}
+
+
+/* =========================================
+   SKILLS
+========================================= */
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.skills-list span {
+    padding: 12px 18px;
+    border: 1px solid #2b2b2b;
+    color: #cccccc;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+.skills-list span:hover {
+    border-color: #d8b45a;
+    color: #d8b45a;
+}
+
+
+/* =========================================
+   CONTACT
+========================================= */
+
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.social-links a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 13px 20px;
+    border: 1px solid #2b2b2b;
+    transition: 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #080808;
+    background: #d8b45a;
+    border-color: #d8b45a;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    padding: 45px 8%;
+    border-top: 1px solid #1d1d1d;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    color: #666666;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        padding: 20px 5%;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 130px 6% 70px;
+    }
+
+    .hero-content {
+        width: 100%;
+    }
+
+    .hero-image {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .image-placeholder {
+        width: 280px;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 90px 6%;
+    }
+
+    footer {
+        padding: 35px 6%;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .hero h1 {
+        font-size: 65px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .section h2 {
+        font-size: 50px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
