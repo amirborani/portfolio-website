@@ -6,7 +6,782 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}```css
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #050706;
+    color: white;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =====================================================
+   CINEMATIC WORLD
+===================================================== */
+
+.cinematic-world {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background: #050706;
+}
+
+.world-bg {
+    position: absolute;
+    inset: -8%;
+
+    background-image:
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2400&q=90");
+
+    background-size: cover;
+    background-position: center;
+
+    transform: scale(1.08);
+
+    transition:
+        background-image 1.5s ease,
+        transform 1.5s ease,
+        background-position 1.5s ease,
+        filter 1.5s ease;
+}
+
+.world-overlay {
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.90),
+            rgba(0,0,0,.25),
+            rgba(0,0,0,.75)
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0,0,0,.35),
+            transparent 50%,
+            rgba(0,0,0,.85)
+        );
+
+    z-index: 2;
+}
+
+
+/* =====================================================
+   AMIR
+===================================================== */
+
+.amir-world {
+    position: absolute;
+
+    z-index: 3;
+
+    width: min(430px, 42vw);
+    height: 78vh;
+
+    right: 8%;
+    bottom: 0;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    transition:
+        transform 1.4s cubic-bezier(.2,.7,.2,1),
+        right 1.4s ease,
+        opacity 1s ease;
+}
+
+.amir-image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center bottom;
+
+    filter:
+        drop-shadow(0 30px 50px rgba(0,0,0,.7));
+
+    transition:
+        opacity .7s ease,
+        transform 1.4s cubic-bezier(.2,.7,.2,1);
+}
+
+
+/* =====================================================
+   WORLD INFO
+===================================================== */
+
+.world-info {
+    position: absolute;
+
+    z-index: 5;
+
+    left: 7%;
+    bottom: 9%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    transition: opacity .5s ease;
+}
+
+.world-label {
+    font-family: "Cinzel", serif;
+
+    font-size: 13px;
+    letter-spacing: 5px;
+
+    color: #f4d77c;
+}
+
+.world-place {
+    font-size: 9px;
+    letter-spacing: 4px;
+
+    color: rgba(255,255,255,.7);
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    padding: 25px 6%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    z-index: 100;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,.65),
+            transparent
+        );
+
+    backdrop-filter: blur(8px);
+}
+
+.logo {
+    font-family: "Cinzel", serif;
+
+    font-size: 20px;
+    letter-spacing: 3px;
+
+    color: white;
+}
+
+.logo span {
+    color: #d6b85b;
+}
+
+.nav-links {
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links a {
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,.8);
+
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: #e6c96a;
+}
+
+.menu-btn {
+    display: none;
+
+    border: none;
+    background: transparent;
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.section {
+    position: relative;
+
+    z-index: 10;
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+
+    padding: 120px 7%;
+}
+
+.hero-section {
+    min-height: 100vh;
+}
+
+.hero-content {
+    max-width: 720px;
+}
+
+.hero-small {
+    font-size: 11px;
+
+    letter-spacing: 6px;
+
+    color: #d6b85b;
+}
+
+.hero-content h1 {
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(60px, 10vw, 150px);
+
+    line-height: .9;
+
+    margin: 25px 0;
+
+    letter-spacing: -3px;
+}
+
+.hero-content h1 span {
+    display: block;
+
+    color: transparent;
+
+    -webkit-text-stroke: 1px #d6b85b;
+}
+
+.hero-content p {
+    max-width: 650px;
+
+    font-size: 14px;
+
+    line-height: 1.9;
+
+    color: rgba(255,255,255,.75);
+}
+
+.hero-buttons {
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 35px;
+}
+
+.btn {
+    padding: 14px 25px;
+
+    border: 1px solid #d6b85b;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    transition: .3s;
+}
+
+.btn-primary {
+    background: #d6b85b;
+    color: #090909;
+}
+
+.btn-primary:hover {
+    background: white;
+    border-color: white;
+}
+
+.btn-outline:hover {
+    background: #d6b85b;
+    color: #050505;
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.content-section {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.82),
+            rgba(0,0,0,.45),
+            rgba(0,0,0,.82)
+        );
+}
+
+.section-inner {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+.section-number {
+    font-size: 10px;
+
+    letter-spacing: 5px;
+
+    color: #d6b85b;
+}
+
+.section-inner h2 {
+    font-family: "Cinzel", serif;
+
+    font-size: clamp(45px, 7vw, 100px);
+
+    line-height: .95;
+
+    margin: 20px 0 50px;
+}
+
+.section-inner h2 span {
+    color: transparent;
+
+    -webkit-text-stroke: 1px #d6b85b;
+}
+
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.content-card {
+    max-width: 650px;
+
+    padding: 35px;
+
+    border-left: 1px solid #d6b85b;
+
+    background: rgba(0,0,0,.3);
+
+    backdrop-filter: blur(10px);
+}
+
+.content-card p {
+    margin-bottom: 20px;
+
+    color: rgba(255,255,255,.75);
+
+    line-height: 1.9;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   PROJECTS
+===================================================== */
+
+.projects-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.project-card {
+    min-height: 300px;
+
+    padding: 30px;
+
+    border: 1px solid rgba(214,184,91,.25);
+
+    background:
+        rgba(0,0,0,.45);
+
+    backdrop-filter: blur(12px);
+
+    transition:
+        transform .4s ease,
+        border-color .4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+
+    border-color: #d6b85b;
+}
+
+.project-number {
+    font-family: "Cinzel", serif;
+
+    color: #d6b85b;
+
+    margin-bottom: 50px;
+}
+
+.project-card h3 {
+    font-family: "Cinzel", serif;
+
+    font-size: 22px;
+
+    margin-bottom: 15px;
+}
+
+.project-card p {
+    color: rgba(255,255,255,.65);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+.project-tech {
+    display: block;
+
+    margin-top: 25px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #d6b85b;
+}
+
+
+/* =====================================================
+   SKILLS
+===================================================== */
+
+.skills-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+.skill {
+    padding: 30px;
+
+    border-top: 1px solid rgba(214,184,91,.4);
+
+    background: rgba(0,0,0,.25);
+}
+
+.skill span {
+    font-size: 10px;
+
+    color: #d6b85b;
+
+    letter-spacing: 2px;
+}
+
+.skill h3 {
+    font-family: "Cinzel", serif;
+
+    margin: 15px 0;
+
+    font-size: 20px;
+}
+
+.skill p {
+    color: rgba(255,255,255,.6);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-section {
+    min-height: 80vh;
+}
+
+.contact-intro {
+    max-width: 600px;
+
+    color: rgba(255,255,255,.7);
+
+    line-height: 1.8;
+
+    margin-bottom: 35px;
+}
+
+.contact-buttons {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+.contact-btn {
+    padding: 14px 25px;
+
+    border: 1px solid rgba(214,184,91,.6);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    transition: .3s;
+}
+
+.contact-btn:hover {
+    background: #d6b85b;
+
+    color: #050505;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+    position: relative;
+
+    z-index: 10;
+
+    padding: 30px;
+
+    text-align: center;
+
+    background: #030403;
+
+    color: rgba(255,255,255,.4);
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+
+/* =====================================================
+   SCENES
+===================================================== */
+
+/* NATURE */
+
+.scene-nature .world-bg {
+    background-image:
+        url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=2400&q=90");
+
+    filter: brightness(.62) saturate(.9);
+}
+
+.scene-nature .amir-world {
+    right: 9%;
+    transform: scale(1);
+}
+
+
+/* SEA */
+
+.scene-sea .world-bg {
+    background-image:
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2400&q=90");
+
+    filter: brightness(.55) saturate(1.05);
+}
+
+.scene-sea .amir-world {
+    right: 16%;
+    transform: translateY(-2vh) scale(.94);
+}
+
+.scene-sea .amir-image {
+    transform: rotate(-1deg);
+}
+
+
+/* TOKYO */
+
+.scene-tokyo .world-bg {
+    background-image:
+        url("https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=2400&q=90");
+
+    filter: brightness(.45) saturate(1.25);
+}
+
+.scene-tokyo .amir-world {
+    right: 5%;
+    transform: translateY(2vh) scale(.9);
+}
+
+.scene-tokyo .amir-image {
+    transform:
+        translateX(-12px)
+        rotate(1deg);
+}
+
+
+/* CREATIVE */
+
+.scene-creative .world-bg {
+    background-image:
+        url("https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=2400&q=90");
+
+    filter: brightness(.5) saturate(1.1);
+}
+
+.scene-creative .amir-world {
+    right: 14%;
+    transform: translateY(-1vh) scale(.88);
+}
+
+.scene-creative .amir-image {
+    transform:
+        translateX(18px)
+        rotate(-1deg);
+}
+
+
+/* CONTACT */
+
+.scene-contact .world-bg {
+    background-image:
+        url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2400&q=90");
+
+    filter: brightness(.5) saturate(.9);
+}
+
+.scene-contact .amir-world {
+    right: 17%;
+    transform: translateY(-3vh) scale(.78);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .nav-links {
+        display: none;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .projects-grid,
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .amir-world {
+        width: 70vw;
+        height: 60vh;
+
+        right: 50%;
+
+        transform:
+            translateX(50%)
+            scale(.85);
+
+        opacity: .7;
+    }
+
+    .scene-sea .amir-world,
+    .scene-tokyo .amir-world,
+    .scene-creative .amir-world,
+    .scene-contact .amir-world {
+        right: 50%;
+
+        transform:
+            translateX(50%)
+            scale(.78);
+    }
+
+    .hero-content {
+        padding-top: 100px;
+    }
+
+    .hero-content h1 {
+        font-size: 65px;
+    }
+
+    .section {
+        padding: 120px 7%;
+    }
+
+    .world-info {
+        left: 7%;
+        bottom: 7%;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .hero-buttons {
+        flex-direction: column;
+        width: max-content;
+    }
+
+    .hero-content h1 {
+        font-size: 52px;
+    }
+
+    .content-card {
+        padding: 25px;
+    }
+
+    .amir-world {
+        opacity: .55;
+    }
+}
+```
+
 
 html {
     scroll-behavior: smooth;
