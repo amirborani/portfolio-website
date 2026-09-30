@@ -1,12 +1,17 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Amir Borani | Creative Digital Artist</title>
 
-    <meta name="description" content="Amir Borani — Creative Digital Artist, Video Editor, Gamer, Content Creator, Web Designer, Programmer and AI Enthusiast.">
+    <meta
+        name="description"
+        content="Amir Borani — Creative Digital Artist, Video Editor, Gamer, Content Creator, Web Designer, Programmer and AI Enthusiast."
+    >
 
     <meta name="author" content="Amir Borani">
 
@@ -16,7 +21,7 @@
 <body>
 
     <!-- =========================
-         HERO
+         NAVIGATION
     ========================== -->
 
     <header id="home">
@@ -37,6 +42,10 @@
 
         </nav>
 
+
+        <!-- =========================
+             HERO
+        ========================== -->
 
         <section class="hero">
 
@@ -71,11 +80,15 @@
             </div>
 
 
-            <!-- Main portrait will be added in the next step -->
-<div class="hero-image">
-    <img src="image/profile.jpg" alt="Amir Borani">
-</div>
-                </div>
+            <!-- AMIR PROFILE PHOTO -->
+
+            <div class="hero-image">
+
+                <img
+                    src="image/profile.jpg"
+                    alt="Amir Borani"
+                >
+
             </div>
 
         </section>
@@ -84,10 +97,15 @@
 
 
     <!-- =========================
-         ABOUT
+         MAIN CONTENT
     ========================== -->
 
     <main>
+
+
+        <!-- =========================
+             ABOUT
+        ========================== -->
 
         <section id="about" class="section">
 
@@ -125,37 +143,57 @@
             <div class="projects-grid">
 
                 <article class="project-card">
-                    <h3>Portfolio Website</h3>
+
+                    <h3>
+                        Portfolio Website
+                    </h3>
+
                     <p>
                         A cinematic personal portfolio combining
                         creativity, technology and digital art.
                     </p>
+
                 </article>
 
 
                 <article class="project-card">
-                    <h3>Video Editing</h3>
+
+                    <h3>
+                        Video Editing
+                    </h3>
+
                     <p>
                         Short-form content, creative videos and
                         social media editing.
                     </p>
+
                 </article>
 
 
                 <article class="project-card">
-                    <h3>AI Experiments</h3>
+
+                    <h3>
+                        AI Experiments
+                    </h3>
+
                     <p>
                         Creative experiments using artificial
                         intelligence and digital tools.
                     </p>
+
                 </article>
 
 
                 <article class="project-card">
-                    <h3>Gaming & Streaming</h3>
+
+                    <h3>
+                        Gaming & Streaming
+                    </h3>
+
                     <p>
                         Gaming content, GTA V and live streaming.
                     </p>
+
                 </article>
 
             </div>
@@ -214,19 +252,35 @@
 
             <div class="social-links">
 
-                <a href="https://github.com/amirborani" target="_blank">
+                <a
+                    href="https://github.com/amirborani"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     GitHub
                 </a>
 
-                <a href="https://www.youtube.com/@ayoubrider8433" target="_blank">
+                <a
+                    href="https://www.youtube.com/@ayoubrider8433"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     YouTube
                 </a>
 
-                <a href="https://www.tiktok.com/@amirsoltan086" target="_blank">
+                <a
+                    href="https://www.tiktok.com/@amirsoltan086"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     TikTok
                 </a>
 
-                <a href="https://kick.com/amirgtalive" target="_blank">
+                <a
+                    href="https://kick.com/amirgtalive"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
                     Kick
                 </a>
 
@@ -257,4 +311,6 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>
+```
