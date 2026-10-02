@@ -1,6 +1,6 @@
 /* =========================================================
-   AMIR BORANI — CINEMATIC COLOR WORLD
-   VERSION 4
+   AMIR BORANI — CINEMATIC PORTFOLIO
+   COLOR WORLD VERSION 10
 ========================================================= */
 
 * {
@@ -14,37 +14,43 @@ html {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
     color: #ffffff;
-    line-height: 1.6;
+
+    background: #0a0a0a;
+
     overflow-x: hidden;
-
-    /* IMPORTANT — NEVER BLACK */
-    background: linear-gradient(
-        135deg,
-        #36d1dc 0%,
-        #5b86e5 30%,
-        #a855f7 65%,
-        #ec4899 100%
-    );
 }
-
-/* =========================================================
-   GLOBAL
-========================================================= */
 
 a {
     color: inherit;
 }
 
-section {
+.world {
+    min-height: 100vh;
+
     position: relative;
+
+    overflow: hidden;
+
     isolation: isolate;
 }
 
-.section-inner {
+.world-content {
     position: relative;
-    z-index: 10;
+
+    z-index: 50;
+
+    width: min(1200px, 86%);
+
+    margin: auto;
+
+    padding: 140px 0 100px;
 }
 
 /* =========================================================
@@ -53,47 +59,65 @@ section {
 
 .navbar {
     position: fixed;
+
     top: 0;
     left: 0;
+
     width: 100%;
-    padding: 22px 5%;
+
+    padding: 22px 6%;
+
     display: flex;
-    align-items: center;
+
     justify-content: space-between;
-    z-index: 999;
 
-    background: rgba(0, 30, 50, 0.16);
+    align-items: center;
+
+    z-index: 9999;
+
+    background: rgba(5, 15, 30, 0.18);
+
     backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    border-bottom:
+        1px solid rgba(255,255,255,0.15);
 }
 
 .logo {
-    font-size: 21px;
+    text-decoration: none;
+
+    font-size: 22px;
+
     font-weight: 900;
+
     letter-spacing: 4px;
-    color: #ffffff;
-    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.35);
+}
+
+.logo span {
+    color: #ffd166;
 }
 
 .nav-links {
     display: flex;
-    gap: 30px;
+
+    gap: 28px;
 }
 
 .nav-links a {
-    color: #ffffff;
     text-decoration: none;
-    font-size: 12px;
+
+    font-size: 11px;
+
     letter-spacing: 2px;
-    text-transform: uppercase;
+
     font-weight: 700;
-    transition: 0.3s ease;
+
+    transition: .3s;
 }
 
 .nav-links a:hover {
-    color: #ffe66d;
+    color: #ffd166;
+
     transform: translateY(-2px);
 }
 
@@ -102,60 +126,48 @@ section {
 ========================================================= */
 
 .glass {
-    background: rgba(255, 255, 255, 0.14);
-    border: 1px solid rgba(255, 255, 255, 0.30);
-    box-shadow:
-        0 25px 80px rgba(0, 0, 0, 0.18),
-        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    background:
+        rgba(255,255,255,0.13);
 
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    border:
+        1px solid rgba(255,255,255,0.28);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.20),
+        inset 0 1px 0 rgba(255,255,255,.30);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
 }
 
 /* =========================================================
    HOME
-   MOUNTAINS / WATERFALL / SKY
 ========================================================= */
 
-.hero {
-    min-height: 100vh;
-    padding: 150px 7% 90px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 60px;
-
-    position: relative;
-    overflow: hidden;
-
-    /* BRIGHT SKY */
+.home-world {
     background:
-        radial-gradient(
-            circle at 75% 20%,
-            rgba(255, 255, 255, 0.75) 0%,
-            rgba(255, 255, 255, 0) 18%
-        ),
         linear-gradient(
             180deg,
-            #38c8ff 0%,
-            #67e8f9 25%,
-            #8be28b 60%,
-            #2f9e44 100%
+            #38bdf8 0%,
+            #67e8f9 35%,
+            #86efac 68%,
+            #15803d 100%
         );
 }
 
-/* SUN */
+/* sun */
 
-.hero::before {
-    content: "";
+.sun {
     position: absolute;
 
     width: 260px;
     height: 260px;
 
+    top: 12%;
     right: 13%;
-    top: 15%;
 
     border-radius: 50%;
 
@@ -163,590 +175,1286 @@ section {
         radial-gradient(
             circle,
             #fffbd1 0%,
-            #ffe66d 35%,
+            #ffe66d 38%,
             #ffb703 65%,
-            rgba(255, 183, 3, 0) 72%
+            transparent 70%
         );
 
     filter: blur(2px);
-    opacity: 0.95;
 
-    z-index: 1;
+    z-index: 2;
 }
 
-/* MOUNTAINS */
+/* mountains */
 
-.hero::after {
-    content: "";
+.mountain {
     position: absolute;
 
-    left: -5%;
-    bottom: -5%;
+    left: -10%;
 
-    width: 110%;
-    height: 42%;
+    width: 120%;
+
+    bottom: 0;
+
+    clip-path:
+        polygon(
+            0 100%,
+            0 70%,
+            10% 40%,
+            18% 64%,
+            30% 20%,
+            42% 65%,
+            54% 30%,
+            66% 66%,
+            79% 15%,
+            90% 60%,
+            100% 35%,
+            100% 100%
+        );
+}
+
+.mountain-back {
+    height: 52%;
+
+    background:
+        #60a5fa;
+
+    opacity: .65;
+
+    z-index: 3;
+}
+
+.mountain-middle {
+    height: 44%;
+
+    background:
+        #166534;
+
+    z-index: 4;
+
+    transform:
+        translateX(-3%);
+}
+
+.mountain-front {
+    height: 35%;
 
     background:
         linear-gradient(
             135deg,
-            transparent 0 15%,
-            #277da1 15% 30%,
-            transparent 30% 40%,
-            #1d6f42 40% 60%,
-            transparent 60%
+            #14532d,
+            #052e16
         );
 
-    clip-path: polygon(
-        0 100%,
-        0 60%,
-        13% 30%,
-        25% 58%,
-        40% 18%,
-        55% 55%,
-        70% 25%,
-        84% 60%,
-        100% 30%,
-        100% 100%
-    );
-
-    opacity: 0.75;
-    z-index: 2;
+    z-index: 7;
 }
 
-.hero-content {
-    width: 55%;
+/* waterfall */
+
+.waterfall {
+    position: absolute;
+
+    z-index: 8;
+
+    left: 48%;
+
+    bottom: 15%;
+
+    width: 55px;
+
+    height: 260px;
+
+    border-radius:
+        0 0 50px 50px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.2),
+            #dff9ff,
+            #67e8f9,
+            rgba(255,255,255,.2)
+        );
+
+    filter:
+        blur(.5px);
+
+    box-shadow:
+        0 0 25px rgba(255,255,255,.65);
+
+    animation:
+        waterfallMove 2s ease-in-out infinite;
+}
+
+@keyframes waterfallMove {
+
+    0%,100% {
+        transform:
+            scaleX(1);
+    }
+
+    50% {
+        transform:
+            scaleX(.85);
+    }
+}
+
+/* lake */
+
+.lake {
+    position: absolute;
+
+    z-index: 6;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 18%;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.18) 0 2px,
+            transparent 2px 15px
+        ),
+        linear-gradient(
+            180deg,
+            #0ea5e9,
+            #075985
+        );
+}
+
+/* birds */
+
+.birds {
+    position: absolute;
+
+    top: 25%;
+
+    left: 45%;
+
+    z-index: 15;
+}
+
+.birds span {
+    display: inline-block;
+
+    width: 20px;
+
+    height: 10px;
+
+    margin: 20px;
+
+    border-top:
+        2px solid white;
+
+    border-radius: 50%;
+
+    transform:
+        rotate(-15deg);
+
+    opacity: .75;
+}
+
+/* home content */
+
+.home-content {
     position: relative;
-    z-index: 20;
+
+    z-index: 50;
+
+    width: 58%;
+
+    padding-top: 70px;
 }
 
-.hero-small {
-    color: #fff7ae;
-    font-size: 14px;
-    letter-spacing: 5px;
-    margin-bottom: 20px;
+.eyebrow,
+.section-number {
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
     font-weight: 800;
-    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+
+    margin-bottom: 20px;
+
+    color: #fff5b7;
 }
 
-.hero h1 {
-    font-size: clamp(65px, 10vw, 150px);
-    line-height: 0.85;
-    letter-spacing: -5px;
-    font-weight: 900;
-    margin-bottom: 30px;
+.home-content h1 {
+    font-size:
+        clamp(65px, 10vw, 150px);
 
-    color: #ffffff;
+    line-height: .82;
+
+    letter-spacing:
+        -7px;
+
+    margin-bottom: 25px;
 
     text-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.25);
+        0 15px 40px rgba(0,0,0,.25);
 }
 
-.hero-description {
-    max-width: 650px;
+.home-content h1 strong {
     color: #ffffff;
-    font-size: 18px;
-    margin-bottom: 35px;
-    text-shadow: 0 3px 15px rgba(0, 0, 0, 0.25);
 }
 
-.hero-buttons {
+.home-content h2 {
+    font-size: 23px;
+
+    margin-bottom: 15px;
+}
+
+.home-content p {
+    font-size: 17px;
+
+    max-width: 600px;
+
+    opacity: .92;
+
+    margin-bottom: 30px;
+}
+
+.home-buttons {
     display: flex;
-    gap: 15px;
+
+    gap: 14px;
+
     flex-wrap: wrap;
 }
 
-.hero-buttons a {
+.button {
     display: inline-block;
 
-    padding: 14px 25px;
+    text-decoration: none;
+
+    padding: 14px 24px;
 
     border-radius: 50px;
 
-    border: 1px solid rgba(255, 255, 255, 0.55);
+    background:
+        rgba(255,255,255,.13);
 
-    background: rgba(255, 255, 255, 0.17);
+    border:
+        1px solid rgba(255,255,255,.45);
 
-    color: #ffffff;
-    text-decoration: none;
+    backdrop-filter:
+        blur(12px);
 
-    font-size: 12px;
+    font-size: 11px;
+
     letter-spacing: 2px;
-    text-transform: uppercase;
 
-    backdrop-filter: blur(12px);
+    font-weight: 800;
 
-    transition: 0.35s ease;
+    transition: .3s;
 }
 
-.hero-buttons a:first-child {
-    background: linear-gradient(
-        135deg,
-        #ffbe0b,
-        #ff006e
-    );
+.button.primary {
+    background:
+        linear-gradient(
+            135deg,
+            #ffb703,
+            #fb5607,
+            #ff006e
+        );
 
     border: none;
 }
 
-.hero-buttons a:hover {
-    transform: translateY(-5px) scale(1.03);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
-}
-
-/* =========================================================
-   HOME PHOTO — LEFT CARD
-========================================================= */
-
-.hero-image {
-    width: 38%;
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
-    position: relative;
-    z-index: 30;
-}
-
-.image-placeholder {
-    width: min(420px, 100%);
-    aspect-ratio: 3 / 4;
-
-    padding: 12px;
-
-    border-radius: 30px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255, 255, 255, 0.40),
-            rgba(255, 255, 255, 0.08)
-        );
-
-    border: 1px solid rgba(255, 255, 255, 0.55);
+.button:hover {
+    transform:
+        translateY(-5px);
 
     box-shadow:
-        0 35px 90px rgba(0, 0, 0, 0.28),
-        inset 0 1px 0 rgba(255, 255, 255, 0.55);
-
-    backdrop-filter: blur(18px);
-
-    overflow: hidden;
+        0 15px 40px rgba(0,0,0,.25);
 }
 
-/* If your HTML contains an image */
+/* profile */
 
-.image-placeholder img {
+.profile-card {
+    position: absolute;
+
+    z-index: 60;
+
+    left: 7%;
+
+    bottom: 7%;
+
+    width: 250px;
+}
+
+.profile-frame {
+    padding: 10px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,.18);
+
+    border:
+        1px solid rgba(255,255,255,.5);
+
+    backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.3);
+}
+
+.profile-frame img {
     width: 100%;
-    height: 100%;
+
+    height: 285px;
 
     display: block;
 
     object-fit: cover;
 
-    border-radius: 22px;
+    object-position: center;
 
-    box-shadow:
-        0 15px 45px rgba(0, 0, 0, 0.25);
+    border-radius: 17px;
+}
+
+.profile-info {
+    padding:
+        12px 8px 5px;
+}
+
+.profile-info span {
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
+}
+
+.profile-info small {
+    opacity: .75;
+
+    font-size: 9px;
+
+    letter-spacing: 1px;
 }
 
 /* =========================================================
-   GENERAL SECTIONS
+   ABOUT
 ========================================================= */
 
-.section {
-    min-height: 100vh;
-    padding: 140px 7% 100px;
-
-    position: relative;
-    overflow: hidden;
-}
-
-.section-number {
-    font-size: 13px;
-    letter-spacing: 5px;
-    margin-bottom: 15px;
-    font-weight: 800;
-}
-
-.section h2 {
-    font-size: clamp(50px, 8vw, 110px);
-    line-height: 0.9;
-    letter-spacing: -4px;
-    margin-bottom: 35px;
-
-    text-shadow:
-        0 8px 30px rgba(0, 0, 0, 0.22);
-}
-
-.section > p:not(.section-number) {
-    max-width: 750px;
-    color: rgba(255, 255, 255, 0.92);
-    font-size: 18px;
-}
-
-/* =========================================================
-   ABOUT — NIGHT / MOON / ANIMALS
-========================================================= */
-
-#about {
+.about-world {
     background:
         radial-gradient(
             circle at 75% 20%,
-            rgba(255, 255, 255, 0.95) 0%,
-            rgba(220, 240, 255, 0.65) 5%,
-            rgba(220, 240, 255, 0) 14%
-        ),
-        radial-gradient(
-            circle at 20% 70%,
-            rgba(168, 85, 247, 0.55),
-            transparent 30%
+            rgba(255,255,255,.8),
+            transparent 9%
         ),
         linear-gradient(
             180deg,
-            #102a71 0%,
-            #172554 35%,
-            #312e81 65%,
-            #581c87 100%
+            #172554,
+            #312e81 45%,
+            #581c87
         );
 }
 
 /* stars */
 
-#about::before {
+.stars,
+.stars::before,
+.stars::after {
+    position: absolute;
+
     content: "";
 
-    position: absolute;
-    inset: 0;
+    width: 3px;
 
-    background-image:
-        radial-gradient(circle, white 1px, transparent 2px),
-        radial-gradient(circle, rgba(255,255,255,.7) 1px, transparent 2px);
+    height: 3px;
 
-    background-size:
-        90px 90px,
-        150px 150px;
+    background: white;
 
-    background-position:
-        20px 30px,
-        70px 80px;
+    border-radius: 50%;
 
-    opacity: 0.55;
-
-    animation: starsMove 15s linear infinite;
+    box-shadow:
+        80px 40px white,
+        180px 100px white,
+        300px 50px white,
+        420px 150px white,
+        540px 80px white,
+        700px 130px white,
+        900px 60px white,
+        1100px 160px white,
+        1250px 40px white,
+        1350px 120px white,
+        1500px 80px white,
+        1650px 180px white;
 }
 
-@keyframes starsMove {
+.stars {
+    top: 10%;
+
+    left: 5%;
+
+    opacity: .65;
+
+    z-index: 2;
+
+    animation:
+        starsFloat 8s linear infinite;
+}
+
+@keyframes starsFloat {
+
     from {
-        transform: translateY(0);
+        transform:
+            translateY(0);
     }
 
     to {
-        transform: translateY(80px);
+        transform:
+            translateY(60px);
     }
 }
 
-#about .section-inner {
-    max-width: 1000px;
+/* moon */
+
+.moon {
+    position: absolute;
+
+    width: 210px;
+
+    height: 210px;
+
+    border-radius: 50%;
+
+    top: 12%;
+
+    right: 13%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffffff,
+            #dbeafe 65%,
+            #93c5fd
+        );
+
+    box-shadow:
+        0 0 80px rgba(255,255,255,.45);
+
+    z-index: 3;
+}
+
+/* forest */
+
+.forest {
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    clip-path:
+        polygon(
+            0 100%,
+            0 70%,
+            5% 50%,
+            8% 70%,
+            13% 35%,
+            17% 68%,
+            23% 25%,
+            28% 67%,
+            35% 40%,
+            40% 70%,
+            47% 30%,
+            53% 70%,
+            60% 38%,
+            65% 68%,
+            72% 25%,
+            78% 67%,
+            85% 40%,
+            92% 70%,
+            100% 30%,
+            100% 100%
+        );
+}
+
+.forest-back {
+    height: 40%;
+
+    background:
+        #1e3a8a;
+
+    opacity: .6;
+}
+
+.forest-front {
+    height: 30%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #052e16,
+            #14532d
+        );
+}
+
+.about-card {
+    max-width: 800px;
+
+    padding: 35px;
+
+    border-radius: 28px;
+}
+
+.about-card h3 {
+    font-size: 28px;
+
+    margin-bottom: 20px;
+}
+
+.about-card p {
+    margin-bottom: 18px;
+
+    color:
+        rgba(255,255,255,.86);
+
+    font-size: 16px;
 }
 
 /* =========================================================
-   PROJECTS — FUTURISTIC CITY
+   SKILLS
 ========================================================= */
 
-#projects {
+.skills-world {
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            #fde047,
+            transparent 15%
+        ),
+        radial-gradient(
+            circle at 80% 25%,
+            #f0abfc,
+            transparent 18%
+        ),
+        linear-gradient(
+            135deg,
+            #16a34a,
+            #22c55e 30%,
+            #06b6d4 65%,
+            #9333ea
+        );
+}
+
+.greenhouse-glow {
+    position: absolute;
+
+    width: 600px;
+
+    height: 600px;
+
+    border-radius: 50%;
+
+    left: 35%;
+
+    top: 20%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.3),
+            transparent 70%
+        );
+
+    filter:
+        blur(20px);
+
+    animation:
+        glowMove 7s ease-in-out infinite alternate;
+}
+
+@keyframes glowMove {
+
+    from {
+        transform:
+            scale(1);
+    }
+
+    to {
+        transform:
+            scale(1.3);
+    }
+}
+
+/* leaves */
+
+.leaf {
+    position: absolute;
+
+    width: 180px;
+
+    height: 80px;
+
+    border-radius:
+        100% 0 100% 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #166534,
+            #4ade80
+        );
+
+    opacity: .7;
+}
+
+.leaf-one {
+    left: -20px;
+    top: 20%;
+    transform: rotate(25deg);
+}
+
+.leaf-two {
+    right: -20px;
+    top: 50%;
+    transform: rotate(-25deg);
+}
+
+.leaf-three {
+    left: 20%;
+    bottom: -20px;
+    transform: rotate(-15deg);
+}
+
+/* flowers */
+
+.flower {
+    position: absolute;
+
+    width: 100px;
+
+    height: 100px;
+
+    border-radius: 50%;
+
+    opacity: .8;
+}
+
+.flower-pink {
+    background:
+        radial-gradient(
+            circle,
+            #fff 0 10%,
+            #f472b6 11% 40%,
+            #ec4899 41% 70%,
+            transparent 71%
+        );
+
+    right: 8%;
+
+    bottom: 15%;
+}
+
+.flower-yellow {
+    background:
+        radial-gradient(
+            circle,
+            #fff 0 10%,
+            #fde047 11% 40%,
+            #f59e0b 41% 70%,
+            transparent 71%
+        );
+
+    left: 5%;
+
+    bottom: 20%;
+}
+
+.flower-purple {
+    background:
+        radial-gradient(
+            circle,
+            #fff 0 10%,
+            #c084fc 11% 40%,
+            #7e22ce 41% 70%,
+            transparent 71%
+        );
+
+    right: 25%;
+
+    top: 12%;
+}
+
+.skills-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 18px;
+}
+
+.skill-card {
+    min-height: 210px;
+
+    padding: 25px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,.13);
+
+    border:
+        1px solid rgba(255,255,255,.28);
+
+    backdrop-filter:
+        blur(16px);
+
+    transition: .35s;
+}
+
+.skill-card:hover {
+    transform:
+        translateY(-10px);
+
+    background:
+        rgba(255,255,255,.22);
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.2);
+}
+
+.skill-number {
+    font-size: 11px;
+
+    color: #fff7ae;
+
+    letter-spacing: 2px;
+}
+
+.skill-card h3 {
+    margin:
+        20px 0 10px;
+
+    font-size: 20px;
+}
+
+.skill-card p {
+    font-size: 13px;
+
+    opacity: .85;
+}
+
+/* =========================================================
+   CITY / PROJECTS
+========================================================= */
+
+.city-world {
     background:
         radial-gradient(
             circle at 50% 25%,
-            rgba(0, 255, 255, 0.45),
+            rgba(34,211,238,.6),
             transparent 30%
         ),
         linear-gradient(
             135deg,
-            #03045e 0%,
-            #0077b6 35%,
-            #00b4d8 65%,
-            #7209b7 100%
+            #020617,
+            #0c4a6e 40%,
+            #312e81 70%,
+            #701a75
         );
 }
 
-/* futuristic city lights */
-
-#projects::before {
-    content: "";
-
-    position: absolute;
-
-    bottom: 0;
-    left: 0;
-
-    width: 100%;
-    height: 48%;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent 0 3%,
-            #111827 3% 7%,
-            transparent 7% 10%,
-            #1e293b 10% 17%,
-            transparent 17% 20%,
-            #0f172a 20% 26%,
-            transparent 26% 30%,
-            #1e293b 30% 40%,
-            transparent 40% 44%,
-            #0f172a 44% 52%,
-            transparent 52% 56%,
-            #1e293b 56% 65%,
-            transparent 65% 69%,
-            #0f172a 69% 77%,
-            transparent 77% 82%,
-            #1e293b 82% 90%,
-            transparent 90%
-        );
-
-    opacity: 0.85;
-
-    clip-path: polygon(
-        0 100%,
-        0 50%,
-        5% 40%,
-        8% 62%,
-        13% 25%,
-        18% 55%,
-        25% 10%,
-        30% 48%,
-        37% 30%,
-        43% 55%,
-        50% 15%,
-        57% 60%,
-        64% 25%,
-        70% 52%,
-        77% 8%,
-        84% 60%,
-        91% 28%,
-        100% 48%,
-        100% 100%
-    );
-}
-
-/* project cards */
-
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 22px;
-
-    position: relative;
-    z-index: 20;
-}
-
-.project-card {
-    min-height: 250px;
-
-    padding: 35px;
-
-    border-radius: 25px;
-
-    background: rgba(255, 255, 255, 0.12);
-
-    border: 1px solid rgba(255, 255, 255, 0.28);
-
-    backdrop-filter: blur(18px);
-
-    box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.20);
-
-    transition: 0.4s ease;
-}
-
-.project-card:hover {
-    transform: translateY(-12px) scale(1.02);
-
-    background: rgba(255, 255, 255, 0.20);
-
-    border-color: rgba(255, 255, 255, 0.65);
-
-    box-shadow:
-        0 35px 90px rgba(0, 0, 0, 0.28);
-}
-
-.project-card h3 {
-    font-size: 27px;
-    margin-bottom: 15px;
-}
-
-.project-card p {
-    color: rgba(255, 255, 255, 0.86);
-}
-
-/* =========================================================
-   SKILLS — COLORFUL GREENHOUSE
-========================================================= */
-
-#skills {
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            #fef08a,
-            transparent 20%
-        ),
-        radial-gradient(
-            circle at 80% 30%,
-            #f0abfc,
-            transparent 25%
-        ),
-        linear-gradient(
-            135deg,
-            #16a34a 0%,
-            #22c55e 30%,
-            #06b6d4 60%,
-            #a855f7 100%
-        );
-}
-
-#skills::before {
-    content: "";
-
+.city-sky {
     position: absolute;
 
     inset: 0;
 
     background:
         radial-gradient(
-            ellipse at center,
-            rgba(255,255,255,0.22),
-            transparent 55%
+            circle at 20% 30%,
+            rgba(255,0,255,.25),
+            transparent 12%
+        ),
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(0,255,255,.25),
+            transparent 15%
+        );
+}
+
+/* buildings */
+
+.city-buildings {
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 48%;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 5px;
+
+    opacity: .85;
+}
+
+.building {
+    flex: 1;
+
+    min-width: 60px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #1e293b,
+            #020617
         );
 
-    pointer-events: none;
-}
-
-.skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-
-    position: relative;
-    z-index: 10;
-}
-
-.skills-list span {
-    padding: 14px 21px;
-
-    border-radius: 50px;
-
-    background: rgba(255, 255, 255, 0.15);
-
-    border: 1px solid rgba(255, 255, 255, 0.35);
-
-    color: #ffffff;
-
-    font-size: 14px;
-    letter-spacing: 1px;
-
-    backdrop-filter: blur(14px);
-
-    transition: 0.35s ease;
-}
-
-.skills-list span:hover {
-    transform: translateY(-7px) rotate(-2deg);
-
-    background: rgba(255, 255, 255, 0.30);
+    border:
+        1px solid rgba(56,189,248,.25);
 
     box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.18);
+        inset 0 0 20px rgba(0,255,255,.05);
+}
+
+.b1 { height: 45%; }
+.b2 { height: 70%; }
+.b3 { height: 55%; }
+.b4 { height: 90%; }
+.b5 { height: 62%; }
+.b6 { height: 78%; }
+.b7 { height: 50%; }
+
+/* windows */
+
+.building::after {
+    content: "";
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 15px,
+            rgba(34,211,238,.5) 15px 18px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 20px,
+            rgba(250,204,21,.35) 20px 23px
+        );
+}
+
+/* road */
+
+.neon-road {
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 8%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #111827,
+            #020617
+        );
+
+    border-top:
+        2px solid #22d3ee;
+
+    box-shadow:
+        0 -10px 35px rgba(34,211,238,.4);
+}
+
+.projects-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.project-card {
+    min-height: 270px;
+
+    padding: 28px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255,255,255,.09);
+
+    border:
+        1px solid rgba(255,255,255,.25);
+
+    backdrop-filter:
+        blur(18px);
+
+    transition:
+        .35s ease;
+}
+
+.project-card:hover {
+    transform:
+        translateY(-12px);
+
+    background:
+        rgba(255,255,255,.17);
+
+    border-color:
+        #22d3ee;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.35);
+}
+
+.project-card > span {
+    font-size: 10px;
+
+    color: #67e8f9;
+
+    letter-spacing: 2px;
+}
+
+.project-card h3 {
+    font-size: 23px;
+
+    margin:
+        22px 0 12px;
+}
+
+.project-card p {
+    color:
+        rgba(255,255,255,.75);
+
+    font-size: 14px;
+}
+
+.project-card a {
+    display: inline-block;
+
+    margin-top: 25px;
+
+    text-decoration: none;
+
+    color: #67e8f9;
+
+    font-size: 10px;
+
+    font-weight: 900;
+
+    letter-spacing: 2px;
 }
 
 /* =========================================================
-   CONTACT — LAKE / SUNSET
+   SOCIAL
 ========================================================= */
 
-#contact {
+.social-world {
     background:
         radial-gradient(
-            circle at 72% 25%,
-            #fff7ad 0%,
-            #ffb703 8%,
-            rgba(255,183,3,0) 25%
+            circle at 50% 50%,
+            #c026d3,
+            transparent 30%
         ),
         linear-gradient(
-            180deg,
-            #fb7185 0%,
-            #f97316 30%,
-            #f59e0b 48%,
-            #0891b2 70%,
-            #164e63 100%
+            135deg,
+            #4c1d95,
+            #be185d,
+            #ea580c
         );
 }
 
-/* water */
-
-#contact::before {
-    content: "";
-
+.social-orb {
     position: absolute;
 
+    border-radius: 50%;
+
+    filter:
+        blur(3px);
+
+    animation:
+        orbFloat 7s ease-in-out infinite alternate;
+}
+
+.orb-one {
+    width: 300px;
+    height: 300px;
+
+    left: 5%;
+    top: 15%;
+
+    background:
+        #22d3ee;
+}
+
+.orb-two {
+    width: 250px;
+    height: 250px;
+
+    right: 10%;
+    top: 30%;
+
+    background:
+        #facc15;
+
+    animation-delay:
+        1s;
+}
+
+.orb-three {
+    width: 200px;
+    height: 200px;
+
+    left: 45%;
+    bottom: 10%;
+
+    background:
+        #f472b6;
+
+    animation-delay:
+        2s;
+}
+
+@keyframes orbFloat {
+
+    from {
+        transform:
+            translateY(-20px);
+    }
+
+    to {
+        transform:
+            translateY(30px);
+    }
+}
+
+.social-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 15px;
+}
+
+.social-card {
+    min-height: 180px;
+
+    padding: 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    text-decoration: none;
+
+    border-radius: 25px;
+
+    background:
+        rgba(255,255,255,.13);
+
+    border:
+        1px solid rgba(255,255,255,.28);
+
+    backdrop-filter:
+        blur(20px);
+
+    transition: .35s;
+}
+
+.social-card:hover {
+    transform:
+        translateY(-12px)
+        rotate(-2deg);
+
+    background:
+        rgba(255,255,255,.25);
+}
+
+.social-card small {
+    letter-spacing: 2px;
+
+    color: #fff5b7;
+}
+
+.social-card strong {
+    font-size: 15px;
+}
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.contact-world {
+    background:
+        linear-gradient(
+            180deg,
+            #fb7185,
+            #f97316 35%,
+            #f59e0b 50%,
+            #0891b2 70%,
+            #164e63
+        );
+}
+
+.sunset {
+    position: absolute;
+
+    width: 280px;
+    height: 280px;
+
+    right: 15%;
+
+    top: 18%;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #fff7ae,
+            #ffb703 45%,
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 100px rgba(255,183,3,.5);
+}
+
+.contact-mountains {
+    position: absolute;
+
+    bottom: 30%;
+
     left: 0;
-    bottom: 0;
 
     width: 100%;
-    height: 42%;
+
+    height: 30%;
+
+    background:
+        #164e63;
+
+    clip-path:
+        polygon(
+            0 100%,
+            0 60%,
+            15% 25%,
+            27% 65%,
+            40% 20%,
+            53% 65%,
+            67% 30%,
+            80% 70%,
+            100% 25%,
+            100% 100%
+        );
+}
+
+.contact-water {
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 35%;
 
     background:
         repeating-linear-gradient(
             0deg,
-            rgba(255,255,255,0.13) 0 2px,
-            transparent 2px 16px
+            rgba(255,255,255,.14) 0 2px,
+            transparent 2px 17px
         ),
         linear-gradient(
             180deg,
             #0891b2,
             #164e63
         );
-
-    opacity: 0.85;
 }
 
-/* contact glass */
+.contact-card {
+    max-width: 700px;
 
-.social-links {
+    padding: 35px;
+
+    border-radius: 30px;
+}
+
+.contact-card p {
+    font-size: 18px;
+
+    margin-bottom: 25px;
+}
+
+.contact-buttons {
     display: flex;
+
     flex-wrap: wrap;
-    gap: 15px;
 
-    margin-top: 40px;
-
-    position: relative;
-    z-index: 20;
+    gap: 12px;
 }
 
-.social-links a {
-    color: #ffffff;
+.contact-buttons a {
     text-decoration: none;
 
-    padding: 14px 21px;
+    padding: 13px 22px;
 
     border-radius: 50px;
 
-    background: rgba(255, 255, 255, 0.14);
+    background:
+        rgba(255,255,255,.17);
 
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    border:
+        1px solid rgba(255,255,255,.4);
 
-    backdrop-filter: blur(14px);
+    font-size: 11px;
 
-    transition: 0.35s ease;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    transition: .3s;
 }
 
-.social-links a:hover {
-    background: #ffffff;
-    color: #f97316;
+.contact-buttons a:hover {
+    background:
+        #ffffff;
 
-    transform: translateY(-5px);
+    color:
+        #f97316;
 
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.20);
+    transform:
+        translateY(-5px);
 }
 
 /* =========================================================
@@ -754,127 +1462,191 @@ section {
 ========================================================= */
 
 footer {
-    padding: 45px 7%;
+    padding: 35px 7%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
 
     background:
         linear-gradient(
             135deg,
-            #0f172a,
-            #312e81,
-            #701a75
+            #020617,
+            #312e81
         );
 
-    border-top: 1px solid rgba(255,255,255,0.20);
+    color:
+        rgba(255,255,255,.65);
 
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    flex-wrap: wrap;
+    font-size: 11px;
 
-    color: rgba(255,255,255,0.75);
-
-    font-size: 12px;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 /* =========================================================
-   ANIMATION
+   REVEAL
 ========================================================= */
 
 .reveal {
     opacity: 0;
-    transform: translateY(50px);
+
+    transform:
+        translateY(50px);
+
     transition:
-        opacity 0.9s ease,
-        transform 0.9s ease;
+        opacity .9s ease,
+        transform .9s ease;
 }
 
 .reveal.visible {
     opacity: 1;
-    transform: translateY(0);
+
+    transform:
+        translateY(0);
 }
 
 /* =========================================================
    RESPONSIVE
 ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
+
+    .skills-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .projects-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .social-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 800px) {
 
     .navbar {
-        padding: 18px 5%;
+        padding:
+            18px 5%;
     }
 
     .nav-links {
         display: none;
     }
 
-    .hero {
-        flex-direction: column;
-        align-items: flex-start;
+    .world-content {
+        width: 88%;
 
-        padding: 130px 6% 80px;
+        padding:
+            120px 0 80px;
     }
 
-    .hero-content {
+    .home-content {
         width: 100%;
+
+        padding-top:
+            80px;
     }
 
-    .hero-image {
-        width: 100%;
-        justify-content: flex-start;
+    .home-content h1 {
+        font-size:
+            65px;
+
+        letter-spacing:
+            -4px;
     }
 
-    .image-placeholder {
-        width: min(350px, 100%);
+    .profile-card {
+        position: relative;
+
+        left: auto;
+
+        bottom: auto;
+
+        margin-top:
+            40px;
+
+        width:
+            250px;
     }
 
-    .projects-grid {
-        grid-template-columns: 1fr;
+    .sun {
+        right:
+            -50px;
     }
 
-    .section {
-        padding: 110px 6% 80px;
+    .moon {
+        width:
+            140px;
+
+        height:
+            140px;
+
+        right:
+            5%;
+    }
+
+    .skills-grid,
+    .projects-grid,
+    .social-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .project-card {
+        min-height:
+            220px;
     }
 }
 
 @media (max-width: 500px) {
 
-    .logo {
-        font-size: 16px;
-        letter-spacing: 2px;
+    .home-content h1 {
+        font-size:
+            58px;
     }
 
-    .hero {
-        padding-top: 120px;
+    .home-content h2 {
+        font-size:
+            18px;
     }
 
-    .hero h1 {
-        font-size: 62px;
-        letter-spacing: -4px;
+    .home-content p {
+        font-size:
+            14px;
     }
 
-    .hero-description {
-        font-size: 15px;
+    .profile-card {
+        width:
+            220px;
     }
 
-    .section h2 {
-        font-size: 53px;
+    .profile-frame img {
+        height:
+            250px;
     }
 
-    .hero-buttons {
-        flex-direction: column;
-        align-items: flex-start;
+    .section-number {
+        font-size:
+            10px;
     }
 
-    .hero-buttons a {
-        width: auto;
+    .world-content h2 {
+        font-size:
+            54px;
     }
 
-    .project-card {
-        padding: 25px;
-    }
-
-    .social-links {
-        gap: 10px;
+    .about-card,
+    .contact-card {
+        padding:
+            24px;
     }
 }
