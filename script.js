@@ -1,325 +1,409 @@
 /* =========================================================
-   AMIR BORANI — PORTFOLIO ENGINE
+   AMIR BORANI
+   CINEMATIC PORTFOLIO
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    /* =====================================================
-       CURRENT YEAR
-    ====================================================== */
-
-    const year = document.getElementById("year");
-
-    if (year) {
-        year.textContent = new Date().getFullYear();
-    }
+"use strict";
 
 
-    /* =====================================================
-       SMOOTH NAVIGATION
-    ====================================================== */
+/* =========================================================
+   DOM ELEMENTS
+========================================================= */
 
-    const links =
-        document.querySelectorAll(
-            'a[href^="#"]'
+const loader = document.getElementById("loader");
+const header = document.querySelector(".site-header");
+const menuToggle = document.getElementById("menuToggle");
+const navigation = document.getElementById("navigation");
+const navLinks = document.querySelectorAll(".nav-link");
+const revealElements = document.querySelectorAll(
+    ".reveal, .reveal-left, .reveal-right"
+);
+const sections = document.querySelectorAll("section[id]");
+const scrollProgress = document.getElementById("scrollProgress");
+const heroBackground = document.querySelector(".hero-background");
+const yearElement = document.getElementById("year");
+
+
+/* =========================================================
+   PAGE LOADER
+========================================================= */
+
+window.addEventListener("load", () => {
+
+    window.setTimeout(() => {
+        loader.classList.add("hidden");
+    }, 700);
+
+});
+
+
+/* =========================================================
+   CURRENT YEAR
+========================================================= */
+
+if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+}
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+function toggleMenu() {
+
+    const isOpen = navigation.classList.toggle("open");
+
+    menuToggle.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+    );
+
+    document.body.classList.toggle(
+        "menu-open",
+        isOpen
+    );
+
+}
+
+
+if (menuToggle) {
+    menuToggle.addEventListener(
+        "click",
+        toggleMenu
+    );
+}
+
+
+navLinks.forEach((link) => {
+
+    link.addEventListener("click", () => {
+
+        navigation.classList.remove("open");
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            "false"
         );
 
-    links.forEach(link => {
+        document.body.classList.remove(
+            "menu-open"
+        );
 
-        link.addEventListener("click", event => {
+    });
 
-            const id =
-                link.getAttribute("href");
+});
 
-            if (!id || id === "#") {
+
+/* =========================================================
+   HEADER ON SCROLL
+========================================================= */
+
+function updateHeader() {
+
+    if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateHeader,
+    { passive: true }
+);
+
+
+/* =========================================================
+   SCROLL PROGRESS
+========================================================= */
+
+function updateScrollProgress() {
+
+    const documentHeight =
+        document.documentElement.scrollHeight -
+        window.innerHeight;
+
+    if (documentHeight <= 0) {
+        return;
+    }
+
+    const progress =
+        (window.scrollY / documentHeight) * 100;
+
+    scrollProgress.style.width = `${progress}%`;
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateScrollProgress,
+    { passive: true }
+);
+
+
+/* =========================================================
+   REVEAL ON SCROLL
+========================================================= */
+
+const revealObserver = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add(
+                    "visible"
+                );
+
+                revealObserver.unobserve(
+                    entry.target
+                );
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.12,
+        rootMargin: "0px 0px -50px 0px"
+    }
+);
+
+
+revealElements.forEach((element) => {
+
+    revealObserver.observe(element);
+
+});
+
+
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
+
+const sectionObserver = new IntersectionObserver(
+    (entries) => {
+
+        entries.forEach((entry) => {
+
+            if (!entry.isIntersecting) {
                 return;
             }
 
-            const target =
-                document.querySelector(id);
+            const currentId =
+                entry.target.getAttribute("id");
 
-            if (!target) {
-                return;
-            }
+            navLinks.forEach((link) => {
 
-            event.preventDefault();
+                const target =
+                    link.getAttribute("href");
 
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
+                link.classList.toggle(
+                    "active",
+                    target === `#${currentId}`
+                );
+
             });
 
         });
 
-    });
+    },
+    {
+        threshold: 0.35
+    }
+);
 
 
-    /* =====================================================
-       REVEAL ANIMATION
-    ====================================================== */
+sections.forEach((section) => {
 
-    const revealElements =
-        document.querySelectorAll(".reveal");
+    sectionObserver.observe(section);
 
-    const revealObserver =
-        new IntersectionObserver(
-            entries => {
-
-                entries.forEach(entry => {
-
-                    if (entry.isIntersecting) {
-
-                        entry.target.classList.add(
-                            "visible"
-                        );
-
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-                    }
-
-                });
-
-            },
-            {
-                threshold: 0.12
-            }
-        );
-
-    revealElements.forEach(element => {
-
-        revealObserver.observe(element);
-
-    });
+});
 
 
-    /* =====================================================
-       MOUSE PARALLAX
-    ====================================================== */
+/* =========================================================
+   CINEMATIC HERO PARALLAX
+========================================================= */
 
-    const isMobile =
-        window.matchMedia(
-            "(max-width: 800px)"
-        ).matches;
+function updateHeroParallax() {
 
-    if (!isMobile) {
-
-        const home =
-            document.querySelector("#home");
-
-        const sun =
-            document.querySelector(".sun");
-
-        const mountains =
-            document.querySelectorAll(
-                ".mountain"
-            );
-
-        const profile =
-            document.querySelector(".profile-card");
-
-        if (home) {
-
-            home.addEventListener(
-                "mousemove",
-                event => {
-
-                    const x =
-                        event.clientX /
-                        window.innerWidth -
-                        0.5;
-
-                    const y =
-                        event.clientY /
-                        window.innerHeight -
-                        0.5;
-
-                    if (sun) {
-
-                        sun.style.transform =
-                            `translate(
-                                ${x * 25}px,
-                                ${y * 25}px
-                            )`;
-
-                    }
-
-                    mountains.forEach(
-                        (mountain, index) => {
-
-                            const power =
-                                (index + 1) * 8;
-
-                            mountain.style.transform =
-                                `translateX(
-                                    ${x * power}px
-                                )`;
-
-                        }
-                    );
-
-                    if (profile) {
-
-                        profile.style.transform =
-                            `translate(
-                                ${x * -10}px,
-                                ${y * -10}px
-                            )`;
-
-                    }
-
-                }
-            );
-
-        }
-
+    if (!heroBackground) {
+        return;
     }
 
+    const heroHeight =
+        window.innerHeight;
 
-    /* =====================================================
-       CARD TILT
-    ====================================================== */
+    if (window.scrollY > heroHeight) {
+        return;
+    }
 
-    if (!isMobile) {
+    const movement =
+        window.scrollY * 0.08;
 
-        const cards =
-            document.querySelectorAll(
-                ".project-card, .skill-card, .social-card"
-            );
+    heroBackground.style.transform =
+        `scale(1.05) translateY(${movement}px)`;
 
-        cards.forEach(card => {
+}
 
-            card.addEventListener(
-                "mousemove",
-                event => {
 
-                    const rect =
-                        card.getBoundingClientRect();
+window.addEventListener(
+    "scroll",
+    updateHeroParallax,
+    { passive: true }
+);
 
-                    const x =
-                        event.clientX -
-                        rect.left;
 
-                    const y =
-                        event.clientY -
-                        rect.top;
+/* =========================================================
+   SMOOTH ANCHOR NAVIGATION
+========================================================= */
 
-                    const rotateY =
-                        ((x / rect.width) - 0.5) * 8;
+document.querySelectorAll(
+    'a[href^="#"]'
+).forEach((link) => {
 
-                    const rotateX =
-                        ((y / rect.height) - 0.5) * -8;
+    link.addEventListener("click", (event) => {
 
-                    card.style.transform =
-                        `perspective(700px)
-                         rotateX(${rotateX}deg)
-                         rotateY(${rotateY}deg)
-                         translateY(-8px)`;
+        const targetId =
+            link.getAttribute("href");
 
-                }
-            );
+        if (
+            !targetId ||
+            targetId === "#"
+        ) {
+            return;
+        }
 
-            card.addEventListener(
-                "mouseleave",
-                () => {
+        const target =
+            document.querySelector(targetId);
 
-                    card.style.transform = "";
+        if (!target) {
+            return;
+        }
 
-                }
-            );
+        event.preventDefault();
 
+        const headerOffset = 70;
+
+        const targetPosition =
+            target.getBoundingClientRect().top +
+            window.scrollY -
+            headerOffset;
+
+        window.scrollTo({
+            top: targetPosition,
+            behavior: "smooth"
         });
 
-    }
-
-
-    /* =====================================================
-       ACTIVE NAV
-    ====================================================== */
-
-    const sections =
-        document.querySelectorAll(
-            "section[id]"
-        );
-
-    const navLinks =
-        document.querySelectorAll(
-            ".nav-links a"
-        );
-
-    const activeObserver =
-        new IntersectionObserver(
-            entries => {
-
-                entries.forEach(entry => {
-
-                    if (!entry.isIntersecting) {
-                        return;
-                    }
-
-                    const current =
-                        entry.target.id;
-
-                    navLinks.forEach(link => {
-
-                        link.classList.remove(
-                            "active"
-                        );
-
-                        if (
-                            link.getAttribute("href") ===
-                            `#${current}`
-                        ) {
-
-                            link.classList.add(
-                                "active"
-                            );
-
-                        }
-
-                    });
-
-                });
-
-            },
-            {
-                threshold: 0.45
-            }
-        );
-
-    sections.forEach(section => {
-
-        activeObserver.observe(section);
-
     });
 
+});
 
-    /* =====================================================
-       NAV ACTIVE STYLE
-    ====================================================== */
 
-    const style =
-        document.createElement("style");
+/* =========================================================
+   MOUSE MOVEMENT — DESKTOP CINEMATIC EFFECT
+========================================================= */
 
-    style.innerHTML = `
+const isTouchDevice =
+    window.matchMedia(
+        "(pointer: coarse)"
+    ).matches;
 
-        .nav-links a.active {
-            color: #ffd166;
-            text-shadow:
-                0 0 15px rgba(255,209,102,.6);
+
+if (!isTouchDevice) {
+
+    document.addEventListener(
+        "mousemove",
+        (event) => {
+
+            const x =
+                (event.clientX / window.innerWidth - 0.5);
+
+            const y =
+                (event.clientY / window.innerHeight - 0.5);
+
+            const mountains =
+                document.querySelectorAll(
+                    ".hero-mountain"
+                );
+
+            mountains.forEach(
+                (mountain, index) => {
+
+                    const amount =
+                        (index + 1) * 5;
+
+                    mountain.style.transform =
+                        `translate(
+                            ${x * amount}px,
+                            ${y * amount}px
+                        )`;
+
+                }
+            );
+
         }
+    );
 
-    `;
-
-    document.head.appendChild(style);
+}
 
 
-    /* =====================================================
-       CONSOLE
-    ====================================================== */
+/* =========================================================
+   CONTACT LINK SAFETY
+========================================================= */
 
-    console.log(
-        "AMIR BORANI — Cinematic Portfolio Loaded"
+document.querySelectorAll(
+    'a[target="_blank"]'
+).forEach((link) => {
+
+    link.setAttribute(
+        "rel",
+        "noopener noreferrer"
     );
 
 });
+
+
+/* =========================================================
+   RESIZE HANDLING
+========================================================= */
+
+window.addEventListener(
+    "resize",
+    () => {
+
+        if (window.innerWidth > 760) {
+
+            navigation.classList.remove(
+                "open"
+            );
+
+            document.body.classList.remove(
+                "menu-open"
+            );
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   INITIAL STATE
+========================================================= */
+
+updateHeader();
+updateScrollProgress();
+updateHeroParallax();
