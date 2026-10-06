@@ -1,66 +1,79 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =========================
-       CURRENT YEAR
-    ========================= */
+    document.body.classList.add("loading");
 
-    const year = document.getElementById("year");
+    const loader = document.querySelector(".page-loader");
 
-    if (year) {
-        year.textContent = new Date().getFullYear();
-    }
+    window.addEventListener("load", () => {
 
+        setTimeout(() => {
 
-    /* =========================
-       NAVBAR SCROLL EFFECT
-    ========================= */
+            loader.classList.add("hide");
+            document.body.classList.remove("loading");
 
-    const navbar = document.querySelector(".navbar");
-
-    window.addEventListener("scroll", () => {
-
-        if (window.scrollY > 50) {
-
-            navbar.style.background =
-                "rgba(5, 12, 9, 0.72)";
-
-        } else {
-
-            navbar.style.background =
-                "rgba(5, 12, 9, 0.25)";
-
-        }
+        }, 700);
 
     });
 
 
     /* =========================
-       SMOOTH NAVIGATION
+       YEAR
     ========================= */
 
-    const navigationLinks =
-        document.querySelectorAll(
-            'a[href^="#"]'
-        );
+    const year = new Date().getFullYear();
 
-    navigationLinks.forEach(link => {
+    document.querySelectorAll(".copyright").forEach(el => {
 
-        link.addEventListener("click", event => {
+        el.innerHTML =
+            `© ${year} AMIR BORANI · DREAM · CREATE · INSPIRE`;
 
-            const targetId =
-                link.getAttribute("href");
+    });
 
-            const target =
-                document.querySelector(targetId);
 
-            if (!target) return;
+    /* =========================
+       CURSOR LIGHT
+    ========================= */
 
-            event.preventDefault();
+    const cursor = document.querySelector(".cursor-glow");
 
-            target.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
+    window.addEventListener("mousemove", e => {
+
+        cursor.style.left = `${e.clientX}px`;
+        cursor.style.top = `${e.clientY}px`;
+
+    });
+
+
+    /* =========================
+       PARALLAX
+    ========================= */
+
+    const scenes = document.querySelectorAll(".scene-image");
+
+    window.addEventListener("scroll", () => {
+
+        const scrollY = window.scrollY;
+
+        scenes.forEach(scene => {
+
+            const section = scene.closest(".scene-section");
+
+            if (!section) return;
+
+            const rect = section.getBoundingClientRect();
+
+            if (
+                rect.top < window.innerHeight &&
+                rect.bottom > 0
+            ) {
+
+                const movement =
+                    (window.innerHeight / 2 - rect.top) * 0.035;
+
+                scene.style.transform =
+                    `scale(1.06) translateY(${movement}px)`;
+
+            }
 
         });
 
@@ -68,13 +81,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================
-       REVEAL ANIMATION
+       MOUSE PARALLAX
     ========================= */
 
-    const revealElements =
-        document.querySelectorAll(
-            ".section, .project-card, .skill, .profile-card"
-        );
+    const hero = document.querySelector("#home");
+
+    hero.addEventListener("mousemove", e => {
+
+        const x =
+            (e.clientX / window.innerWidth - .5) * 12;
+
+        const y =
+            (e.clientY / window.innerHeight - .5) * 8;
+
+        const background =
+            hero.querySelector(".scene-image");
+
+        background.style.transform =
+            `scale(1.06) translate(${x}px, ${y}px)`;
+
+    });
+
+
+    hero.addEventListener("mouseleave", () => {
+
+        hero.querySelector(".scene-image").style.transform =
+            "scale(1.06)";
+
+    });
+
+
+    /* =========================
+       ACTIVE NAVIGATION
+    ========================= */
+
+    const sections =
+        document.querySelectorAll("section[id]");
+
+    const navLinks =
+        document.querySelectorAll(".navbar nav a");
 
     const observer =
         new IntersectionObserver(
@@ -84,13 +129,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     if (entry.isIntersecting) {
 
-                        entry.target.classList.add(
-                            "visible"
+                        navLinks.forEach(link =>
+                            link.classList.remove("active")
                         );
 
-                        observer.unobserve(
-                            entry.target
-                        );
+                        const active =
+                            document.querySelector(
+                                `.navbar nav a[href="#${entry.target.id}"]`
+                            );
+
+                        if (active) {
+                            active.classList.add("active");
+                        }
 
                     }
 
@@ -98,52 +148,67 @@ document.addEventListener("DOMContentLoaded", () => {
 
             },
             {
-                threshold: 0.12
+                threshold: .35
             }
         );
 
+    sections.forEach(section =>
+        observer.observe(section)
+    );
 
-    revealElements.forEach(element => {
 
-        element.classList.add("reveal");
+    /* =========================
+       MOBILE MENU
+    ========================= */
 
-        observer.observe(element);
+    const menuBtn =
+        document.querySelector(".menu-btn");
+
+    const nav =
+        document.querySelector(".navbar nav");
+
+    menuBtn.addEventListener("click", () => {
+
+        nav.classList.toggle("mobile-open");
+
+    });
+
+
+    nav.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            nav.classList.remove("mobile-open");
+
+        });
 
     });
 
 
     /* =========================
-       MOUSE PARALLAX
+       CONTACT FORM
     ========================= */
 
-    const background =
-        document.querySelector(
-            ".background-image"
-        );
+    const form =
+        document.querySelector(".contact-form");
 
-    document.addEventListener(
-        "mousemove",
-        event => {
+    form.addEventListener("submit", e => {
 
-            const x =
-                (event.clientX /
-                    window.innerWidth -
-                    0.5) * 10;
+        e.preventDefault();
 
-            const y =
-                (event.clientY /
-                    window.innerHeight -
-                    0.5) * 10;
+        const button =
+            form.querySelector("button");
 
-            if (background) {
+        button.textContent =
+            "MESSAGE READY ✓";
 
-                background.style.transform =
-                    `scale(1.08)
-                     translate(${x}px, ${y}px)`;
+        setTimeout(() => {
 
-            }
+            button.textContent =
+                "SEND MESSAGE →";
 
-        }
-    );
+        }, 2500);
+
+    });
 
 });
