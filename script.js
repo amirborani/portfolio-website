@@ -1,214 +1,268 @@
+```javascript
 document.addEventListener("DOMContentLoaded", () => {
 
-    document.body.classList.add("loading");
+  /* =====================================================
+     YEAR
+     ===================================================== */
 
-    const loader = document.querySelector(".page-loader");
+  const year = document.getElementById("year");
 
-    window.addEventListener("load", () => {
-
-        setTimeout(() => {
-
-            loader.classList.add("hide");
-            document.body.classList.remove("loading");
-
-        }, 700);
-
-    });
+  if (year) {
+    year.textContent = new Date().getFullYear();
+  }
 
 
-    /* =========================
-       YEAR
-    ========================= */
+  /* =====================================================
+     SCROLL PROGRESS
+     ===================================================== */
 
-    const year = new Date().getFullYear();
+  const progress = document.querySelector(".progress");
 
-    document.querySelectorAll(".copyright").forEach(el => {
+  function updateProgress() {
 
-        el.innerHTML =
-            `© ${year} AMIR BORANI · DREAM · CREATE · INSPIRE`;
+    const scrollTop = window.scrollY;
 
-    });
+    const documentHeight =
+      document.documentElement.scrollHeight -
+      window.innerHeight;
+
+    const percentage =
+      documentHeight > 0
+        ? (scrollTop / documentHeight) * 100
+        : 0;
+
+    if (progress) {
+      progress.style.width = `${percentage}%`;
+    }
+  }
+
+  window.addEventListener("scroll", updateProgress);
+
+  updateProgress();
 
 
-    /* =========================
-       CURSOR LIGHT
-    ========================= */
+  /* =====================================================
+     REVEAL ANIMATION
+     ===================================================== */
 
-    const cursor = document.querySelector(".cursor-glow");
+  const reveals = document.querySelectorAll(".reveal");
 
-    window.addEventListener("mousemove", e => {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
 
-        cursor.style.left = `${e.clientX}px`;
-        cursor.style.top = `${e.clientY}px`;
+      entries.forEach((entry) => {
 
-    });
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.12
+    }
+  );
+
+  reveals.forEach((element) => {
+    revealObserver.observe(element);
+  });
 
 
-    /* =========================
-       PARALLAX
-    ========================= */
+  /* =====================================================
+     ACTIVE NAVIGATION
+     ===================================================== */
 
-    const scenes = document.querySelectorAll(".scene-image");
+  const sections =
+    document.querySelectorAll("section[id]");
 
-    window.addEventListener("scroll", () => {
+  const navLinks =
+    document.querySelectorAll("nav a");
 
-        const scrollY = window.scrollY;
+  const sectionObserver =
+    new IntersectionObserver(
+      (entries) => {
 
-        scenes.forEach(scene => {
+        entries.forEach((entry) => {
 
-            const section = scene.closest(".scene-section");
+          if (entry.isIntersecting) {
 
-            if (!section) return;
+            navLinks.forEach((link) => {
+              link.classList.remove("active");
+            });
 
-            const rect = section.getBoundingClientRect();
+            const activeLink =
+              document.querySelector(
+                `nav a[href="#${entry.target.id}"]`
+              );
 
-            if (
-                rect.top < window.innerHeight &&
-                rect.bottom > 0
-            ) {
-
-                const movement =
-                    (window.innerHeight / 2 - rect.top) * 0.035;
-
-                scene.style.transform =
-                    `scale(1.06) translateY(${movement}px)`;
-
+            if (activeLink) {
+              activeLink.classList.add("active");
             }
+
+          }
 
         });
 
+      },
+      {
+        threshold: 0.45
+      }
+    );
+
+  sections.forEach((section) => {
+    sectionObserver.observe(section);
+  });
+
+
+  /* =====================================================
+     SMOOTH SCROLL
+     ===================================================== */
+
+  document
+    .querySelectorAll('a[href^="#"]')
+    .forEach((link) => {
+
+      link.addEventListener("click", (event) => {
+
+        const targetId =
+          link.getAttribute("href");
+
+        const target =
+          document.querySelector(targetId);
+
+        if (target) {
+
+          event.preventDefault();
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+        }
+
+      });
+
     });
 
 
-    /* =========================
-       MOUSE PARALLAX
-    ========================= */
+  /* =====================================================
+     HERO MOUSE PARALLAX
+     ===================================================== */
 
-    const hero = document.querySelector("#home");
+  const hero =
+    document.getElementById("home");
 
-    hero.addEventListener("mousemove", e => {
+  const heroBackground =
+    document.querySelector(".hero-bg");
 
-        const x =
-            (e.clientX / window.innerWidth - .5) * 12;
+  if (hero && heroBackground) {
 
-        const y =
-            (e.clientY / window.innerHeight - .5) * 8;
+    hero.addEventListener("mousemove", (event) => {
 
-        const background =
-            hero.querySelector(".scene-image");
+      const x =
+        (event.clientX / window.innerWidth - 0.5) * 18;
 
-        background.style.transform =
-            `scale(1.06) translate(${x}px, ${y}px)`;
+      const y =
+        (event.clientY / window.innerHeight - 0.5) * 12;
+
+      heroBackground.style.transform =
+        `scale(1.08) translate(${x}px, ${y}px)`;
 
     });
 
 
     hero.addEventListener("mouseleave", () => {
 
-        hero.querySelector(".scene-image").style.transform =
-            "scale(1.06)";
+      heroBackground.style.transform =
+        "scale(1.08) translate(0, 0)";
 
     });
 
+  }
 
-    /* =========================
-       ACTIVE NAVIGATION
-    ========================= */
 
-    const sections =
-        document.querySelectorAll("section[id]");
+  /* =====================================================
+     THEME BUTTON
+     ===================================================== */
 
-    const navLinks =
-        document.querySelectorAll(".navbar nav a");
+  const themeButton =
+    document.getElementById("themeBtn");
 
-    const observer =
-        new IntersectionObserver(
-            entries => {
+  if (themeButton) {
 
-                entries.forEach(entry => {
+    themeButton.addEventListener("click", () => {
 
-                    if (entry.isIntersecting) {
+      document.body.classList.toggle("bright");
 
-                        navLinks.forEach(link =>
-                            link.classList.remove("active")
-                        );
+      if (
+        document.body.classList.contains("bright")
+      ) {
 
-                        const active =
-                            document.querySelector(
-                                `.navbar nav a[href="#${entry.target.id}"]`
-                            );
+        themeButton.textContent = "☾";
 
-                        if (active) {
-                            active.classList.add("active");
-                        }
+      } else {
 
-                    }
+        themeButton.textContent = "☼";
 
-                });
+      }
 
-            },
-            {
-                threshold: .35
-            }
-        );
+    });
 
-    sections.forEach(section =>
-        observer.observe(section)
+  }
+
+
+  /* =====================================================
+     IMAGE FALLBACK
+     ===================================================== */
+
+  const profileImage =
+    document.querySelector(
+      '.portrait-frame img'
     );
 
+  if (profileImage) {
 
-    /* =========================
-       MOBILE MENU
-    ========================= */
+    profileImage.addEventListener(
+      "error",
+      () => {
 
-    const menuBtn =
-        document.querySelector(".menu-btn");
+        profileImage.style.display = "none";
 
-    const nav =
-        document.querySelector(".navbar nav");
+        const frame =
+          profileImage.parentElement;
 
-    menuBtn.addEventListener("click", () => {
+        if (frame) {
 
-        nav.classList.toggle("mobile-open");
+          frame.classList.add(
+            "image-missing"
+          );
 
-    });
+          frame.innerHTML =
+            `
+              <div style="
+                display:flex;
+                width:100%;
+                height:100%;
+                align-items:center;
+                justify-content:center;
+                text-align:center;
+                padding:30px;
+                color:rgba(255,255,255,.6);
+                font-size:13px;
+              ">
+                Add your photo here:<br>
+                images/profile.png
+              </div>
+            `;
 
+        }
 
-    nav.querySelectorAll("a").forEach(link => {
+      }
+    );
 
-        link.addEventListener("click", () => {
-
-            nav.classList.remove("mobile-open");
-
-        });
-
-    });
-
-
-    /* =========================
-       CONTACT FORM
-    ========================= */
-
-    const form =
-        document.querySelector(".contact-form");
-
-    form.addEventListener("submit", e => {
-
-        e.preventDefault();
-
-        const button =
-            form.querySelector("button");
-
-        button.textContent =
-            "MESSAGE READY ✓";
-
-        setTimeout(() => {
-
-            button.textContent =
-                "SEND MESSAGE →";
-
-        }, 2500);
-
-    });
+  }
 
 });
+```
