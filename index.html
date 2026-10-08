@@ -1,543 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Amir Borani | Creative Digital Artist</title>
+  <title>Amir Borani | Creative Digital Artist</title>
 
-    <meta
-        name="description"
-        content="Amir Borani — Creative Digital Artist, Video Editor, Web Designer, Programmer, AI Enthusiast, Gamer and Content Creator."
-    >
+  <meta
+    name="description"
+    content="Amir Borani — Creative Digital Artist, Video Editor, Web Designer, Programmer, AI Enthusiast, Gamer and Content Creator."
+  >
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet"
-    >
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="page-loader">
-    <div class="loader-logo">AMIR BORANI</div>
-    <div class="loader-line"></div>
-</div>
+<div class="progress"></div>
 
-<div class="cursor-glow"></div>
+<header class="topbar">
 
-<header class="navbar">
+  <a href="#home" class="brand">
+    <span>AB</span> AMIR BORANI
+  </a>
 
-    <a href="#home" class="logo">
-        <span class="logo-mark">A</span>
-        <span>AMIR BORANI</span>
-    </a>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-    <nav>
-        <a href="#home" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
-    <a href="#contact" class="talk-btn">
-        Let's Talk <span>↗</span>
-    </a>
-
-    <button class="menu-btn" aria-label="Open menu">
-        ☰
-    </button>
+  <button id="themeBtn" class="theme-btn">
+    ☼
+  </button>
 
 </header>
 
 
 <main>
 
-<!-- =====================================================
-HOME
-===================================================== -->
+<!-- ================= HOME ================= -->
 
-<section id="home" class="hero scene-section">
+<section id="home" class="hero">
 
-    <div class="scene-image scene-mountains"></div>
+  <div class="hero-inner">
 
-    <div class="hero-overlay"></div>
+    <div class="portrait-card reveal">
 
-    <div class="sun-glow"></div>
+      <div class="portrait-frame">
 
-    <div class="birds">✦</div>
+        <!-- YOUR PHOTO -->
+        <img
+          src="assets/profile.png"
+          alt="Amir Borani"
+        >
 
-    <div class="hero-content">
+      </div>
 
-        <div class="profile-card glass">
-
-            <div class="profile-frame">
-
-                <img
-                    src="images/profile.png"
-                    alt="Amir Borani"
-                >
-
-            </div>
-
-            <div class="profile-name">
-                <span>AMIR BORANI</span>
-                <small>CREATIVE DIGITAL ARTIST</small>
-            </div>
-
-            <div class="available">
-                <i></i>
-                AVAILABLE FOR WORK
-            </div>
-
-        </div>
-
-
-        <div class="hero-main">
-
-            <div class="eyebrow">
-                <span></span>
-                WELCOME TO MY PORTFOLIO
-            </div>
-
-            <h1>
-                AMIR
-                <strong>BORANI</strong>
-            </h1>
-
-            <p class="hero-title">
-                Creative Digital Artist
-            </p>
-
-            <p class="hero-description">
-                Video Editor · Web Designer · Programmer ·
-                AI Enthusiast · Gamer · Content Creator · Streamer
-            </p>
-
-            <div class="hero-tools">
-
-                <span>◈ Video Editor</span>
-                <span>⌁ Web Designer</span>
-                <span>◉ AI & Creativity</span>
-                <span>▣ Programmer</span>
-                <span>◌ Streamer</span>
-                <span>◎ Content Creator</span>
-
-            </div>
-
-            <div class="hero-buttons">
-
-                <a href="#projects" class="gold-btn">
-                    Explore My Work
-                    <span>→</span>
-                </a>
-
-                <a href="#contact" class="ghost-btn">
-                    Contact Me
-                </a>
-
-            </div>
-
-        </div>
+      <div class="availability">
+        <i></i>
+        AVAILABLE FOR WORK
+      </div>
 
     </div>
 
 
-    <div class="scroll-indicator">
+    <div class="hero-copy reveal">
 
-        <div class="mouse">
-            <span></span>
-        </div>
+      <p class="eyebrow handwritten">
+        Hello, I'm
+      </p>
 
-        <small>SCROLL</small>
+      <h1>
+        AMIR <span>BORANI</span>
+      </h1>
+
+      <h2>
+        Creative Digital Artist
+      </h2>
+
+      <p class="roles">
+
+        Video Editor
+        <b>•</b>
+
+        Web Designer
+        <b>•</b>
+
+        Programmer
+        <b>•</b>
+
+        AI Enthusiast
+
+        <br>
+
+        Gamer
+        <b>•</b>
+
+        Content Creator
+        <b>•</b>
+
+        Photographer
+        <b>•</b>
+
+        Streamer
+
+      </p>
+
+
+      <div class="socials">
+
+        <a href="https://www.youtube.com/@ayoubrider8433"
+           target="_blank">▶</a>
+
+        <a href="https://www.tiktok.com/@amirsoltan086"
+           target="_blank">♪</a>
+
+        <a href="https://www.instagram.com/soltanamir007/"
+           target="_blank">◎</a>
+
+        <a href="https://www.facebook.com/"
+           target="_blank">f</a>
+
+        <a href="https://t.me/Amirthail"
+           target="_blank">➤</a>
+
+        <a href="https://wa.me/66820196851"
+           target="_blank">◉</a>
+
+        <a href="https://kick.com/amirgtalive"
+           target="_blank">K</a>
+
+      </div>
+
+
+      <div class="motto">
+
+        CREATE
+        <b>•</b>
+
+        EDIT
+        <b>•</b>
+
+        CODE
+        <b>•</b>
+
+        GAME
+        <b>•</b>
+
+        STREAM
+
+      </div>
 
     </div>
+
+  </div>
+
+
+  <a href="#about" class="scroll-down">
+    ↓
+  </a>
 
 </section>
 
 
-<!-- =====================================================
-ABOUT
-===================================================== -->
 
-<section id="about" class="about scene-section">
+<!-- ================= ABOUT ================= -->
 
-    <div class="scene-image scene-night"></div>
+<section id="about" class="section night">
 
-    <div class="dark-overlay"></div>
+  <div class="section-grid">
 
-    <div class="section-inner">
+    <div class="section-intro reveal">
 
-        <div class="section-intro">
+      <p class="eyebrow">
+        ◈ ABOUT ME
+      </p>
 
-            <span class="section-number">01 / ABOUT</span>
+      <h2>
+        The Mind<br>
+        Behind The <span>Work.</span>
+      </h2>
 
-            <h2>
-                THE MIND
-                <strong>BEHIND THE WORK.</strong>
-            </h2>
+      <p>
+        I'm Amir Borani, a creative digital artist passionate
+        about turning ideas into striking visuals and digital
+        experiences.
 
-            <p>
-                I'm Amir Borani, a creative digital artist focused
-                on turning ideas into visual experiences.
-            </p>
+        I love video editing, web design, programming,
+        AI and everything related to technology, gaming
+        and creative content.
+      </p>
 
-            <a href="#skills" class="small-btn">
-                Learn More →
-            </a>
-
-        </div>
-
-
-        <div class="about-cards glass">
-
-            <div class="about-card">
-                <span>◈</span>
-                <small>VIDEO EDITING</small>
-            </div>
-
-            <div class="about-card">
-                <span>&lt;/&gt;</span>
-                <small>WEB DESIGN</small>
-            </div>
-
-            <div class="about-card">
-                <span>♧</span>
-                <small>AI & CREATIVITY</small>
-            </div>
-
-            <div class="about-card">
-                <span>▣</span>
-                <small>PROGRAMMING</small>
-            </div>
-
-            <div class="about-card">
-                <span>◉</span>
-                <small>CONTENT CREATION</small>
-            </div>
-
-            <div class="about-card">
-                <span>◌</span>
-                <small>STREAMING</small>
-            </div>
-
-        </div>
-
-
-        <div class="about-side glass">
-
-            <span>IDEAS</span>
-            <b>+</b>
-            <span>SKILLS</span>
-            <b>+</b>
-            <span>IMPACT</span>
-
-        </div>
+      <div class="signature">
+        Amir Borani
+      </div>
 
     </div>
+
+
+    <div class="glass feature-grid reveal">
+
+      <article>
+        <strong>✦</strong>
+        <h3>
+          CREATIVE<br>
+          THINKER
+        </h3>
+      </article>
+
+      <article>
+        <strong>⚙</strong>
+        <h3>
+          PROBLEM<br>
+          SOLVER
+        </h3>
+      </article>
+
+      <article>
+        <strong>♧</strong>
+        <h3>
+          TEAM<br>
+          PLAYER
+        </h3>
+      </article>
+
+      <article>
+        <strong>◇</strong>
+        <h3>
+          ALWAYS<br>
+          LEARNING
+        </h3>
+      </article>
+
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- =====================================================
-PROJECTS
-===================================================== -->
 
-<section id="projects" class="projects scene-section">
+<!-- ================= PROJECTS ================= -->
 
-    <div class="scene-image scene-city"></div>
+<section id="projects" class="section city">
 
-    <div class="dark-overlay"></div>
+  <div class="section-grid projects-layout">
 
-    <div class="section-inner projects-inner">
+    <div class="section-intro reveal">
 
-        <div class="section-intro">
+      <p class="eyebrow">
+        ▣ MY PROJECTS
+      </p>
 
-            <span class="section-number">02 / PROJECTS</span>
+      <h2>
+        Projects<br>
+        That <span>Inspire.</span>
+      </h2>
 
-            <h2>
-                MY <strong>PROJECTS</strong>
-            </h2>
+      <p>
+        A collection of creative work across video editing,
+        web design, AI and digital content.
+      </p>
 
-            <p>
-                Ideas → Visuals → Impact
-            </p>
-
-            <a href="#contact" class="small-btn">
-                View All →
-            </a>
-
-        </div>
-
-
-        <div class="project-grid">
-
-            <article class="project-card glass">
-
-                <div class="project-image project-one"></div>
-
-                <div class="project-content">
-
-                    <span>01</span>
-
-                    <h3>Video Editing</h3>
-
-                    <p>
-                        Short-form, cinematic and social media
-                        storytelling.
-                    </p>
-
-                    <a href="#contact">→</a>
-
-                </div>
-
-            </article>
-
-
-            <article class="project-card glass">
-
-                <div class="project-image project-two"></div>
-
-                <div class="project-content">
-
-                    <span>02</span>
-
-                    <h3>Web Design</h3>
-
-                    <p>
-                        Modern websites, creative interfaces
-                        and immersive experiences.
-                    </p>
-
-                    <a href="#contact">→</a>
-
-                </div>
-
-            </article>
-
-
-            <article class="project-card glass">
-
-                <div class="project-image project-three"></div>
-
-                <div class="project-content">
-
-                    <span>03</span>
-
-                    <h3>AI & Creative</h3>
-
-                    <p>
-                        AI-powered visual experimentation and
-                        digital concepts.
-                    </p>
-
-                    <a href="#contact">→</a>
-
-                </div>
-
-            </article>
-
-        </div>
+      <a href="#contact" class="outline-btn">
+        Let's Work Together →
+      </a>
 
     </div>
+
+
+    <div class="projects reveal">
+
+      <article class="project-card">
+
+        <div class="project-icon">
+          ▣
+        </div>
+
+        <h3>
+          Video Editing
+        </h3>
+
+        <p>
+          Short films, YouTube videos,
+          reels, gaming edits and creative videos.
+        </p>
+
+      </article>
+
+
+      <article class="project-card">
+
+        <div class="project-icon">
+          ⌘
+        </div>
+
+        <h3>
+          Web Design
+        </h3>
+
+        <p>
+          Modern websites with responsive
+          layouts, animations and strong visual identity.
+        </p>
+
+      </article>
+
+
+      <article class="project-card">
+
+        <div class="project-icon">
+          ◉
+        </div>
+
+        <h3>
+          AI & Creative
+        </h3>
+
+        <p>
+          AI tools, digital art, creative concepts
+          and experimental visual projects.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- =====================================================
-SKILLS
-===================================================== -->
 
-<section id="skills" class="skills scene-section">
+<!-- ================= SKILLS ================= -->
 
-    <div class="scene-image scene-greenhouse"></div>
+<section id="skills" class="section forest">
 
-    <div class="dark-overlay"></div>
+  <div class="section-grid skills-layout">
 
-    <div class="section-inner skills-inner">
+    <div class="section-intro reveal">
 
-        <div class="section-intro">
+      <p class="eyebrow">
+        ϟ MY SKILLS
+      </p>
 
-            <span class="section-number">03 / SKILLS</span>
+      <h2>
+        Skills<br>
+        & <span>Experience.</span>
+      </h2>
 
-            <h2>
-                TOOLS OF
-                <strong>CREATION.</strong>
-            </h2>
-
-            <p>
-                The tools I use to bring ideas to life.
-            </p>
-
-            <a href="#contact" class="small-btn">
-                Let's Work →
-            </a>
-
-        </div>
-
-
-        <div class="skills-grid">
-
-            <div class="skill-box glass">
-                <span>▣</span>
-                <h3>Video Editing</h3>
-                <div class="skill-bar"><i style="width:90%"></i></div>
-                <small>90%</small>
-            </div>
-
-            <div class="skill-box glass">
-                <span>&lt;/&gt;</span>
-                <h3>Web Design</h3>
-                <div class="skill-bar"><i style="width:85%"></i></div>
-                <small>85%</small>
-            </div>
-
-            <div class="skill-box glass">
-                <span>♧</span>
-                <h3>AI & Creative</h3>
-                <div class="skill-bar"><i style="width:82%"></i></div>
-                <small>82%</small>
-            </div>
-
-            <div class="skill-box glass">
-                <span>▤</span>
-                <h3>Programming</h3>
-                <div class="skill-bar"><i style="width:78%"></i></div>
-                <small>78%</small>
-            </div>
-
-            <div class="skill-box glass">
-                <span>◎</span>
-                <h3>Content Creation</h3>
-                <div class="skill-bar"><i style="width:87%"></i></div>
-                <small>87%</small>
-            </div>
-
-            <div class="skill-box glass">
-                <span>◌</span>
-                <h3>Streaming</h3>
-                <div class="skill-bar"><i style="width:75%"></i></div>
-                <small>75%</small>
-            </div>
-
-        </div>
+      <p>
+        Always learning, always improving.
+        Here are some of my main skills and tools.
+      </p>
 
     </div>
+
+
+    <div class="skills reveal">
+
+      <div class="skill">
+        <div class="ring r90">
+          90%
+        </div>
+        <h3>
+          Video Editing
+        </h3>
+      </div>
+
+
+      <div class="skill">
+        <div class="ring r85">
+          85%
+        </div>
+        <h3>
+          Web Design
+        </h3>
+      </div>
+
+
+      <div class="skill">
+        <div class="ring r82">
+          82%
+        </div>
+        <h3>
+          AI & Creative
+        </h3>
+      </div>
+
+
+      <div class="skill">
+        <div class="ring r78">
+          78%
+        </div>
+        <h3>
+          Programming
+        </h3>
+      </div>
+
+
+      <div class="skill">
+        <div class="ring r87">
+          87%
+        </div>
+        <h3>
+          Content Creation
+        </h3>
+      </div>
+
+
+      <div class="skill">
+        <div class="ring r75">
+          75%
+        </div>
+        <h3>
+          Streaming
+        </h3>
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
 
 
-<!-- =====================================================
-CONTACT
-===================================================== -->
 
-<section id="contact" class="contact scene-section">
+<!-- ================= CONTACT ================= -->
 
-    <div class="scene-image scene-lake"></div>
+<section id="contact" class="section sunset">
 
-    <div class="dark-overlay"></div>
+  <div class="section-grid contact-layout">
 
-    <div class="section-inner contact-inner">
+    <div class="section-intro reveal">
 
-        <div class="contact-text">
+      <p class="eyebrow">
+        ✈ GET IN TOUCH
+      </p>
 
-            <span class="section-number">04 / CONTACT</span>
+      <h2>
+        Let's Create<br>
+        <span>Something.</span>
+      </h2>
 
-            <h2>
-                LET'S CREATE
-                <strong>SOMETHING.</strong>
-            </h2>
-
-            <p>
-                Have a project, idea or collaboration in mind?
-                Let's turn it into reality.
-            </p>
-
-            <div class="contact-links">
-
-                <a href="https://wa.me/" target="_blank">
-                    WhatsApp Me →
-                </a>
-
-                <a href="mailto:your@email.com">
-                    Email Me →
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <form class="contact-form">
-
-            <input
-                type="text"
-                placeholder="Your Name"
-                required
-            >
-
-            <input
-                type="email"
-                placeholder="Your Email"
-                required
-            >
-
-            <textarea
-                placeholder="Your Message"
-                required
-            ></textarea>
-
-            <button type="submit">
-                SEND MESSAGE →
-            </button>
-
-        </form>
+      <p>
+        Have a project, idea or collaboration in mind?
+        Feel free to reach out.
+        I'm always open to new opportunities.
+      </p>
 
     </div>
+
+
+    <div class="contact-box glass reveal">
+
+      <a href="https://wa.me/66820196851"
+         target="_blank">
+
+        <b>WhatsApp</b>
+        <span>
+          +66 82 019 6851
+        </span>
+
+      </a>
+
+
+      <a href="https://t.me/Amirthail"
+         target="_blank">
+
+        <b>Telegram</b>
+        <span>
+          @Amirthail
+        </span>
+
+      </a>
+
+
+      <a href="mailto:amirborani007@gmail.com">
+
+        <b>Email</b>
+
+        <span>
+          amirborani007@gmail.com
+        </span>
+
+      </a>
+
+    </div>
+
+
+    <div class="follow glass reveal">
+
+      <p>
+        FOLLOW ME
+      </p>
+
+
+      <div class="socials big">
+
+        <a href="https://www.youtube.com/@ayoubrider8433"
+           target="_blank">▶</a>
+
+        <a href="https://www.tiktok.com/@amirsoltan086"
+           target="_blank">♪</a>
+
+        <a href="https://www.instagram.com/soltanamir007/"
+           target="_blank">◎</a>
+
+        <a href="https://www.facebook.com/"
+           target="_blank">f</a>
+
+        <a href="https://t.me/Amirthail"
+           target="_blank">➤</a>
+
+        <a href="https://wa.me/66820196851"
+           target="_blank">◉</a>
+
+        <a href="https://kick.com/amirgtalive"
+           target="_blank">K</a>
+
+      </div>
+
+
+      <div class="labels">
+
+        YouTube
+        &nbsp;
+        TikTok
+        &nbsp;
+        Instagram
+        &nbsp;
+        Facebook
+        &nbsp;
+        Telegram
+        &nbsp;
+        WhatsApp
+        &nbsp;
+        Kick
+
+      </div>
+
+    </div>
+
+  </div>
 
 </section>
 
 </main>
 
 
+
 <footer>
 
-    <div class="footer-brand">
+  <span>AB</span>
 
-        <div class="footer-logo">A</div>
+  © 2026 Amir Borani
+  &nbsp; • &nbsp;
+  Creative Digital Artist
 
-        <div>
-            <strong>AMIR BORANI</strong>
-            <small>Creative Digital Artist</small>
-        </div>
-
-    </div>
-
-
-    <div class="footer-socials">
-
-        <a href="https://github.com/amirborani" target="_blank">GitHub</a>
-
-        <a href="https://www.youtube.com/@ayoubrider8433" target="_blank">YouTube</a>
-
-        <a href="https://www.tiktok.com/@amirsoltan086" target="_blank">TikTok</a>
-
-        <a href="https://www.instagram.com/soltanamir007" target="_blank">Instagram</a>
-
-        <a href="https://kick.com/amirgtalive" target="_blank">Kick</a>
-
-    </div>
-
-
-    <div class="copyright">
-        © 2026 AMIR BORANI · DREAM · CREATE · INSPIRE
-    </div>
+  <em>
+    Dream • Create • Build • Grow
+  </em>
 
 </footer>
 
