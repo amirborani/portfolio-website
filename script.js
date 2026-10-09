@@ -1,8 +1,3 @@
-
-/* =========================================
-   AMIR BORANI — PORTFOLIO INTERACTIONS
-========================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menuToggle");
   const mainNav = document.getElementById("mainNav");
@@ -10,16 +5,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll("main section[id]");
   const revealItems = document.querySelectorAll(".reveal");
   const currentYear = document.getElementById("currentYear");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Automatically update the footer year.
+  // Current year in the footer
   if (currentYear) {
     currentYear.textContent = new Date().getFullYear();
   }
 
-  // Mobile navigation.
+  // Mobile navigation
   function closeMenu() {
     if (!menuToggle || !mainNav) return;
-
     mainNav.classList.remove("is-open");
     menuToggle.setAttribute("aria-expanded", "false");
     menuToggle.setAttribute("aria-label", "Open navigation");
@@ -28,7 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (menuToggle && mainNav) {
     menuToggle.addEventListener("click", () => {
       const isOpen = mainNav.classList.toggle("is-open");
-
       menuToggle.setAttribute("aria-expanded", String(isOpen));
       menuToggle.setAttribute(
         "aria-label",
@@ -36,20 +30,18 @@ document.addEventListener("DOMContentLoaded", () => {
       );
     });
 
-    navLinks.forEach((link) => {
-      link.addEventListener("click", closeMenu);
-    });
+    navLinks.forEach(link => link.addEventListener("click", closeMenu));
 
     mainNav.querySelector(".nav-cta")?.addEventListener("click", closeMenu);
 
-    document.addEventListener("keydown", (event) => {
+    document.addEventListener("keydown", event => {
       if (event.key === "Escape") {
         closeMenu();
         menuToggle.focus();
       }
     });
 
-    document.addEventListener("click", (event) => {
+    document.addEventListener("click", event => {
       if (
         mainNav.classList.contains("is-open") &&
         !mainNav.contains(event.target) &&
@@ -60,29 +52,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth > 760) {
-        closeMenu();
-      }
+      if (window.innerWidth > 760) closeMenu();
     });
   }
 
-  // Smooth in-page navigation.
-  // Native anchor links continue to work without JavaScript.
-  document.querySelectorAll('a[href^="#"]').forEach((link) => {
-    link.addEventListener("click", (event) => {
+  // Smooth navigation
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", event => {
       const targetId = link.getAttribute("href");
-
       if (!targetId || targetId === "#") return;
 
       const target = document.querySelector(targetId);
       if (!target) return;
 
       event.preventDefault();
-
       target.scrollIntoView({
-        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
-          ? "auto"
-          : "smooth",
+        behavior: reduceMotion ? "auto" : "smooth",
         block: "start"
       });
 
@@ -92,67 +77,93 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Reveal elements as they enter the viewport.
-  // If IntersectionObserver is unavailable, keep content visible.
+  // Reveal content when it enters the screen
   if ("IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver(
-      (entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.08,
-        rootMargin: "0px 0px 30px 0px"
-      }
-    );
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: "0px 0px 30px 0px"
+    });
 
-    revealItems.forEach((item) => revealObserver.observe(item));
+    revealItems.forEach(item => revealObserver.observe(item));
   } else {
-    revealItems.forEach((item) => item.classList.add("is-visible"));
+    revealItems.forEach(item => item.classList.add("is-visible"));
   }
 
-  // Highlight the current section in the navigation.
+  // Highlight the navigation item for the current section
   if ("IntersectionObserver" in window) {
-    const sectionObserver = new IntersectionObserver(
-      (entries) => {
-        const visibleSections = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort(
-            (a, b) =>
-              b.intersectionRatio - a.intersectionRatio
-          );
+    const sectionObserver = new IntersectionObserver(entries => {
+      const visible = entries
+        .filter(entry => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
-        if (!visibleSections.length) return;
+      if (!visible.length) return;
 
-        const currentId = visibleSections[0].target.id;
+      const currentId = visible[0].target.id;
 
-        navLinks.forEach((link) => {
-          const isActive = link.getAttribute("href") === `#${currentId}`;
+      navLinks.forEach(link => {
+        const active = link.getAttribute("href") === `#${currentId}`;
+        link.classList.toggle("active", active);
 
-          link.classList.toggle("active", isActive);
+        if (active) {
+          link.setAttribute("aria-current", "location");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+    }, {
+      rootMargin: "-18% 0px -55% 0px",
+      threshold: [0, 0.1, 0.25, 0.5]
+    });
 
-          if (isActive) {
-            link.setAttribute("aria-current", "location");
-          } else {
-            link.removeAttribute("aria-current");
-          }
-        });
-      },
-      {
-        rootMargin: "-18% 0px -55% 0px",
-        threshold: [0, 0.1, 0.25, 0.5]
-      }
-    );
-
-    sections.forEach((section) => sectionObserver.observe(section));
+    sections.forEach(section => sectionObserver.observe(section));
   }
 
-  // Keep the page scrollable and recover gracefully if a script
-  // elsewhere accidentally disabled document scrolling.
+  // Gentle parallax movement for scenic section backgrounds
+  const backgrounds = document.querySelectorAll(".section-background");
+  let scrollPending = false;
+
+  function updateParallax() {
+    const viewportHeight = window.innerHeight;
+
+    backgrounds.forEach(background => {
+      const section = background.closest("section");
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > viewportHeight) return;
+
+      const distance = (rect.top + rect.height / 2 - viewportHeight / 2);
+      const offset = Math.max(-38, Math.min(38, distance * -0.045));
+
+      background.style.setProperty(
+        "--parallax-y",
+        reduceMotion ? "0px" : `${offset}px`
+      );
+    });
+
+    scrollPending = false;
+  }
+
+  if (!reduceMotion) {
+    window.addEventListener("scroll", () => {
+      if (!scrollPending) {
+        window.requestAnimationFrame(updateParallax);
+        scrollPending = true;
+      }
+    }, { passive: true });
+
+    window.addEventListener("resize", updateParallax);
+    updateParallax();
+  }
+
+  // Keep page scrolling enabled
   document.documentElement.style.overflowY = "auto";
   document.body.style.overflowY = "visible";
 });
