@@ -14,14 +14,28 @@ html {
 }
 
 body {
-  font-family: "Inter", sans-serif;
-  background: #071018;
-  color: #ffffff;
-  overflow-x: hidden;
+font-family: "Inter", sans-serif;
+background:
+linear-gradient(
+135deg,
+rgba(3, 18, 28, 0.38),
+rgba(5, 40, 45, 0.25),
+rgba(10, 20, 45, 0.40)
+),
+url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2400&q=85")
+center center / cover fixed no-repeat;
+color: #ffffff;
+overflow-x: hidden;
+min-height: 100vh;
 }
 
 body.bright {
-  filter: brightness(1.12) saturate(1.08);
+filter: brightness(1.12) saturate(1.08);
+}
+
+a {
+color: inherit;
+text-decoration: none;
 }
 
 a {
