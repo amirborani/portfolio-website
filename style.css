@@ -425,3 +425,36 @@ nav a.active::after {
 
 .night {
 ```
+
+html {
+min-height: 100%;
+overflow-y: auto !important;
+scroll-behavior: smooth;
+}
+
+body {
+min-height: 100vh;
+height: auto !important;
+overflow-x: hidden;
+overflow-y: visible !important;
+}
+
+main {
+height: auto !important;
+min-height: 100vh;
+overflow: visible !important;
+}
+
+section {
+height: auto;
+min-height: 100vh;
+overflow: visible;
+}
+
+#home,
+#about,
+#projects,
+#skills,
+#contact {
+scroll-margin-top: 80px;
+}
