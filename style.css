@@ -1432,3 +1432,64 @@ section {
     height: 40px;
   }
 }
+
+
+/* DARK FANTASY TYPOGRAPHY */
+
+.brand-name,
+.brand-mark,
+.section-number,
+.section-heading h2,
+.hero h1,
+.contact h2,
+.profile-info h2,
+.project-details h3,
+.about-card h3,
+.pillar h3,
+.skill-card h3,
+.footer-brand {
+  font-family: "Cinzel Decorative", serif;
+}
+
+.hero h1,
+.section-heading h2,
+.contact h2 {
+  text-shadow: 0 0 30px rgba(130, 190, 255, 0.15);
+  letter-spacing: -1px;
+}
+
+.hero-kicker,
+.eyebrow,
+.project-type,
+.nav-link {
+  letter-spacing: 2px;
+}
+
+.gradient-text {
+  background: linear-gradient(
+    110deg,
+    #e8d8a4,
+    #b6d6ff,
+    #c4a0ed,
+    #e8d8a4
+  );
+  background-size: 200% auto;
+  animation: magicGlow 8s ease-in-out infinite alternate;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.profile-panel,
+.glass-card,
+.project-card,
+.skill-card,
+.contact-panel {
+  border-color: rgba(195, 177, 255, 0.22);
+  box-shadow: 0 15px 50px rgba(12, 8, 35, 0.22);
+}
+
+@keyframes magicGlow {
+  from { background-position: 0% center; }
+  to { background-position: 100% center; }
+}
