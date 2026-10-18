@@ -53,6 +53,20 @@ Featurebase('boot', {
 
   <link rel="stylesheet" href="./style.css">
   <script src="./script.js" defer></script>
+  
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.src = 'https://do.featurebase.app/js/sdk.js';
+  script.onload = function () {
+    Featurebase('boot', {
+      appId: '6ad40e5fb14835b0b36bf590'
+    });
+  };
+  document.head.appendChild(script);
+})();
+</script>
+
 </head>
 <body>
   <div class="ambient ambient-one" aria-hidden="true"></div>
