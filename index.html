@@ -1,5 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+  
+<!-- Featurebase Messenger -->
+<script>
+!(function(e,t){
+  const a="featurebase-sdk";
+  function n(){
+    if(!t.getElementById(a)){
+      var s=t.createElement("script");
+      s.id=a;
+      s.src="https://do.featurebase.app/js/sdk.js";
+      t.getElementsByTagName("script")[0].parentNode.insertBefore(s,t.getElementsByTagName("script")[0]);
+    }
+  }
+  if(typeof e.Featurebase!=="function"){
+    e.Featurebase=function(){
+      (e.Featurebase.q=e.Featurebase.q||[]).push(arguments);
+    };
+  }
+  if(t.readyState==="complete"||t.readyState==="interactive"){
+    n();
+  } else {
+    t.addEventListener("DOMContentLoaded",n);
+  }
+})(window,document);
+</script>
+
+<script>
+Featurebase('boot', {
+  appId: '6ad40e5fb14835b0b36bf590',
+  theme: 'dark',
+  language: 'en',
+  alignment: 'right',
+  horizontalPadding: 24,
+  verticalPadding: 80
+});
+</script>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
